@@ -1,38 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
+
 .App {
-  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Toolbar {
+  border-radius: 0.5rem;
+  margin-left: 10%;
+  margin-top: 20px;
+  border: 0.4rem solid #DFE0E2;
+  background: #DFE0E2;
+  padding-left: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Toolbar-div {
+  align-content: flex-start;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.FBW-Logo {
+  max-width: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#ToolbarItem {
+  margin-left: 25px;
+  font-family: "Nunito Sans", sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#ToolbarItemActive {
+  margin-left: 25px;
+  font-family: "Nunito Sans", sans-serif;
+  border-bottom: solid rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
