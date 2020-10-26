@@ -5,7 +5,7 @@ class Widgets extends React.Component {
     render() {
         return (
             <div className="Widgets">
-                <CFWidget dep="KLAX " arr=" KSFO"/>
+                <CFWidget dep={this.props.departingAirport} arr={this.props.arrivingAirport}/>
                 <p>Text2</p>
                 <p>Text3</p>
                 <p>Text4</p>
@@ -16,6 +16,11 @@ class Widgets extends React.Component {
 }
 
 class CFWidget extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { elapsedFlightTime: new Date() };
+    }
+
     render() {
         return (
             <div className="CFWidgetDiv">
@@ -24,12 +29,15 @@ class CFWidget extends React.Component {
                     <div id="DepArr">
                         <p>
                             {this.props.dep}
+                            <i> </i>
                             <i class="material-icons">send</i>
+                            <i> </i>
                             {this.props.arr}
                         </p>
                     </div>
                     <div id="Time">
-                        <p>Time</p>
+                        <p id="Title">Time</p>
+                        <p>{this.state.elapsedFlightTime.getHours()}:{this.state.elapsedFlightTime.getMinutes()}</p>
                     </div>
                     <div id="Distance">
                         <p>Distance</p>

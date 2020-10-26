@@ -39,6 +39,7 @@
 }
 
 .CFWidgetDiv {
+  min-width: 250px;
   margin: 5%;
   display: flex;
   font-size: 1.25rem;
@@ -48,6 +49,7 @@
 }
 
 .CFWidgetDiv #Panel {
+  min-height: 250px;
   display: grid;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 1%;
