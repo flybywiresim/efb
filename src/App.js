@@ -18,12 +18,17 @@ class Toolbar extends React.Component {
         this.state = { itemList: ["Testing1", "Testing2"], activeIndex: 0 }
     }
 
+    #tabs = ['Preparation', 'Flight & navigation', 'Multiplayer', 'Settings'];
+
     render() {
         return (
             <div className="Toolbar">
                 <div className="Toolbar-div">
                     <img src={logo} className="FBW-Logo" alt="logo" />
-                    <ToolbarItem content="Testing1" />
+
+                    {/* Tabs */}
+
+                    {this.#tabs.map(tabName => <ToolbarItem content={tabName}/>)}
                 </div>
             </div>
         );
