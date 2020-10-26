@@ -7,7 +7,7 @@ class Toolbar extends React.Component {
         this.state = { activeIndex: 0 };
         this.handleClick = this.handleClick.bind(this);
 
-        this.tabs = ['Preparation', 'Flight & navigation', 'Multiplayer', 'Settings'];
+        this.tabs = ['Preparation', 'Flight & Navigation', 'Multiplayer', 'Settings'];
     }
 
     handleClick(index) {

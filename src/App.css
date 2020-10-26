@@ -3,6 +3,8 @@
 :root {
   --mainText: rgba(0, 0, 0, 0.6);
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
+
+  --cardBackground: rgb(223, 224, 226);
 }
 
 * {
@@ -17,8 +19,7 @@
   border-radius: 0.5rem;
   margin-left: 10%;
   margin-top: 20px;
-  border: 0.4rem solid #DFE0E2;
-  background: #DFE0E2;
+  background: var(--cardBackground);
   padding-left: 1rem;
 
   display: flex;
