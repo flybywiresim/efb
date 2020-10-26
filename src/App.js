@@ -15,7 +15,7 @@ class App extends React.Component {
 class Toolbar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { itemList: ["Testing1", "Testing2"], activeIndex: 0 }
+        this.state = { activeIndex: 0 }
     }
 
     #tabs = ['Preparation', 'Flight & navigation', 'Multiplayer', 'Settings'];
@@ -28,7 +28,7 @@ class Toolbar extends React.Component {
 
                     {/* Tabs */}
 
-                    {this.#tabs.map(tabName => <ToolbarItem content={tabName}/>)}
+                    {this.#tabs.map((tabName, index) => <ToolbarItem content={tabName} isActive={index === this.state.activeIndex}/>)}
                 </div>
             </div>
         );
@@ -38,7 +38,7 @@ class Toolbar extends React.Component {
 class ToolbarItem extends React.Component {
     render() {
         return (
-            <div id="ToolbarItem">
+            <div id={this.props.isActive ? "ToolbarItemActive" : "ToolbarItem" }>
                 <p>{this.props.content}</p>
             </div>
         );
