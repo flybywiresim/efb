@@ -1,5 +1,4 @@
 import React from 'react';
-import 'material-design-icons';
 
 class Widgets extends React.Component {
     render() {
@@ -37,7 +36,7 @@ class CFWidget extends React.Component {
                     </div>
                     <div id="Time">
                         <p id="Title">Time</p>
-                        <p>{this.state.elapsedFlightTime.getHours()}:{this.state.elapsedFlightTime.getMinutes()}</p>
+                        <p>3:54</p>
                     </div>
                     <div id="Distance">
                         <p>Distance</p>

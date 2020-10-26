@@ -18,8 +18,6 @@
 
 .Toolbar {
   border-radius: 0.5rem;
-  margin-left: 10%;
-  margin-top: 20px;
   background: var(--cardBackground);
   padding-left: 1rem;
 
@@ -30,7 +28,7 @@
 }
 
 .Widgets {
-  margin: 2% 2% 5% 5%;
+  margin: 2%;
   display: grid;
   font-family: "Nunito Sans", sans-serif;
   grid-template-columns: 25% 25% 25% 25%;
