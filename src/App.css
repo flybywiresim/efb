@@ -30,7 +30,7 @@
 }
 
 .Widgets {
-  margin: 2% 2% 5% 10%;
+  margin: 2% 2% 5% 5%;
   display: grid;
   font-family: "Nunito Sans", sans-serif;
   grid-template-columns: 25% 25% 25% 25%;
@@ -39,13 +39,15 @@
 }
 
 .CFWidgetDiv {
+  margin: 5%;
   display: flex;
   font-size: 1.25rem;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
 }
 
-.CFDataDiv {
+.CFWidgetDiv #Panel {
   display: grid;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 1%;
@@ -59,7 +61,7 @@
     "ETA .";
 }
 
-.CFWidgetDepArr {
+.CFWidgetDiv #Panel #DepArr {
   font-size: 2rem;
   font-weight: 700;
   grid-area: DepArr;

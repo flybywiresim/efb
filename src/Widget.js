@@ -1,10 +1,11 @@
 import React from 'react';
+import 'material-design-icons';
 
 class Widgets extends React.Component {
     render() {
         return (
             <div className="Widgets">
-                <CFWidget dep="KLAX" arr="KSFO"/>
+                <CFWidget dep="KLAX " arr=" KSFO"/>
                 <p>Text2</p>
                 <p>Text3</p>
                 <p>Text4</p>
@@ -19,17 +20,21 @@ class CFWidget extends React.Component {
         return (
             <div className="CFWidgetDiv">
                 <p>Today's Flight</p>
-                <div className="CFDataDiv">
-                    <div className="CFWidgetDepArr">
-                        <p>{this.props.dep} > {this.props.arr}</p>
+                <div id="Panel">
+                    <div id="DepArr">
+                        <p>
+                            {this.props.dep}
+                            <i class="material-icons">send</i>
+                            {this.props.arr}
+                        </p>
                     </div>
-                    <div className="CFWidgetTime">
+                    <div id="Time">
                         <p>Time</p>
                     </div>
-                    <div className="CFWidgetDistance">
+                    <div id="Distance">
                         <p>Distance</p>
                     </div>
-                    <div className="CFWidgetETA">
+                    <div id="ETA">
                         <p>ETA</p>
                     </div>
                 </div>
