@@ -19,17 +19,15 @@ class Toolbar extends React.Component {
     render() {
         return (
             <div className="Toolbar">
-                <div className="Toolbar-div">
-                    <img src={logo} className="FBW-Logo" alt="logo" />
+                <img src={logo} className="FBW-Logo" alt="logo" />
 
-                    {/* Tabs */}
+                {/* Tabs */}
 
-                    {
-                        this.tabs.map((tabName, index) =>
-                            <ToolbarItem content={tabName} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
-                        )
-                    }
-                </div>
+                {
+                    this.tabs.map((tabName, index) =>
+                        <ToolbarItem content={tabName} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
+                    )
+                }
             </div>
         );
     }
@@ -42,8 +40,7 @@ class ToolbarItem extends React.Component {
 
     render() {
         return (
-            <div id={this.props.isActive ? 'ToolbarItemActive' : 'ToolbarItem'}
-                onClick={this.props.action}>
+            <div className={this.props.isActive ? 'ToolbarItem Active' : 'ToolbarItem'} onClick={this.props.action}>
                 <p>{this.props.content}</p>
             </div>
         );

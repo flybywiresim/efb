@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
+:root {
+  --mainText: rgba(0, 0, 0, 0.6);
+  --mainTextSecondary: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
 }
 
@@ -10,6 +20,11 @@
   border: 0.4rem solid #DFE0E2;
   background: #DFE0E2;
   padding-left: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .Toolbar-div {
@@ -21,15 +36,18 @@
   max-width: 50px;
 }
 
-#ToolbarItem {
+.ToolbarItem {
+  margin-top: 12px;
   margin-left: 25px;
+  padding-bottom: .25em;
+
   font-family: "Nunito Sans", sans-serif;
-  color: rgba(0, 0, 0, 0.6);
+
+  color: var(--mainText);
+
+  cursor: pointer;
 }
 
-#ToolbarItemActive {
-  margin-left: 25px;
-  font-family: "Nunito Sans", sans-serif;
-  border-bottom: solid rgba(0, 0, 0, 0.6);
-  color: rgba(0, 0, 0, 0.6);
+.ToolbarItem.Active {
+  border-bottom: solid var(--mainTextSecondary) .15em;
 }
