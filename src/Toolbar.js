@@ -6,15 +6,15 @@ class Toolbar extends React.Component {
         super(props);
         this.state = { activeIndex: 0 };
         this.handleClick = this.handleClick.bind(this);
+
+        this.tabs = ['Preparation', 'Flight & navigation', 'Multiplayer', 'Settings'];
     }
 
-    handleClick() {
-        this.setState(() => ({ activeIndex: 1 }));
-        console.log('click!');
-        console.log(this.state.activeIndex);
-    };
-
-    #tabs = ['Preparation', 'Flight & navigation', 'Multiplayer', 'Settings'];
+    handleClick(index) {
+        return () => {
+            this.setState(() => ({ activeIndex: index }));
+        };
+    }
 
     render() {
         return (
@@ -25,10 +25,9 @@ class Toolbar extends React.Component {
                     {/* Tabs */}
 
                     {
-                        this.#tabs.map((tabName, index) => <ToolbarItem
-                            content={tabName}
-                            isActive={index === this.state.activeIndex}
-                            action={this.handleClick} />)
+                        this.tabs.map((tabName, index) =>
+                            <ToolbarItem content={tabName} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
+                        )
                     }
                 </div>
             </div>
@@ -39,12 +38,11 @@ class Toolbar extends React.Component {
 class ToolbarItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isActive: this.props.isActive };
     }
 
     render() {
         return (
-            <div id={this.state.isActive ? 'ToolbarItemActive' : 'ToolbarItem'}
+            <div id={this.props.isActive ? 'ToolbarItemActive' : 'ToolbarItem'}
                 onClick={this.props.action}>
                 <p>{this.props.content}</p>
             </div>
