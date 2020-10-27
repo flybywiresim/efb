@@ -48,10 +48,10 @@
   color: var(--mainText);
 
   cursor: pointer;
-}
 
-.ToolbarItem.Active {
-  border-bottom: solid var(--mainTextSecondary) .15em;
+  &.Active {
+    border-bottom: solid var(--mainTextSecondary) .15em;
+  }
 }
 
 .Widgets {
