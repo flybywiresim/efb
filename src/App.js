@@ -1,6 +1,6 @@
 import React from "react";
 import Toolbar from "./Toolbar.js";
-import './App.css';
+import './App.scss';
 import './Widget.js';
 import Widgets from "./Widget";
 
