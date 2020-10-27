@@ -1,8 +1,7 @@
 import React from "react";
 import Toolbar from "./Toolbar.js";
+import PreparationWidgets from "./PreparationWidget.js";
 import './App.scss';
-import './Widget.js';
-import Widgets from "./Widget";
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +16,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Toolbar />
-                <Widgets
+                <PreparationWidgets
                     departingAirport={this.state.departingAirport}
                     arrivingAirport={this.state.arrivingAirport}
                 />

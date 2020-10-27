@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Widgets extends React.Component {
+class PreparationWidgets extends React.Component {
     render() {
         return (
             <div className="Widgets">
@@ -83,4 +83,4 @@ class LoadsheetWidget extends React.Component {
     }
 }
 
-export default Widgets;
+export default PreparationWidgets;

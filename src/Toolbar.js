@@ -34,10 +34,6 @@ class Toolbar extends React.Component {
 }
 
 class ToolbarItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className={this.props.isActive ? 'ToolbarItem Active' : 'ToolbarItem'} onClick={this.props.action}>
