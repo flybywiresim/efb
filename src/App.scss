@@ -5,6 +5,7 @@
   --mainText: rgba(0, 0, 0, 0.6);
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
 
+  --cardText: rgba(0, 0, 0, 0.7);
   --cardBackground: rgb(223, 224, 226);
   --widgetMargin: 10px;
 }
@@ -67,7 +68,10 @@
     "PrevWidget WeatherWidget LoadsheetWidget LoadsheetWidget";
 }
 
-
+.WidgetTitle {
+  font-size: 1.5rem;
+  color: var(--mainText)
+}
 
 .CFWidgetDiv {
   grid-area: CFWidget;
@@ -89,6 +93,7 @@
   margin: 3px;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
+  color: var(--cardText);
   background: var(--cardBackground);
   grid-template-areas:
     "DepArr DepArr"
@@ -105,6 +110,7 @@
 .CFWidgetDiv #Panel #Title {
   font-size:0.8rem;
   font-weight: 700;
+  color: var(--mainTextSecondary);
   grid-area: DepArr;
 }
 
@@ -121,10 +127,7 @@
 
 .WeatherWidgetDiv #Panel {
   min-height: 450px;
-  display: grid;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 3px;
-  background: var(--cardBackground);
 }
 
 .LoadsheetWidgetDiv {
@@ -138,10 +141,24 @@
   height: 100%;
 }
 
-.LoadsheetWidgetDiv #Panel {
+.LoadsheetWidgetDiv #Area {
   min-height: 450px;
   display: grid;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 3px;
+  grid-template-rows: 100%;
+  grid-template-columns: 50% 50%;
+}
+
+.LoadsheetWidgetDiv #Area #Panel1 {
+  min-height: 450px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 3px 7px 3px 3px;
+  background: var(--cardBackground);
+}
+
+.LoadsheetWidgetDiv #Area #Panel2 {
+  min-height: 450px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 3px 3px 3px 7px;
   background: var(--cardBackground);
 }

@@ -34,15 +34,15 @@ class CFWidget extends React.Component {
                     </div>
                     <div id="Time">
                         <p id="Title">TIME</p>
-                        <p>3:54</p>
+                        <p>0:44</p>
                     </div>
                     <div id="Distance">
                         <p id="Title">DISTANCE</p>
-                        <p>400nm</p>
+                        <p>296nm</p>
                     </div>
                     <div id="ETA">
                         <p id="Title">ETA</p>
-                        <p>00:30</p>
+                        <p>00:31</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,13 @@ class LoadsheetWidget extends React.Component {
         return (
             <div className="LoadsheetWidgetDiv">
                 <p className="WidgetTitle">Loadsheet</p>
-                <div id="Panel">
+                <div id="Area">
+                    <div id="Panel1">
+
+                    </div>
+                    <div id="Panel2">
+
+                    </div>
                 </div>
             </div>
         );
