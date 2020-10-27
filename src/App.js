@@ -7,8 +7,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            departingAirport: "KLAX",
-            arrivingAirport: "KSFO",
+            departingAirport: "LFPG",
+            arrivingAirport: "EHAM",
         };
     }
 
