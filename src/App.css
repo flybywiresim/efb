@@ -6,6 +6,7 @@
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
 
   --cardBackground: rgb(223, 224, 226);
+  --widgetMargin: 10px;
 }
 
 * {
@@ -14,6 +15,14 @@
 }
 
 .App {
+}
+
+.FBW-Logo {
+  max-width: 50px;
+}
+
+#Panel {
+  font-weight: 700;
 }
 
 .Toolbar {
@@ -26,51 +35,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-}
-
-.Widgets {
-  margin: 2%;
-  display: grid;
-  font-family: "Nunito Sans", sans-serif;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 50% 50%;
-  justify-items: stretch;
-}
-
-.CFWidgetDiv {
-  min-width: 250px;
-  margin: 5%;
-  display: flex;
-  font-size: 1.25rem;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.CFWidgetDiv #Panel {
-  min-height: 250px;
-  display: grid;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  margin: 1%;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  background: var(--cardBackground);
-  justify-content: center;
-  grid-template-areas:
-    "DepArr DepArr"
-    "Time Distance"
-    "ETA .";
-}
-
-.CFWidgetDiv #Panel #DepArr {
-  padding-top: 5%;
-  font-size: 2rem;
-  font-weight: 700;
-  grid-area: DepArr;
-}
-
-.FBW-Logo {
-  max-width: 50px;
 }
 
 .ToolbarItem {
@@ -90,4 +54,94 @@
   border-bottom: solid var(--mainTextSecondary) .15em;
 }
 
+.Widgets {
+  margin: 30px;
+  display: grid;
+  font-family: "Nunito Sans", sans-serif;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  justify-items: stretch;
+  align-items: flex-start;
+  grid-template-areas:
+    "CFWidget WeatherWidget LoadsheetWidget LoadsheetWidget"
+    "PrevWidget WeatherWidget LoadsheetWidget LoadsheetWidget";
+}
 
+
+
+.CFWidgetDiv {
+  grid-area: CFWidget;
+  min-width: 250px;
+  margin: var(--widgetMargin);
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.CFWidgetDiv #Panel {
+  padding-top: 5%;
+  padding-left: 8%;
+  min-height: 250px;
+  display: grid;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 3px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  background: var(--cardBackground);
+  grid-template-areas:
+    "DepArr DepArr"
+    "Time Distance"
+    "ETA .";
+}
+
+.CFWidgetDiv #Panel #DepArr {
+  font-size: 2rem;
+  font-weight: 700;
+  grid-area: DepArr;
+}
+
+.CFWidgetDiv #Panel #Title {
+  font-size:0.8rem;
+  font-weight: 700;
+  grid-area: DepArr;
+}
+
+.WeatherWidgetDiv {
+  grid-area: WeatherWidget;
+  min-width: 250px;
+  margin: var(--widgetMargin);
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.WeatherWidgetDiv #Panel {
+  min-height: 450px;
+  display: grid;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 3px;
+  background: var(--cardBackground);
+}
+
+.LoadsheetWidgetDiv {
+  grid-area: LoadsheetWidget;
+  min-width: 250px;
+  margin: var(--widgetMargin);
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.LoadsheetWidgetDiv #Panel {
+  min-height: 450px;
+  display: grid;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 3px;
+  background: var(--cardBackground);
+}

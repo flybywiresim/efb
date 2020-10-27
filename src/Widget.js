@@ -5,10 +5,8 @@ class Widgets extends React.Component {
         return (
             <div className="Widgets">
                 <CFWidget dep={this.props.departingAirport} arr={this.props.arrivingAirport}/>
-                <p>Text2</p>
-                <p>Text3</p>
-                <p>Text4</p>
-                <p>Text5</p>
+                <WeatherWidget />
+                <LoadsheetWidget />
             </div>
         );
     }
@@ -23,7 +21,7 @@ class CFWidget extends React.Component {
     render() {
         return (
             <div className="CFWidgetDiv">
-                <p>Today's Flight</p>
+                <p className="WidgetTitle">Today's Flight</p>
                 <div id="Panel">
                     <div id="DepArr">
                         <p>
@@ -35,15 +33,50 @@ class CFWidget extends React.Component {
                         </p>
                     </div>
                     <div id="Time">
-                        <p id="Title">Time</p>
+                        <p id="Title">TIME</p>
                         <p>3:54</p>
                     </div>
                     <div id="Distance">
-                        <p>Distance</p>
+                        <p id="Title">DISTANCE</p>
+                        <p>400nm</p>
                     </div>
                     <div id="ETA">
-                        <p>ETA</p>
+                        <p id="Title">ETA</p>
+                        <p>00:30</p>
                     </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+class WeatherWidget extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="WeatherWidgetDiv">
+                <p className="WidgetTitle">Weather</p>
+                <div id="Panel">
+
+                </div>
+            </div>
+        );
+    }
+}
+
+class LoadsheetWidget extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="LoadsheetWidgetDiv">
+                <p className="WidgetTitle">Loadsheet</p>
+                <div id="Panel">
                 </div>
             </div>
         );
