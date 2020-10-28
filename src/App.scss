@@ -91,7 +91,7 @@
   color: var(--mainText)
 }
 
-.CFWidgetDiv {
+.FWidgetDiv {
   grid-area: CFWidget;
   min-width: 250px;
   margin: var(--widgetMargin);
@@ -102,7 +102,7 @@
   height: 100%;
 }
 
-.CFWidgetDiv #Panel {
+.FWidgetDiv #Panel {
   padding-top: 5%;
   padding-left: 8%;
   min-height: 250px;
@@ -119,13 +119,13 @@
     "ETA .";
 }
 
-.CFWidgetDiv #Panel #DepArr {
+.FWidgetDiv #Panel #DepArr {
   font-size: 2rem;
   font-weight: 700;
   grid-area: DepArr;
 }
 
-.CFWidgetDiv #Panel #Title {
+.FWidgetDiv #Panel #Title {
   font-size:0.8rem;
   font-weight: 700;
   color: var(--mainTextSecondary);
@@ -170,7 +170,7 @@
 .LoadsheetWidgetDiv #Area #Panel1 {
   min-height: 450px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  margin: 3px 7px 3px 3px;
+  margin: 0px 7px 0px 0px;
   background: var(--cardBackground);
   display: grid;
   grid-template-rows: 85% 15%;
@@ -191,7 +191,7 @@
 .LoadsheetWidgetDiv #Area #Panel2 {
   min-height: 450px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  margin: 3px 3px 3px 7px;
+  margin: 0px 0px 0px 7px;
   background: var(--cardBackground);
   display: grid;
   grid-template-rows: 85% 15%;
