@@ -29,11 +29,29 @@
 .Toolbar {
   background: var(--cardBackground);
   padding-left: 1rem;
+  display: grid;
+  grid-template-columns: 91% 9%;
+}
 
+.ToolbarDiv {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.Toolbar #Icon {
+  justify-content: end;
+}
+
+.Toolbar #Profile {
+  display: flex;
+  align-items: center;
+}
+
+.Toolbar #Profile #Icon {
+  margin-left: 10px;
+  font-size: 2.5rem;
 }
 
 .ToolbarItem {
@@ -152,6 +170,20 @@
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 3px 7px 3px 3px;
   background: var(--cardBackground);
+  display: grid;
+  grid-template-rows: 85% 15%;
+  grid-template-areas:
+    "Main"
+    "BottomPanel1";
+}
+
+.LoadsheetWidgetDiv #Area #Panel1 #BottomPanel {
+  grid-area: BottomPanel1;
+  background: #567FD2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
 }
 
 .LoadsheetWidgetDiv #Area #Panel2 {
@@ -159,4 +191,30 @@
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin: 3px 3px 3px 7px;
   background: var(--cardBackground);
+  display: grid;
+  grid-template-rows: 85% 15%;
+  grid-template-areas:
+    "Main"
+    "BottomPanel2";
+}
+
+.LoadsheetWidgetDiv #Area #Panel2 #BottomPanel {
+  grid-area: BottomPanel2;
+  background: #FE5353;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+}
+
+.LoadsheetWidgetDiv #Area #BottomPanel {
+  color: white;
+  font-weight: 700;
+}
+
+.LoadsheetWidgetDiv #Area #BottomPanel #Title {
+  font-size:0.65rem;
+  font-weight: 700;
+  color: var(--mainTextSecondary);
+  grid-area: DepArr;
 }
