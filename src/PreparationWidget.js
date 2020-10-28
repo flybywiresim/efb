@@ -4,7 +4,7 @@ class PreparationWidgets extends React.Component {
     render() {
         return (
             <div className="Widgets">
-                <CFWidget dep={this.props.departingAirport} arr={this.props.arrivingAirport}/>
+                <FWidget dep={this.props.departingAirport} arr={this.props.arrivingAirport}/>
                 <WeatherWidget />
                 <LoadsheetWidget />
             </div>
@@ -12,7 +12,7 @@ class PreparationWidgets extends React.Component {
     }
 }
 
-class CFWidget extends React.Component {
+class FWidget extends React.Component {
     constructor(props) {
         super(props);
         this.state = { elapsedFlightTime: new Date() };
@@ -20,7 +20,7 @@ class CFWidget extends React.Component {
 
     render() {
         return (
-            <div className="CFWidgetDiv">
+            <div className="FWidgetDiv">
                 <p className="WidgetTitle">Today's Flight</p>
                 <div id="Panel">
                     <div id="DepArr">
