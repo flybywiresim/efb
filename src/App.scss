@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
 :root {
@@ -47,6 +48,7 @@
 .Toolbar #Profile {
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .Toolbar #Profile #Icon {
@@ -94,7 +96,7 @@
   min-width: 250px;
   margin: var(--widgetMargin);
   display: flex;
-  font-size: 1.25rem;
+  font-size: 1.7rem;
   flex-direction: column;
   justify-content: center;
   height: 100%;

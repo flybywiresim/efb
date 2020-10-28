@@ -41,8 +41,8 @@ class CFWidget extends React.Component {
                         <p>296nm</p>
                     </div>
                     <div id="ETA">
-                        <p id="Title">ETA</p>
-                        <p>00:31</p>
+                        <p id="Title">ETA (UTC)</p>
+                        <p>19:41</p>
                     </div>
                 </div>
             </div>
