@@ -13,6 +13,8 @@
 
 #root {
   background: #E5E5E5;
+  width: 100vw;
+  height: 100vh;
 }
 
 * {
@@ -96,14 +98,21 @@
 }
 
 .FWidgetDiv {
-  grid-area: CFWidget;
   min-width: 250px;
   margin: var(--widgetMargin);
   display: flex;
   font-size: 1.7rem;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   height: 100%;
+}
+
+.FWidgetDiv #Current {
+  grid-area: CFWidget;
+}
+
+.FWidgetDiv #Previous {
+  grid-area: PrevWidget;
 }
 
 .FWidgetDiv #Panel {
@@ -143,7 +152,7 @@
   display: flex;
   font-size: 1.25rem;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   height: 100%;
 }
 
@@ -159,7 +168,7 @@
   display: flex;
   font-size: 1.25rem;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   height: 100%;
 }
 

@@ -4,7 +4,22 @@ class PreparationWidgets extends React.Component {
     render() {
         return (
             <div className="Widgets">
-                <FWidget dep={this.props.departingAirport} arr={this.props.arrivingAirport}/>
+                <FWidget
+                    id="Current"
+                    name="Today's Flight"
+                    dep={this.props.departingAirport}
+                    arr={this.props.arrivingAirport}
+                    elapsedTime="00:49"
+                    distance="139nm"
+                    eta="19:48"
+                />
+                <FWidget
+                    id="Previous"
+                    name="Previous Legs"
+                    dep="EGLL"
+                    arr="LFPG"
+                    elapsedTime="01:25"
+                    distance="274nm" />
                 <WeatherWidget />
                 <LoadsheetWidget />
             </div>
@@ -21,7 +36,7 @@ class FWidget extends React.Component {
     render() {
         return (
             <div className="FWidgetDiv">
-                <p className="WidgetTitle">Today's Flight</p>
+                <p className="WidgetTitle">{this.props.name}</p>
                 <div id="Panel">
                     <div id="DepArr">
                         <p>
@@ -34,15 +49,15 @@ class FWidget extends React.Component {
                     </div>
                     <div id="Time">
                         <p id="Title">TIME</p>
-                        <p>0:44</p>
+                        <p>{this.props.elapsedTime}</p>
                     </div>
                     <div id="Distance">
                         <p id="Title">DISTANCE</p>
-                        <p>296nm</p>
+                        <p>{this.props.distance}</p>
                     </div>
                     <div id="ETA">
                         <p id="Title">ETA (UTC)</p>
-                        <p>19:41</p>
+                        <p>{this.props.eta}</p>
                     </div>
                 </div>
             </div>
