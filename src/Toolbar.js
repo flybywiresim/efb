@@ -26,7 +26,7 @@ class Toolbar extends React.Component {
 
                     {
                         this.tabs.map((tabName, index) =>
-                            <ToolbarItem content={tabName} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
+                            <ToolbarItem key={index} content={tabName} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
                         )
                     }
                 </div>
