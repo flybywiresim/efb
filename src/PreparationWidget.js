@@ -39,13 +39,15 @@ class FWidget extends React.Component {
                 <p className="WidgetTitle">{this.props.name}</p>
                 <div id="Panel">
                     <div id="DepArr">
-                        <p>
-                            {this.props.dep}
-                            <i> </i>
-                            <i className="material-icons">send</i>
-                            <i> </i>
-                            {this.props.arr}
-                        </p>
+                        <div>
+                            <p>
+                                {this.props.dep}
+                                <i> </i>
+                                <i className="material-icons">send</i>
+                                <i> </i>
+                                {this.props.arr}
+                            </p>
+                        </div>
                     </div>
                     <div id="Time">
                         <p id="Title">TIME</p>
