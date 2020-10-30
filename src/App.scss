@@ -130,6 +130,7 @@
   color: var(--cardText);
   background: var(--cardBackground);
   padding: 0 5%;
+  font-size: 2.25rem;
   grid-template-areas:
     "DepArr DepArr"
     "Time Distance"
@@ -146,7 +147,7 @@
 }
 
 .FWidgetDiv #Panel #Title {
-  font-size:1rem;
+  font-size:1.1rem;
   font-weight: 700;
   color: var(--mainTextSecondary);
   grid-area: DepArr;
