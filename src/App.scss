@@ -103,7 +103,7 @@
   display: flex;
   font-size: 1.7rem;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   height: 100%;
 }
 
@@ -152,7 +152,7 @@
   display: flex;
   font-size: 1.25rem;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   height: 100%;
 }
 
@@ -168,7 +168,7 @@
   display: flex;
   font-size: 1.25rem;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   height: 100%;
 }
 
@@ -183,7 +183,7 @@
 .LoadsheetWidgetDiv #Area #Panel1 {
   min-height: 450px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  margin: 0px 7px 0px 0px;
+  margin: 0 7px 0 0;
   background: var(--cardBackground);
   display: grid;
   grid-template-rows: 85% 15%;
@@ -204,7 +204,7 @@
 .LoadsheetWidgetDiv #Area #Panel2 {
   min-height: 450px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  margin: 0px 0px 0px 7px;
+  margin: 0 0 0 7px;
   background: var(--cardBackground);
   display: grid;
   grid-template-rows: 85% 15%;
