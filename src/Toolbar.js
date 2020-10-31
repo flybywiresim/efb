@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    Link
+} from 'react-router-dom';
 import logo from './fbw.svg';
 
 class Toolbar extends React.Component {
@@ -44,7 +47,7 @@ class ToolbarItem extends React.Component {
     render() {
         return (
             <div className={this.props.isActive ? 'Tab Active' : 'Tab'} onClick={this.props.action}>
-                <p>{this.props.content}</p>
+                <Link to={"/" + this.props.content.toString()}>{this.props.content.toString()}</Link>
             </div>
         );
     }

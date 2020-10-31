@@ -1,4 +1,10 @@
 import React from "react";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import Toolbar from "./Toolbar.js";
 import PreparationWidgets from "./PreparationWidget.js";
 import './App.scss';
@@ -10,17 +16,42 @@ class App extends React.Component {
             departingAirport: "LFPG",
             arrivingAirport: "EHAM",
         };
+
     }
 
     render() {
         return (
-            <div className="App">
-                <Toolbar />
-                <PreparationWidgets
-                    departingAirport={this.state.departingAirport}
-                    arrivingAirport={this.state.arrivingAirport}
-                />
-            </div>
+            <Router>
+                <div className="App">
+                    <Toolbar />
+                </div>
+                <Switch>
+                    <Route path="/Preparation">
+                        <PreparationWidgets
+                            departingAirport={this.state.departingAirport}
+                            arrivingAirport={this.state.arrivingAirport}
+                        />
+                    </Route>
+                    <Route path="/Flight & Navigation">
+                        <div>
+                        </div>
+                    </Route>
+                    <Route path="/Multiplayer">
+                        <div>
+                        </div>
+                    </Route>
+                    <Route path="/Settings">
+                        <div>
+                        </div>
+                    </Route>
+                    <Route path="/">
+                        <PreparationWidgets
+                            departingAirport={this.state.departingAirport}
+                            arrivingAirport={this.state.arrivingAirport}
+                        />
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
 }
