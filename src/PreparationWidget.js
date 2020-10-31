@@ -3,7 +3,7 @@ import React from 'react';
 class PreparationWidgets extends React.Component {
     render() {
         return (
-            <div className="Widgets">
+            <div className="PreparationWidgets">
                 <FWidget
                     id="Current"
                     name="Today's Flight"
