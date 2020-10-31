@@ -34,19 +34,54 @@
 }
 
 .Toolbar {
-  background: var(--cardBackground);
-  padding-left: 1.25rem;
-  display: grid;
-  grid-template-columns: 90.5% 8.5%;
-}
+  $padding: 1em;
+  $spacing-padding: 2.25rem;
 
-.ToolbarDiv {
-  padding: 1%;
+  background: var(--cardBackground);
+
+  padding: $padding $padding $padding $spacing-padding;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  grid-template-columns: 90.5% 8.5%;
+
+  #Tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-left: $spacing-padding;
+
+    img.FBW-Logo {
+      width: 2.25em;
+    }
+
+    .Tab {
+      margin-top: .4em;
+      margin-right: $spacing-padding;
+      padding-bottom: .135em;
+
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      color: var(--mainText);
+
+      cursor: pointer;
+
+      &.Active {
+        border-bottom: solid var(--mainTextSecondary) .1em;
+      }
+    }
+  }
+
+  #Profile {
+    margin-left: auto;
+  }
 }
+
 
 .Toolbar #Icon {
   justify-content: end;
@@ -62,24 +97,6 @@
 .Toolbar #Profile #Icon {
   margin-left: 10px;
   font-size: 3rem;
-}
-
-.ToolbarItem {
-  margin-top: 12px;
-  margin-left: 25px;
-  padding-bottom: .25em;
-
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-
-  color: var(--mainText);
-
-  cursor: pointer;
-
-  &.Active {
-    border-bottom: solid var(--mainTextSecondary) .15em;
-  }
 }
 
 .Widgets {

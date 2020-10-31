@@ -19,9 +19,9 @@ class Toolbar extends React.Component {
     render() {
         return (
             <div className="Toolbar">
-                <div className="ToolbarDiv">
-                    <img src={logo} className="FBW-Logo" alt="logo" />
+                <img src={logo} className="FBW-Logo" alt="logo" />
 
+                <div id="Tabs">
                     {/* Tabs */}
 
                     {
@@ -30,6 +30,7 @@ class Toolbar extends React.Component {
                         )
                     }
                 </div>
+
                 <div id="Profile">
                     <p>Profile</p>
                     <i className="material-icons" id="Icon">account_circle</i>
@@ -42,7 +43,7 @@ class Toolbar extends React.Component {
 class ToolbarItem extends React.Component {
     render() {
         return (
-            <div className={this.props.isActive ? 'ToolbarItem Active' : 'ToolbarItem'} onClick={this.props.action}>
+            <div className={this.props.isActive ? 'Tab Active' : 'Tab'} onClick={this.props.action}>
                 <p>{this.props.content}</p>
             </div>
         );
