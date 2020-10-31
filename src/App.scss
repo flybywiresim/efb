@@ -44,7 +44,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  grid-template-columns: 90.5% 8.5%;
 
   #Tabs {
     display: flex;
@@ -262,5 +261,17 @@
 }
 
 .Settings {
+  display: flex;
+  flex-direction: column;
+  margin: 3em 6em;
+  align-items: flex-start;
 
+  .SettingsItem {
+    display: flex;
+    font-size: 2em;
+    margin: 0.1em;
+    padding: 0.75em;
+    width: 95%;
+    background: var(--cardBackground);
+  }
 }
