@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Toolbar from "./Toolbar.js";
 import PreparationWidgets from "./PreparationWidget.js";
+import Settings from "./Settings.js";
 import './App.scss';
 
 class App extends React.Component {
@@ -42,6 +43,7 @@ class App extends React.Component {
                     </Route>
                     <Route path="/Settings">
                         <div>
+                            <Settings />
                         </div>
                     </Route>
                     <Route path="/">
