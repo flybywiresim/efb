@@ -74,6 +74,11 @@
       &.Active {
         border-bottom: solid var(--mainTextSecondary) .1em;
       }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
     }
   }
 
