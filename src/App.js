@@ -27,21 +27,21 @@ class App extends React.Component {
                     <Toolbar />
                 </div>
                 <Switch>
-                    <Route path="/Preparation">
+                    <Route path="/preparation">
                         <PreparationWidgets
                             departingAirport={this.state.departingAirport}
                             arrivingAirport={this.state.arrivingAirport}
                         />
                     </Route>
-                    <Route path="/Flight & Navigation">
+                    <Route path="/flight-navigation">
                         <div>
                         </div>
                     </Route>
-                    <Route path="/Multiplayer">
+                    <Route path="/multiplayer">
                         <div>
                         </div>
                     </Route>
-                    <Route path="/Settings">
+                    <Route path="/settings">
                         <div>
                             <Settings />
                         </div>
