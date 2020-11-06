@@ -5,14 +5,28 @@
 :root {
   --mainText: rgba(0, 0, 0, 0.6);
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
+  --profileText: rgba(0, 0, 0, 1);
 
   --cardText: rgba(0, 0, 0, 0.7);
   --cardBackground: rgb(223, 224, 226);
+  --cardLoadsheetBackground: rgb(223, 224, 226);
+  --globalBackground: #E5E5E5;
   --widgetMargin: 10px;
 }
 
+.darkMode {
+  --mainText: rgba(255, 255, 255, 0.9);
+  --mainTextSecondary: rgba(255, 255, 255, 0.9);
+  --profileText: rgba(255, 255, 255, 0.9);
+
+  --cardText: rgba(255, 255, 255, 0.9);
+  --cardBackground: rgba(41, 41, 41, 0.6);
+  --cardLoadsheetBackground: rgb(223, 224, 226);
+  --globalBackground: rgb(23, 23, 23);
+}
+
 #root {
-  background: #E5E5E5;
+  background: var(--globalBackground);
   width: 100vw;
   height: 100vh;
   cursor: default;
@@ -88,15 +102,16 @@
     align-items: center;
     font-weight: 600;
     font-size: 1.3rem;
+    color: var(--profileText);
+
+    #Icon {
+      margin-left: 10px;
+      font-size: 3rem;
+    }
   }
 
   #Icon {
     justify-content: end;
-  }
-
-  #Profile #Icon {
-    margin-left: 10px;
-    font-size: 3rem;
   }
 }
 
@@ -209,7 +224,7 @@
     min-height: 750px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     margin: 0 7px 0 0;
-    background: var(--cardBackground);
+    background: var(--cardLoadsheetBackground);
     display: grid;
     grid-template-rows: 90% 10%;
     grid-template-areas:
@@ -230,7 +245,7 @@
     min-height: 450px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     margin: 0 0 0 7px;
-    background: var(--cardBackground);
+    background: var(--cardLoadsheetBackground);
     display: grid;
     grid-template-rows: 90% 10%;
     grid-template-areas:
