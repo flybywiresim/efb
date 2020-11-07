@@ -9,7 +9,6 @@
 
   --cardText: rgba(0, 0, 0, 0.7);
   --cardBackground: rgb(223, 224, 226);
-  --cardLoadsheetBackground: rgb(223, 224, 226);
   --globalBackground: #E5E5E5;
   --widgetMargin: 10px;
 }
@@ -224,7 +223,7 @@
     min-height: 750px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     margin: 0 7px 0 0;
-    background: var(--cardLoadsheetBackground);
+    background: var(--cardBackground);
     display: grid;
     grid-template-rows: 90% 10%;
     grid-template-areas:
@@ -245,7 +244,7 @@
     min-height: 450px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     margin: 0 0 0 7px;
-    background: var(--cardLoadsheetBackground);
+    background: var(--cardBackground);
     display: grid;
     grid-template-rows: 90% 10%;
     grid-template-areas:
