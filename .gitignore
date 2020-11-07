@@ -5,7 +5,7 @@
 
 # dependencies
 /node_modules
-metar-parser/node-modules
+/*/node_modules
 /.pnp
 .pnp.js
 
