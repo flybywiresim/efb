@@ -1,6 +1,16 @@
 import React from 'react';
+import metarParser from 'aewx-metar-parser';
+import NXApi from './NXApi.js';
 
 class PreparationWidgets extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            icao: "LFPG",
+        };
+    }
+
     render() {
         return (
             <div className="PreparationWidgets">
@@ -20,7 +30,8 @@ class PreparationWidgets extends React.Component {
                     arr="LFPG"
                     elapsedTime="01:25"
                     distance="274nm" />
-                <WeatherWidget />
+                <WeatherWidget
+                    icao={this.state.icao}/>
                 <LoadsheetWidget />
             </div>
         );
@@ -68,6 +79,17 @@ class FWidget extends React.Component {
 }
 
 class WeatherWidget extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { metar: {} };
+    }
+
+    async componentDidMount() {
+        const returned = await NXApi.getMetar(this.props.icao, "vatsim");
+        const metar = returned.metar;
+        this.setState({ metar: metarParser(metar)});
+    }
+
     render() {
         return (
             <div className="WeatherWidgetDiv">

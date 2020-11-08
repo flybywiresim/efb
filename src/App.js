@@ -9,6 +9,7 @@ import Toolbar from "./Toolbar.js";
 import PreparationWidgets from "./PreparationWidget.js";
 import Settings from "./Settings.js";
 import './App.scss';
+import metarParse from "aewx-metar-parser";
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class App extends React.Component {
             departingAirport: "LFPG",
             arrivingAirport: "EHAM",
         };
-
     }
 
     render() {
