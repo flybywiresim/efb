@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
-:root {
+body {
   --mainText: rgba(0, 0, 0, 0.6);
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
   --profileText: rgba(0, 0, 0, 1);
@@ -11,6 +11,7 @@
   --cardBackground: rgb(223, 224, 226);
   --globalBackground: #E5E5E5;
   --widgetMargin: 10px;
+  background: var(--globalBackground);
 }
 
 .darkMode {
@@ -19,17 +20,14 @@
   --profileText: rgba(255, 255, 255, 0.9);
 
   --cardText: rgba(255, 255, 255, 0.9);
-  --cardBackground: rgba(41, 41, 41, 0.6);
+  --cardBackground: rgb(34, 34, 34);
   --cardLoadsheetBackground: rgb(223, 224, 226);
   --globalBackground: rgb(23, 23, 23);
 }
 
 #root {
   background: var(--globalBackground);
-  width: 1430px;
-  height: 1000px;
   cursor: default;
-  overflow: hidden;
 }
 
 * {
@@ -54,7 +52,12 @@
 
   background: var(--cardBackground);
 
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
   padding: $padding $padding $padding $spacing-padding;
+  margin-right: 5em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -116,7 +119,7 @@
 }
 
 .PreparationWidgets {
-  margin: 30px;
+  margin: 7em 30px 30px 30px;
   display: grid;
   font-family: "Nunito Sans", sans-serif;
   grid-template-columns: 25% 25% 25% 25%;
@@ -277,9 +280,10 @@
 }
 
 .Settings {
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  margin: 3em 6em;
+  margin: 8em 6em 3em 6em;
   align-items: flex-start;
 
   .SettingsItem {
