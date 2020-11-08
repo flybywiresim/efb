@@ -29,6 +29,7 @@
   width: 1430px;
   height: 1000px;
   cursor: default;
+  overflow: hidden;
 }
 
 * {
@@ -294,5 +295,6 @@
   .Switch {
     margin-left: auto;
     margin-right: 0.1em;
+    cursor: pointer;
   }
 }
