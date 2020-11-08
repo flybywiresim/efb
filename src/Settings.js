@@ -8,7 +8,7 @@ class Settings extends React.Component {
 
     handleDark() {
         return () => {
-            const element = document.getElementById("root");
+            const element = document.body;
             element.classList.toggle("darkMode");
             this.setState({ darkMode: !this.state.darkMode });
         };

@@ -69,7 +69,7 @@ class FWidget extends React.Component {
                         <p>{this.props.distance}</p>
                     </div>
                     <div id="ETA">
-                        <p id="Title">ETA (UTC)</p>
+                        <p id="Title">{this.props.id === "Previous" ? "" : "ETA (UTC)"}</p>
                         <p>{this.props.eta}</p>
                     </div>
                 </div>
