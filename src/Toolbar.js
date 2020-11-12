@@ -14,7 +14,7 @@ class Toolbar extends React.Component {
             { name: 'Preparation', link: 'preparation '},
             { name: 'Flight & Navigation', link: 'flight-navigation' },
             { name: 'Multiplayer', link: 'multiplayer' },
-            { name: 'Settings', link: 'settings' },
+            { name: 'Settings', link: 'settings' }
         ];
     }
 
@@ -39,9 +39,11 @@ class Toolbar extends React.Component {
                     }
                 </div>
 
-                <div id="Profile">
-                    <p>Profile</p>
-                    <i className="material-icons" id="Icon">account_circle</i>
+                <div id="ProfileToolbar">
+                    <Link to={"/profile"} onClick={this.props.action}>
+                        <p>Profile</p>
+                        <i className="material-icons" id="Icon">account_circle</i>
+                    </Link>
                 </div>
             </div>
         );
