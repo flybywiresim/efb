@@ -1,0 +1,79 @@
+@import '../App.scss';
+
+.Toolbar {
+  $padding: 1em;
+  $spacing-padding: 2.25rem;
+
+  background: var(--cardBackground);
+
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  padding: $padding $padding $padding $spacing-padding;
+  margin-right: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  #Tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-left: $spacing-padding;
+
+    img.FBW-Logo {
+      width: 2.25em;
+    }
+
+    .Tab {
+      margin-top: .4em;
+      margin-right: $spacing-padding;
+      padding-bottom: .135em;
+
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      color: var(--mainText);
+
+      cursor: pointer;
+
+      &.Active {
+        border-bottom: solid var(--mainTextSecondary) .1em;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+    }
+  }
+
+  #ProfileToolbar {
+    margin-left: auto;
+    margin-right: 3em;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--profileText);
+
+    #Icon {
+      margin-left: 10px;
+      font-size: 3rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+  }
+
+  #Icon {
+    justify-content: end;
+  }
+}
