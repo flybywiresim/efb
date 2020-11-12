@@ -1,0 +1,155 @@
+@import '../App.scss';
+
+.PreparationWidgets {
+    margin: 7em 30px 30px 30px;
+    display: grid;
+    font-family: "Nunito Sans", sans-serif;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+    justify-items: stretch;
+    align-items: flex-start;
+    grid-template-areas:
+      "CFWidget WeatherWidget LoadsheetWidget LoadsheetWidget"
+      "PrevWidget WeatherWidget LoadsheetWidget LoadsheetWidget";
+  
+    .FWidgetDiv {
+      min-width: 250px;
+      margin: var(--widgetMargin);
+      display: flex;
+      font-size: 1.7rem;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+    }
+  
+    .FWidgetDiv #Current {
+      grid-area: CFWidget;
+    }
+  
+    .FWidgetDiv #Previous {
+      grid-area: PrevWidget;
+    }
+  
+    .FWidgetDiv #Panel {
+      min-height: 350px;
+      display: grid;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+      margin: 3px;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto auto;
+      color: var(--cardText);
+      background: var(--cardBackground);
+      padding: 0 5%;
+      font-size: 2.25rem;
+      grid-template-areas:
+      "DepArr DepArr"
+      "Time Distance"
+      "ETA .";
+    }
+  
+    .FWidgetDiv #Panel #DepArr {
+      font-size: 2.25rem;
+      font-weight: 700;
+      grid-area: DepArr;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .FWidgetDiv #Panel #Title {
+      font-size:1.1rem;
+      font-weight: 700;
+      color: var(--mainTextSecondary);
+      grid-area: DepArr;
+    }
+  
+    .WeatherWidgetDiv {
+      grid-area: WeatherWidget;
+      min-width: 250px;
+      margin: var(--widgetMargin);
+      display: flex;
+      font-size: 1.25rem;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+    }
+  
+    .WeatherWidgetDiv #Panel {
+      min-height: 750px;
+      margin: 3px;
+    }
+  
+    .LoadsheetWidgetDiv {
+      grid-area: LoadsheetWidget;
+      min-width: 250px;
+      margin: var(--widgetMargin);
+      display: flex;
+      font-size: 1.25rem;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+    }
+  
+    .LoadsheetWidgetDiv #Area {
+      min-height: 450px;
+      display: grid;
+      margin: 3px;
+      grid-template-rows: 100%;
+      grid-template-columns: 50% 50%;
+    }
+  
+    .LoadsheetWidgetDiv #Area #Panel1 {
+      min-height: 750px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+      margin: 0 7px 0 0;
+      background: var(--cardBackground);
+      display: grid;
+      grid-template-rows: 90% 10%;
+      grid-template-areas:
+      "Main"
+      "BottomPanel1";
+    }
+  
+    .LoadsheetWidgetDiv #Area #Panel1 #BottomPanel {
+      grid-area: BottomPanel1;
+      background: #567FD2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 15px;
+    }
+  
+    .LoadsheetWidgetDiv #Area #Panel2 {
+      min-height: 450px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+      margin: 0 0 0 7px;
+      background: var(--cardBackground);
+      display: grid;
+      grid-template-rows: 90% 10%;
+      grid-template-areas:
+      "Main"
+      "BottomPanel2";
+    }
+  
+    .LoadsheetWidgetDiv #Area #Panel2 #BottomPanel {
+      grid-area: BottomPanel2;
+      background: #FE5353;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 15px;
+    }
+  
+    .LoadsheetWidgetDiv #Area #BottomPanel {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+  
+    .LoadsheetWidgetDiv #Area #BottomPanel #Title {
+      font-size:0.9rem;
+      font-weight: 700;
+      color: var(--mainTextSecondary);
+      grid-area: DepArr;
+    }
+  }
