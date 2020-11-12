@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Link
 } from 'react-router-dom';
-import logo from './fbw.svg';
+import logo from '../fbw.svg';
 
 class Toolbar extends React.Component {
     constructor(props) {
