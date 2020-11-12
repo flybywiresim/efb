@@ -5,11 +5,18 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Toolbar from "./Toolbar.js";
-import PreparationWidgets from "./PreparationWidget.js";
-import Settings from "./Settings.js";
-import './App.scss';
+
 import metarParse from "aewx-metar-parser";
+
+import Toolbar from "./Toolbar.js";
+import PreparationWidgets from "./preparationWidget/PreparationWidget.js";
+import Settings from "./settings/Settings.js";
+import Profile from "./profile/Profile.js";
+
+import './App.scss';
+import './settings/Settings.scss';
+import './profile/Profile.scss';
+import './preparationWidget/PreparationWidget.scss';
 
 class App extends React.Component {
     constructor(props) {
@@ -45,6 +52,9 @@ class App extends React.Component {
                         <div>
                             <Settings />
                         </div>
+                    </Route>
+                    <Route path="/profile">
+                        <Profile nickname="AtomicLiquid" username="atomic" />
                     </Route>
                     <Route path="/">
                         <PreparationWidgets
