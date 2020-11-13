@@ -5,10 +5,10 @@ import {
     Route,
 } from "react-router-dom";
 
-import Toolbar from "./toolbar/Toolbar.js";
-import PreparationWidgets from "./preparationWidget/PreparationWidget.js";
-import Settings from "./settings/Settings.js";
-import Profile from "./profile/Profile.js";
+import Toolbar from "./toolbar/Toolbar";
+import PreparationWidgets from "./preparationWidget/PreparationWidget";
+import Settings from "./settings/Settings";
+import Profile from "./profile/Profile";
 
 import './App.scss';
 import './toolbar/Toolbar.scss';
@@ -16,13 +16,17 @@ import './settings/Settings.scss';
 import './profile/Profile.scss';
 import './preparationWidget/PreparationWidget.scss';
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            departingAirport: "LFPG",
-            arrivingAirport: "EHAM",
-        };
+type AppProps = {};
+
+type AppState = {
+    departingAirport: string;
+    arrivingAirport: string;
+};
+
+class App extends React.Component<AppProps, AppState> {
+    state: AppState = {
+        departingAirport: "LFPG",
+        arrivingAirport: "EHAM",
     }
 
     render() {
