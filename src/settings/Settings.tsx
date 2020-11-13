@@ -1,10 +1,15 @@
 import React from 'react';
 
-class Settings extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {darkMode: document.getElementById("root").classList.contains("darkMode")};
-    }
+type SettingsProps = {};
+type SettingsState = {
+    darkMode: boolean,
+}
+
+class Settings extends React.Component<SettingsProps, SettingsState> {
+    state: SettingsState = {
+        // @ts-ignore
+        darkMode: document.getElementById("root").classList.contains("darkMode")
+    };
 
     handleDark() {
         return () => {

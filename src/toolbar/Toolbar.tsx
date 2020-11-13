@@ -4,21 +4,40 @@ import {
 } from 'react-router-dom';
 import logo from '../fbw.svg';
 
-class Toolbar extends React.Component {
-    constructor(props) {
+type ToolbarProps = {};
+
+type ToolbarState = {
+    activeIndex: number;
+};
+
+type ToolbarItemProps = {
+    tabData: Tab,
+    isActive: boolean,
+    action: Function,
+};
+
+type ToolbarItemState = {};
+
+type Tab = {
+    name: string,
+    link: string,
+};
+
+class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
+    constructor(props: ToolbarProps) {
         super(props);
         this.state = { activeIndex: 0 };
         this.handleClick = this.handleClick.bind(this);
-
-        this.tabs = [
-            { name: 'Preparation', link: 'preparation '},
-            { name: 'Flight & Navigation', link: 'flight-navigation' },
-            { name: 'Multiplayer', link: 'multiplayer' },
-            { name: 'Settings', link: 'settings' }
-        ];
     }
 
-    handleClick(index) {
+    tabs = [
+        { name: 'Preparation', link: 'preparation '},
+        { name: 'Flight & Navigation', link: 'flight-navigation' },
+        { name: 'Multiplayer', link: 'multiplayer' },
+        { name: 'Settings', link: 'settings' }
+    ];
+
+    handleClick(index: number) {
         return () => {
             this.setState(() => ({ activeIndex: index }));
         };
@@ -40,7 +59,7 @@ class Toolbar extends React.Component {
                 </div>
 
                 <div id="ProfileToolbar">
-                    <Link to={"/profile"} onClick={this.props.action}>
+                    <Link to="/profile">
                         <p>Profile</p>
                         <i className="material-icons" id="Icon">account_circle</i>
                     </Link>
@@ -50,10 +69,10 @@ class Toolbar extends React.Component {
     }
 }
 
-class ToolbarItem extends React.Component {
+class ToolbarItem extends React.Component<ToolbarItemProps, ToolbarItemState> {
     render() {
         return (
-            <div className={this.props.isActive ? 'Tab Active' : 'Tab'} onClick={this.props.action}>
+            <div className={this.props.isActive ? 'Tab Active' : 'Tab'} onClick={() => this.props.action}>
                 <Link to={"/" + this.props.tabData.link}>{this.props.tabData.name}</Link>
             </div>
         );
