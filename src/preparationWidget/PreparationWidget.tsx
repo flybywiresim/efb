@@ -1,15 +1,42 @@
 import React from 'react';
-import metarParser from 'aewx-metar-parser';
-import NXApi from './NXApi.js';
+// import metarParser from 'aewx-metar-parser';
+import NXApi from './NXApi';
 
-class PreparationWidgets extends React.Component {
-    constructor(props) {
-        super(props);
+type PreparationWidgetsProps = {
+    departingAirport: string,
+    arrivingAirport: string,
+}
 
-        this.state = {
-            icao: "LFPG",
-        };
-    }
+type PreparationWidgetsState = {
+    icao: string,
+}
+
+type FWidgetProps = {
+    id: string,
+    name: string,
+    dep: string,
+    arr: string,
+    elapsedTime: string,
+    distance: string,
+    eta: string,
+}
+
+type FWidgetState = {
+    elapsedFlightTime: Date,
+}
+
+type WeatherWidgetProps = {
+    icao: string,
+}
+
+type WeatherWidgetState = {
+    metar: object,
+}
+
+class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
+    state: PreparationWidgetsState = {
+        icao: "LFPG",
+    };
 
     render() {
         return (
@@ -29,7 +56,8 @@ class PreparationWidgets extends React.Component {
                     dep="EGLL"
                     arr="LFPG"
                     elapsedTime="01:25"
-                    distance="274nm" />
+                    distance="274nm"
+                    eta="" />
                 <WeatherWidget
                     icao={this.state.icao}/>
                 <LoadsheetWidget />
@@ -38,11 +66,8 @@ class PreparationWidgets extends React.Component {
     }
 }
 
-class FWidget extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { elapsedFlightTime: new Date() };
-    }
+class FWidget extends React.Component<FWidgetProps, FWidgetState> {
+    state: FWidgetState = { elapsedFlightTime: new Date() };
 
     render() {
         return (
@@ -78,17 +103,14 @@ class FWidget extends React.Component {
     }
 }
 
-class WeatherWidget extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { metar: {} };
-    }
+class WeatherWidget extends React.Component<WeatherWidgetProps, WeatherWidgetState> {
+    state = { metar: {} };
 
-    async componentDidMount() {
-        const returned = await NXApi.getMetar(this.props.icao, "vatsim");
-        const metar = returned.metar;
-        this.setState({ metar: metarParser(metar)});
-    }
+    // async componentDidMount() {
+    //     const returned = await NXApi.getMetar(this.props.icao, "vatsim");
+    //     const metar = returned.metar;
+    //     this.setState({ metar: metarParser(metar)});
+    // }
 
     render() {
         return (

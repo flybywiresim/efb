@@ -1,7 +1,7 @@
 @import '../App.scss';
 
 .PreparationWidgets {
-    margin: 7em 30px 30px 30px;
+    margin: 8em 30px 30px 30px;
     display: grid;
     font-family: "Nunito Sans", sans-serif;
     grid-template-columns: 25% 25% 25% 25%;
@@ -11,7 +11,7 @@
     grid-template-areas:
       "CFWidget WeatherWidget LoadsheetWidget LoadsheetWidget"
       "PrevWidget WeatherWidget LoadsheetWidget LoadsheetWidget";
-  
+
     .FWidgetDiv {
       min-width: 250px;
       margin: var(--widgetMargin);
@@ -21,15 +21,15 @@
       justify-content: flex-start;
       height: 100%;
     }
-  
+
     .FWidgetDiv #Current {
       grid-area: CFWidget;
     }
-  
+
     .FWidgetDiv #Previous {
       grid-area: PrevWidget;
     }
-  
+
     .FWidgetDiv #Panel {
       min-height: 350px;
       display: grid;
@@ -46,7 +46,7 @@
       "Time Distance"
       "ETA .";
     }
-  
+
     .FWidgetDiv #Panel #DepArr {
       font-size: 2.25rem;
       font-weight: 700;
@@ -55,14 +55,14 @@
       justify-content: center;
       align-items: center;
     }
-  
+
     .FWidgetDiv #Panel #Title {
       font-size:1.1rem;
       font-weight: 700;
       color: var(--mainTextSecondary);
       grid-area: DepArr;
     }
-  
+
     .WeatherWidgetDiv {
       grid-area: WeatherWidget;
       min-width: 250px;
@@ -73,12 +73,12 @@
       justify-content: flex-start;
       height: 100%;
     }
-  
+
     .WeatherWidgetDiv #Panel {
       min-height: 750px;
       margin: 3px;
     }
-  
+
     .LoadsheetWidgetDiv {
       grid-area: LoadsheetWidget;
       min-width: 250px;
@@ -89,7 +89,7 @@
       justify-content: flex-start;
       height: 100%;
     }
-  
+
     .LoadsheetWidgetDiv #Area {
       min-height: 450px;
       display: grid;
@@ -97,7 +97,7 @@
       grid-template-rows: 100%;
       grid-template-columns: 50% 50%;
     }
-  
+
     .LoadsheetWidgetDiv #Area #Panel1 {
       min-height: 750px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -109,7 +109,7 @@
       "Main"
       "BottomPanel1";
     }
-  
+
     .LoadsheetWidgetDiv #Area #Panel1 #BottomPanel {
       grid-area: BottomPanel1;
       background: #567FD2;
@@ -118,7 +118,7 @@
       justify-content: center;
       padding-left: 15px;
     }
-  
+
     .LoadsheetWidgetDiv #Area #Panel2 {
       min-height: 450px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -130,7 +130,7 @@
       "Main"
       "BottomPanel2";
     }
-  
+
     .LoadsheetWidgetDiv #Area #Panel2 #BottomPanel {
       grid-area: BottomPanel2;
       background: #FE5353;
@@ -139,13 +139,13 @@
       justify-content: center;
       padding-left: 15px;
     }
-  
+
     .LoadsheetWidgetDiv #Area #BottomPanel {
       color: white;
       font-weight: 700;
       font-size: 1.5rem;
     }
-  
+
     .LoadsheetWidgetDiv #Area #BottomPanel #Title {
       font-size:0.9rem;
       font-weight: 700;
