@@ -1,5 +1,6 @@
 import React from 'react';
-// import metarParser from 'aewx-metar-parser';
+// @ts-ignore
+import metarParser from 'aewx-metar-parser';
 import NXApi from './NXApi';
 
 type PreparationWidgetsProps = {
@@ -106,11 +107,11 @@ class FWidget extends React.Component<FWidgetProps, FWidgetState> {
 class WeatherWidget extends React.Component<WeatherWidgetProps, WeatherWidgetState> {
     state = { metar: {} };
 
-    // async componentDidMount() {
-    //     const returned = await NXApi.getMetar(this.props.icao, "vatsim");
-    //     const metar = returned.metar;
-    //     this.setState({ metar: metarParser(metar)});
-    // }
+    async componentDidMount() {
+        const returned = await NXApi.getMetar(this.props.icao, "vatsim");
+        const metar = returned.metar;
+        this.setState({ metar: metarParser(metar)});
+    }
 
     render() {
         return (
