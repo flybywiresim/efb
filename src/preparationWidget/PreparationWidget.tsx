@@ -6,6 +6,7 @@ import NXApi from './NXApi';
 type PreparationWidgetsProps = {
     departingAirport: string,
     arrivingAirport: string,
+    flightDistance: string
 }
 
 type PreparationWidgetsState = {
@@ -48,7 +49,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     dep={this.props.departingAirport}
                     arr={this.props.arrivingAirport}
                     elapsedTime="00:49"
-                    distance="139nm"
+                    distance={this.props.flightDistance}
                     eta="19:48"
                 />
                 <FWidget
