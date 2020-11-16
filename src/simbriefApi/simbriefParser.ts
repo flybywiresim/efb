@@ -34,10 +34,11 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
     const general = simbriefJson.general;
     const origin = simbriefJson.origin;
     const destination = simbriefJson.destination;
+    const times = simbriefJson.times;
     const data: ISimbriefData = {
         airline: general.icao_airline,
         flightNumber: general.flight_number,
-        initialAltitude: general.initial_altitude,
+        cruiseAltitude: general.initial_altitude,
         costIndex: general.costindex,
         route: general.route,
         origin: {
@@ -48,7 +49,8 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
             iata: destination.iata_code,
             icao: destination.icao_code
         },
-        distance: general.air_distance + "nm"
+        distance: general.air_distance + "nm",
+        flightETAInSeconds: times.est_time_enroute
     };
     return data;
 };

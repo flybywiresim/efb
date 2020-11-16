@@ -33,7 +33,7 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     }
 
     tabs = [
-        { name: 'Preparation', link: 'preparation '},
+        { name: 'Preparation', link: ''},
         { name: 'Flight & Navigation', link: 'flight-navigation' },
         { name: 'Multiplayer', link: 'multiplayer' },
         { name: 'Settings', link: 'settings' }

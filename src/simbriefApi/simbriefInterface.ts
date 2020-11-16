@@ -3,10 +3,11 @@ export interface ISimbriefData {
     destination: IAirportInfo,
     airline: string,
     flightNumber: string,
-    initialAltitude: number,
+    cruiseAltitude: number,
     costIndex: number,
     route: string,
-    distance: string
+    distance: string,
+    flightETAInSeconds: string
 }
 
 interface IAirportInfo {

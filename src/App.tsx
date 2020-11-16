@@ -23,6 +23,7 @@ type AppState = {
     departingAirport: string;
     arrivingAirport: string;
     flightDistance: string;
+    flightETAInSeconds: string;
     simbriefUsername: string | undefined;
 };
 
@@ -34,9 +35,10 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     state: AppState = {
-        departingAirport: "",
-        arrivingAirport: "",
-        flightDistance: "",
+        departingAirport: "N/A",
+        arrivingAirport: "N/A",
+        flightDistance: "N/A",
+        flightETAInSeconds: "N/A",
         simbriefUsername: "Legitness101"
     }
 
@@ -51,8 +53,13 @@ class App extends React.Component<AppProps, AppState> {
         this.setState({
             departingAirport: simbriefData.origin.icao,
             arrivingAirport: simbriefData.destination.icao,
-            flightDistance: simbriefData.distance
+            flightDistance: simbriefData.distance,
+            flightETAInSeconds: simbriefData.flightETAInSeconds
         });
+    }
+
+    handleArrivalDepartureUpdates() {
+
     }
 
     render() {
@@ -62,13 +69,6 @@ class App extends React.Component<AppProps, AppState> {
                     <Toolbar fetchSimbrief={this.fetchSimbriefData} />
                 </div>
                 <Switch>
-                    <Route path="/preparation">
-                        <PreparationWidgets
-                            departingAirport={this.state.departingAirport}
-                            arrivingAirport={this.state.arrivingAirport}
-                            flightDistance={this.state.flightDistance}
-                        />
-                    </Route>
                     <Route path="/flight-navigation">
                         <div>
                         </div>
@@ -90,6 +90,7 @@ class App extends React.Component<AppProps, AppState> {
                             departingAirport={this.state.departingAirport}
                             arrivingAirport={this.state.arrivingAirport}
                             flightDistance={this.state.flightDistance}
+                            flightETAInSeconds={this.state.flightETAInSeconds}
                         />
                     </Route>
                 </Switch>
