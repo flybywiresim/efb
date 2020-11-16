@@ -44,7 +44,7 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
                 <div id="Tabs">
                     {
                         this.tabs.map((tab) =>
-                            <div className={tab.id === this.state.activeIndex ? 'Tab Active' : 'Tab'} onClick={this.handleClick(tab.id)}>
+                            <div key={tab.id} className={tab.id === this.state.activeIndex ? 'Tab Active' : 'Tab'} onClick={this.handleClick(tab.id)}>
                                 <Link to={"/" + tab.link}>{tab.name}</Link>
                             </div>
                         )
