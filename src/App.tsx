@@ -58,10 +58,6 @@ class App extends React.Component<AppProps, AppState> {
         });
     }
 
-    handleArrivalDepartureUpdates() {
-
-    }
-
     render() {
         return (
             <Router>
