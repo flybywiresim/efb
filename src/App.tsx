@@ -9,7 +9,6 @@ import Toolbar from "./toolbar/Toolbar";
 import PreparationWidgets from "./preparationWidget/PreparationWidget";
 import Settings from "./settings/Settings";
 import Profile from "./profile/Profile";
-import { getSimbriefData, ISimbriefData } from './simbriefApi';
 
 import './App.scss';
 import './toolbar/Toolbar.scss';
@@ -22,49 +21,27 @@ type AppProps = {};
 type AppState = {
     departingAirport: string;
     arrivingAirport: string;
-    flightDistance: string;
-    flightETAInSeconds: string;
-    simbriefUsername: string | undefined;
 };
 
 class App extends React.Component<AppProps, AppState> {
-    constructor(props: AppProps) {
-        super(props);
-
-        this.fetchSimbriefData = this.fetchSimbriefData.bind(this);
-    }
-
     state: AppState = {
-        departingAirport: "N/A",
-        arrivingAirport: "N/A",
-        flightDistance: "N/A",
-        flightETAInSeconds: "N/A",
-        simbriefUsername: "Legitness101"
-    }
-
-    async fetchSimbriefData() {
-        if (!this.state.simbriefUsername) {
-            return;
-        }
-
-        console.log("Fetching simbriefData");
-        const simbriefData = await getSimbriefData(this.state.simbriefUsername);
-        console.info(simbriefData);
-        this.setState({
-            departingAirport: simbriefData.origin.icao,
-            arrivingAirport: simbriefData.destination.icao,
-            flightDistance: simbriefData.distance,
-            flightETAInSeconds: simbriefData.flightETAInSeconds
-        });
+        departingAirport: "LFPG",
+        arrivingAirport: "EHAM",
     }
 
     render() {
         return (
             <Router>
                 <div className="App">
-                    <Toolbar fetchSimbrief={this.fetchSimbriefData} />
+                    <Toolbar />
                 </div>
                 <Switch>
+                    <Route path="/preparation">
+                        <PreparationWidgets
+                            departingAirport={this.state.departingAirport}
+                            arrivingAirport={this.state.arrivingAirport}
+                        />
+                    </Route>
                     <Route path="/flight-navigation">
                         <div>
                         </div>
@@ -79,14 +56,12 @@ class App extends React.Component<AppProps, AppState> {
                         </div>
                     </Route>
                     <Route path="/profile">
-                        <Profile displayname="atomic" />
+                        <Profile displayname="" />
                     </Route>
                     <Route path="/">
                         <PreparationWidgets
                             departingAirport={this.state.departingAirport}
                             arrivingAirport={this.state.arrivingAirport}
-                            flightDistance={this.state.flightDistance}
-                            flightETAInSeconds={this.state.flightETAInSeconds}
                         />
                     </Route>
                 </Switch>
