@@ -53,7 +53,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     arr="LFPG"
                     elapsedTime="01:25"
                     distance="274nm"
-                    eta=""
+                    eta="3"
                 />
                 <WeatherWidget
                     icao={this.state.icao}/>
