@@ -1,7 +1,7 @@
 import React from 'react';
 // @ts-ignore
 import metarParser from 'aewx-metar-parser';
-import NXApi from './NXApi';
+import { Metar } from '@flybywiresim/api-client';
 
 type PreparationWidgetsProps = {
     departingAirport: string,
@@ -108,7 +108,7 @@ class WeatherWidget extends React.Component<WeatherWidgetProps, WeatherWidgetSta
     state = { metar: {} };
 
     async componentDidMount() {
-        const returned = await NXApi.getMetar(this.props.icao, "vatsim");
+        const returned = await Metar.get(this.props.icao, "vatsim");
         const metar = returned.metar;
         this.setState({ metar: metarParser(metar)});
     }
