@@ -1,7 +1,9 @@
 import React from 'react';
 // @ts-ignore
+import WeatherWidget from "./WeatherWidget.tsx";
 import metarParser from 'aewx-metar-parser';
 import NXApi from './NXApi';
+import { render } from 'react-dom';
 
 type PreparationWidgetsProps = {
     departingAirport: string,
@@ -10,6 +12,7 @@ type PreparationWidgetsProps = {
 
 type PreparationWidgetsState = {
     icao: string,
+    weatherSource: string
 }
 
 type FWidgetProps = {
@@ -37,6 +40,7 @@ type WeatherWidgetState = {
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
     state: PreparationWidgetsState = {
         icao: "LFPG",
+        weatherSource: "vatsim"
     };
 
     render() {
@@ -59,8 +63,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     elapsedTime="01:25"
                     distance="274nm"
                     eta="" />
-                <WeatherWidget
-                    icao={this.state.icao}/>
+                <WeatherWidget icao={this.state.icao} source={this.state.weatherSource} />
                 <LoadsheetWidget />
             </div>
         );
@@ -104,26 +107,26 @@ class FWidget extends React.Component<FWidgetProps, FWidgetState> {
     }
 }
 
-class WeatherWidget extends React.Component<WeatherWidgetProps, WeatherWidgetState> {
-    state = { metar: {} };
+// class WeatherWidget extends React.Component<WeatherWidgetProps, WeatherWidgetState> {
+//     state = { metar: {} };
 
-    async componentDidMount() {
-        const returned = await NXApi.getMetar(this.props.icao, "vatsim");
-        const metar = returned.metar;
-        this.setState({ metar: metarParser(metar)});
-    }
+//     async componentDidMount() {
+//         const returned = await NXApi.getMetar(this.props.icao, "vatsim");
+//         const metar = returned.metar;
+//         this.setState({ metar: metarParser(metar)});
+//     }
 
-    render() {
-        return (
-            <div className="WeatherWidgetDiv">
-                <p className="WidgetTitle">Weather</p>
-                <div id="Panel">
+//     render() {
+//         return (
+//             <div className="WeatherWidgetDiv">
+//                 <p className="WidgetTitle">Weather</p>
+//                 <div id="Panel">
 
-                </div>
-            </div>
-        );
-    }
-}
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
 
 class LoadsheetWidget extends React.Component {
     render() {
