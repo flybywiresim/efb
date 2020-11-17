@@ -5,6 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 
+import './aewx-metar-parser.d';
 import Toolbar from "./toolbar/Toolbar";
 import PreparationWidgets from "./preparationWidget/PreparationWidget";
 import Settings from "./settings/Settings";
