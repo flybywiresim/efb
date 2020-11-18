@@ -1,9 +1,6 @@
 import React from 'react';
 // @ts-ignore
 import WeatherWidget from "./WeatherWidget.tsx";
-import metarParser from 'aewx-metar-parser';
-import NXApi from './NXApi';
-import { render } from 'react-dom';
 
 type PreparationWidgetsProps = {
     departingAirport: string,
@@ -11,8 +8,6 @@ type PreparationWidgetsProps = {
 }
 
 type PreparationWidgetsState = {
-    icao: string,
-    weatherSource: string
 }
 
 type FWidgetProps = {
@@ -29,18 +24,8 @@ type FWidgetState = {
     elapsedFlightTime: Date,
 }
 
-type WeatherWidgetProps = {
-    icao: string,
-}
-
-type WeatherWidgetState = {
-    metar: object,
-}
-
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
     state: PreparationWidgetsState = {
-        icao: "LFPG",
-        weatherSource: "vatsim"
     };
 
     render() {
@@ -63,7 +48,11 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     elapsedTime="01:25"
                     distance="274nm"
                     eta="" />
-                <WeatherWidget icao={this.state.icao} source={this.state.weatherSource} />
+                <div className="WeatherWidgetDiv">
+                    <p className="WidgetTitle">Weather</p>
+                    <WeatherWidget icao={this.props.departingAirport} />
+                    <WeatherWidget icao={this.props.arrivingAirport} />
+                </div>
                 <LoadsheetWidget />
             </div>
         );
