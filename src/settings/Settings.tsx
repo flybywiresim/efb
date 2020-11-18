@@ -24,7 +24,7 @@ class Settings extends React.Component<SettingsProps, SettingsState> {
             <div className="Settings">
                 <div id="SettingsItem1" className="SettingsItem">
                     <p>Dark Mode</p>
-                    <p className="Switch" onClick={this.handleDark()}>{this.state.darkMode ? "On" : "Off"}</p>
+                    <p className="Switch" onClick={this.handleDark()}>{this.state.darkMode ? "Off" : "On"}</p>
                 </div>
                 <div id="SettingsItem2" className="SettingsItem">
                     <p>Placeholder Data 2</p>
