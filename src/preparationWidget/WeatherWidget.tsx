@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import metarParser from 'aewx-metar-parser';
-//import NXApi from "./NXApi.js";
 import { Metar } from '@flybywiresim/api-client';
 
 const MetarParserTypeWindState: Wind = {
@@ -67,23 +66,14 @@ const MetarParserTypeState: MetarParserType = {
     flight_category: "",
 };
 
-const WeatherWidget = ({icao}: any, {source}: any) => {
+const WeatherWidget = (props: any) => {
 
-    //const nxapi = new NXApi;
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
-
-    // useEffect(() => {
-    //     NXApi.getMetar(icao,source)
-    //         .then(result => {
-    //             console.log(result);
-    //             const metarParse = metarParser(result.metar);
-    //             setMetar(metarParse);
-    //             console.log(metar);
-    //         });
-    // }, []);
+    // This could be modified using the Settings tab perhaps?
+    const source = "vatsim";
 
     useEffect(() => {
-        Metar.get(icao,source)
+        Metar.get(props.icao, source)
             .then(result => {
                 console.log(result);
                 const metarParse = metarParser(result.metar);
@@ -97,15 +87,30 @@ const WeatherWidget = ({icao}: any, {source}: any) => {
     }, [metar]);
 
     return (
-        <div className="WeatherWidgetDiv">
-            <p className="WidgetTitle">Weather</p>
-            <div id="Panel">
-                {metar === undefined ?
-                    <p>Loading ...</p>
-                    :
-                    <p>Loaded {metar.icao}</p>
-                }
-            </div>
+        <div id="Panel">
+            {metar === undefined ?
+                <p>Loading ...</p>
+                :
+                <><div id="onebytwo">
+                    <div id="icao">{metar.icao} </div>
+                    <div id="weather-icon"><i className="wi wi-day-lightning"></i></div>
+                </div>
+                <div id="twobytwo">
+                    <div className="col">
+                        <span className="big"><i className="wi wi-barometer"></i></span><br/>{metar.barometer.mb}<span className="unit"> mb</span>
+                    </div>
+                    <div className="col">
+                        <span className="big"><i className="wi wi-strong-wind"></i></span><br/>{metar.wind.degrees}&deg; / {metar.wind.speed_kts}<span className="unit"> kts</span>
+                    </div>
+                    <div className="col">
+                        <span className="big"><i className="wi wi-thermometer"></i></span> {metar.temperature.celsius}&deg;<span className="unit">C</span>
+                    </div>
+                    <div className="col">
+                        <span className="big"><i className="wi wi-raindrop"></i></span> {metar.dewpoint.celsius}&deg;<span className="unit">C</span>
+                    </div>
+                </div>
+                </>
+            }
         </div>
     );
 
