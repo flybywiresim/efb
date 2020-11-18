@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useReducer} from 'react';
+import React, { useEffect, useState} from 'react';
 import metarParser from 'aewx-metar-parser';
-import NXApi from "./NXApi.js";
+//import NXApi from "./NXApi.js";
 import { Metar } from '@flybywiresim/api-client';
 
 const MetarParserTypeWindState: Wind = {
@@ -72,8 +72,18 @@ const WeatherWidget = ({icao}: any, {source}: any) => {
     //const nxapi = new NXApi;
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
 
+    // useEffect(() => {
+    //     NXApi.getMetar(icao,source)
+    //         .then(result => {
+    //             console.log(result);
+    //             const metarParse = metarParser(result.metar);
+    //             setMetar(metarParse);
+    //             console.log(metar);
+    //         });
+    // }, []);
+
     useEffect(() => {
-        NXApi.getMetar(icao,source)
+        Metar.get(icao,source)
             .then(result => {
                 console.log(result);
                 const metarParse = metarParser(result.metar);
