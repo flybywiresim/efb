@@ -10,11 +10,6 @@ type ToolbarState = {
     activeIndex: number;
 };
 
-type Tab = {
-    name: string,
-    link: string,
-};
-
 class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     constructor(props: ToolbarProps) {
         super(props);

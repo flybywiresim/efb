@@ -1,4 +1,4 @@
-import { ISimbriefData } from "./simbriefInterface";
+import {ISimbriefData} from "./simbriefInterface";
 
 const simbriefApiUrl: URL = new URL("https://www.simbrief.com/api/xml.fetcher.php");
 const simbriefApiParams = simbriefApiUrl.searchParams;
@@ -35,7 +35,7 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
     const origin = simbriefJson.origin;
     const destination = simbriefJson.destination;
     const times = simbriefJson.times;
-    const data: ISimbriefData = {
+    return {
         airline: general.icao_airline,
         flightNumber: general.flight_number,
         cruiseAltitude: general.initial_altitude,
@@ -52,5 +52,4 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
         distance: general.air_distance + "nm",
         flightETAInSeconds: times.est_time_enroute
     };
-    return data;
 };
