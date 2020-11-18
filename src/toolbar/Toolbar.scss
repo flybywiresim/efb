@@ -25,6 +25,10 @@
 
     margin-left: $spacing-padding;
 
+    & > div:hover {
+      border-bottom: solid var(--mainTextSecondary) .1em;
+    }
+
     img.FBW-Logo {
       width: 2.25em;
     }
@@ -43,6 +47,10 @@
       cursor: pointer;
 
       &.Active {
+        border-bottom: solid var(--mainTextSecondary) .1em;
+      }
+
+      &.Active:hover {
         border-bottom: solid var(--mainTextSecondary) .1em;
       }
 

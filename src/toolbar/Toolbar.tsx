@@ -10,14 +10,6 @@ type ToolbarState = {
     activeIndex: number;
 };
 
-type ToolbarItemProps = {
-    tabData: Tab,
-    isActive: boolean,
-    action: Function,
-};
-
-type ToolbarItemState = {};
-
 type Tab = {
     name: string,
     link: string,
@@ -26,21 +18,22 @@ type Tab = {
 class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     constructor(props: ToolbarProps) {
         super(props);
-        this.state = { activeIndex: 0 };
+        this.state = { activeIndex: 1 };
         this.handleClick = this.handleClick.bind(this);
     }
 
     tabs = [
-        { name: 'Preparation', link: 'preparation '},
-        { name: 'Flight & Navigation', link: 'flight-navigation' },
-        { name: 'Multiplayer', link: 'multiplayer' },
-        { name: 'Settings', link: 'settings' }
+        { id: 1, name: 'Preparation', link: 'preparation '},
+        { id: 2, name: 'Flight & Navigation', link: 'flight-navigation' },
+        { id: 3, name: 'Multiplayer', link: 'multiplayer' },
+        { id: 4, name: 'Settings', link: 'settings' }
     ];
 
     handleClick(index: number) {
-        return () => {
-            this.setState(() => ({ activeIndex: index }));
-        };
+        console.log("Active index is " + this.state.activeIndex);
+        return (() => {
+            this.setState({activeIndex: index });
+        });
     }
 
     render() {
@@ -49,11 +42,11 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
                 <img src={logo} className="FBW-Logo" alt="logo" />
 
                 <div id="Tabs">
-                    {/* Tabs */}
-
                     {
-                        this.tabs.map((tab, index) =>
-                            <ToolbarItem key={index} tabData={tab} isActive={index === this.state.activeIndex} action={this.handleClick(index)} />
+                        this.tabs.map((tab) =>
+                            <div key={tab.id} className={tab.id === this.state.activeIndex ? 'Tab Active' : 'Tab'} onClick={this.handleClick(tab.id)}>
+                                <Link to={"/" + tab.link}>{tab.name}</Link>
+                            </div>
                         )
                     }
                 </div>
@@ -64,16 +57,6 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
                         <i className="material-icons" id="Icon">account_circle</i>
                     </Link>
                 </div>
-            </div>
-        );
-    }
-}
-
-class ToolbarItem extends React.Component<ToolbarItemProps, ToolbarItemState> {
-    render() {
-        return (
-            <div className={this.props.isActive ? 'Tab Active' : 'Tab'} onClick={() => this.props.action}>
-                <Link to={"/" + this.props.tabData.link}>{this.props.tabData.name}</Link>
             </div>
         );
     }
