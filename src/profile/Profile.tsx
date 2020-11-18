@@ -1,7 +1,19 @@
 import React from 'react';
 
-class Profile extends React.Component {
-    constructor(props) {
+type ProfileProps = {
+    displayname: string
+}
+
+type ProfileState = {
+
+}
+
+type SidebarWidgetProps = {
+    displayname: string
+}
+
+class Profile extends React.Component<ProfileProps, ProfileState> {
+    constructor(props: ProfileProps) {
         super(props);
         this.state = {
 
@@ -11,13 +23,13 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="ProfileWidgets">
-                <SidebarWidget username={this.props.username} nickname={this.props.nickname} />
+                <SidebarWidget displayname={this.props.displayname} />
             </div>
         );
     }
 }
 
-const SidebarWidget = (props) => {
+const SidebarWidget = (props: SidebarWidgetProps) => {
     return (
         <div className="SidebarWidget">
             <p className="WidgetTitle">Profile</p>
@@ -26,8 +38,7 @@ const SidebarWidget = (props) => {
                     <img src="logo192.png" alt="" />
                 </div>
                 <div className="ProfileUser">
-                    <p id="Nickname">{props.nickname}</p>
-                    <p id="Username">Username: {props.username}</p>
+                    <p id="Displayname">{props.displayname}</p>
                 </div>
             </div>
         </div>
