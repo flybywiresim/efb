@@ -57,7 +57,7 @@ class App extends React.Component<AppProps, AppState> {
                         </div>
                     </Route>
                     <Route path="/profile">
-                        <Profile nickname="AtomicLiquid" username="atomic" />
+                        <Profile displayname="" />
                     </Route>
                     <Route path="/">
                         <PreparationWidgets
