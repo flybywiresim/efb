@@ -9,12 +9,11 @@ type PreparationWidgetsProps = {
 }
 
 type PreparationWidgetsState = {
-    icao: string,
 }
+
 
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
     state: PreparationWidgetsState = {
-        icao: "LFPG",
     };
 
     render() {
@@ -37,8 +36,11 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     elapsedTime="01:25"
                     distance="274nm"
                     eta="" />
-                <WeatherWidget
-                    icao={this.state.icao}/>
+                <div className="WeatherWidgetDiv">
+                    <p className="WidgetTitle">Weather</p>
+                    <WeatherWidget icao={this.props.departingAirport} />
+                    <WeatherWidget icao={this.props.arrivingAirport} />
+                </div>
                 <LoadsheetWidget />
             </div>
         );
