@@ -103,10 +103,10 @@ const WeatherWidget = (props: any) => {
                         <span className="big"><i className="wi wi-strong-wind"></i></span><br/>{metar.wind.degrees}&deg; / {metar.wind.speed_kts}<span className="unit"> kts</span>
                     </div>
                     <div className="col">
-                        <span className="big"><i className="wi wi-thermometer"></i></span> {metar.temperature.celsius}&deg;<span className="unit">C</span>
+                        <span className="big"><i className="wi wi-thermometer"></i></span><br/>{metar.temperature.celsius}&deg;<span className="unit">C</span>
                     </div>
                     <div className="col">
-                        <span className="big"><i className="wi wi-raindrop"></i></span> {metar.dewpoint.celsius}&deg;<span className="unit">C</span>
+                        <span className="big"><i className="wi wi-raindrop"></i></span><br/>{metar.dewpoint.celsius}&deg;<span className="unit">C</span>
                     </div>
                 </div>
                 </>
