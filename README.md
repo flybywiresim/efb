@@ -1,4 +1,4 @@
-# efb
+# EFB
 
 This repo contains the EFB prototype for FlyByWire projects.
 
