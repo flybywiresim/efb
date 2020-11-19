@@ -99,6 +99,7 @@
         "arriving-weather";
 
         #Panel {
+            height: 365px;
             display: grid;
             margin-top: 4px;
             margin-bottom: 20px;
@@ -116,14 +117,11 @@
             "TwoByTwo";
 
             #OneByTwo {
-                margin: 10px 20px;
+                margin: 10px 0 0 20px;
                 padding-top: 15px;
                 display: grid;
-                grid-template-columns: auto auto;
-                grid-template-rows: auto;
+                grid-template-columns: 50% 50%;
                 font-size: 1.5rem;
-                gap: 50px;
-                justify-content: space-between;
                 grid-template-areas:
                 "icao WeatherIcon";
                 width: 100%;
@@ -140,6 +138,7 @@
 
             #WeatherIcon {
                 font-size: 3.5rem;
+                margin-left: 1em;
                 grid-area: WeatherIcon;
             }
 

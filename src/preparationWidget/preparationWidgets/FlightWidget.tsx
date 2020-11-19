@@ -25,11 +25,13 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                 <p className="WidgetTitle">{this.props.name}</p>
                 <div id="Panel">
                     <div id="DepArr">
-                        <input type="text" value={this.props.dep} />
-                        <i> </i>
-                        <i className="material-icons">send</i>
-                        <i> </i>
-                        <input type="text" value={this.props.arr} />
+                        <p>
+                            {this.props.dep}
+                            <i> </i>
+                            <i className="material-icons">send</i>
+                            <i> </i>
+                            {this.props.arr}
+                        </p>
                     </div>
                     <div id="Time">
                         <p id="Title">TIME</p>
