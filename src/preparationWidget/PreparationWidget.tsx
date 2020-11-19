@@ -8,9 +8,7 @@ type PreparationWidgetsProps = {
     arrivingAirport: string,
 }
 
-type PreparationWidgetsState = {
-}
-
+type PreparationWidgetsState = {}
 
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
     state: PreparationWidgetsState = {
