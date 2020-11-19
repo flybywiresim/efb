@@ -1,6 +1,6 @@
-# efb
+# EFB
 
-This repo contains the EFB prototype for FlyByWire projects.
+This repo contains the EFB prototype for FlyByWire Simulations' projects.
 
 ## How to open
 
