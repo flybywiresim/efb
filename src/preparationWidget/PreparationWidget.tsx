@@ -36,8 +36,8 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     eta="" />
                 <div className="WeatherWidgetDiv">
                     <p className="WidgetTitle">Weather</p>
-                    <WeatherWidget icao={this.props.departingAirport} />
-                    <WeatherWidget icao={this.props.arrivingAirport} />
+                    <WeatherWidget editIcao="yes" icao={this.props.departingAirport} />
+                    <WeatherWidget editIcao="yes" icao={this.props.arrivingAirport} />
                 </div>
                 <LoadsheetWidget />
             </div>
