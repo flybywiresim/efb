@@ -46,12 +46,12 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
                             </div>
                         )
                     }
-                </div>
 
-                <div id="LoadSimbrief">
-                    <button onClick={() => this.props.fetchSimbrief()}>
-                        Load SimBrief
-                    </button>
+                    <div id="LoadSimbrief" className="Tab">
+                        <p onClick={() => this.props.fetchSimbrief()}>
+                            Load SimBrief
+                        </p>
+                    </div>
                 </div>
 
                 <div id="ProfileToolbar">
