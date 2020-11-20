@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import metarParser from 'aewx-metar-parser';
 import { Metar } from '@flybywiresim/api-client';
+import { weatherIconArray } from './WeatherWidgetIcons';
 
 const MetarParserTypeWindState: Wind = {
     degrees:   0,
@@ -89,6 +90,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeProp);
     const [modalStatus, setModalStatus] = useState(false);
+    const [icon, setIcon] = useState("wi wi-cloud");
 
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
@@ -119,15 +121,51 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
     }
 
     useEffect(() => {
-        getMetar(props.icao, source)
-            .then(() => {
-                localStorage.setItem('origIcao', props.icao);
-            });
-    }, []);
+        console.log("Props has changed");
+        getMetar(props.icao, source);
+        console.log(weatherIconArray);
+    }, [props.icao]);
+
+    useEffect(() => {
+        selectWeatherIcon();
+    }, [metar]);
 
     function showModal() {
         setModalStatus(!modalStatus);
-        console.log(modalStatus);
+        selectWeatherIcon();
+    }
+
+    function selectWeatherIcon() {
+        // Check local time
+        // Check wind
+        // Check clouds
+        // Check for rain and snow
+        const rawtext = metar.raw_text;
+        const date = new Date();
+        console.log("Get hours is " + date.getHours());
+        const day = date.getHours() > 5 && date.getHours() < 19 ? 1 : 0;
+        console.log("Daytime is " + day);
+        const wind = metar.wind.speed_kts;
+        var icon = "wi wi-cloud";
+        var findIcon = [];
+        findIcon = weatherIconArray.filter(item => {
+            console.log((item.day === day || item.day == 2));
+            return (item.day === day || item.day == 2)
+                && item.descriptor.every(desc => rawtext.includes(desc))
+                && rawtext.includes(item.precip)
+                && item.cloud.some(cld => rawtext.includes(cld))
+                && (wind > item.wind[0] && wind < item.wind[1])
+                && item.visibility.some(vis => rawtext.includes(vis));
+        });
+
+        if (findIcon.length === 1) {
+            icon = findIcon[0].iconName;
+        } else
+        if (findIcon.length > 1) {
+            console.log(findIcon);
+        }
+        console.log("Icon will be " + icon);
+        setIcon(icon);
     }
 
     return (
@@ -148,7 +186,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                             metar.icao
                         }
                     </div>
-                    <div className="WeatherIcon" onClick={showModal}><i className="wi wi-day-lightning" /></div>
+                    <div className="WeatherIcon" onClick={showModal}><i className={icon} /></div>
                 </div>
                 {modalStatus ?
                     <div id="MetarModal">
