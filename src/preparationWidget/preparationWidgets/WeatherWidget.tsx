@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import metarParser from 'aewx-metar-parser';
 import { Metar } from '@flybywiresim/api-client';
 
@@ -66,18 +66,22 @@ const MetarParserTypeState: MetarParserType = {
     flight_category: "",
 };
 
-const WeatherWidget = (props: any) => {
+type WeatherWidgetProps = { name: string, editIcao: string, icao: string };
+
+const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: WeatherWidgetProps) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
 
     const handleIcao = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        console.log(props.icao);
         console.log(event.target.value);
-        if (event.target.value.length == 4) {
+        if (props.icao === 'N/A') {
+            setMetar(MetarParserTypeState);
+        } else if (event.target.value.length === 4) {
             getMetar(event.target.value, source);
-        } else
-        if (event.target.value.length == 0) {
+        } else if (event.target.value.length === 0) {
             getMetar(props.icao, source);
         }
     };
@@ -94,14 +98,18 @@ const WeatherWidget = (props: any) => {
     }
 
     useEffect(() => {
-        getMetar(props.icao, source)
-            .then(() => {
-                localStorage.setItem('origIcao', props.icao);
-            });
+        if (props.icao === 'N/A') {
+            setMetar(MetarParserTypeState);
+        } else {
+            getMetar(props.icao, source)
+                .then(() => {
+                    localStorage.setItem('origIcao', props.icao);
+                });
+        }
     }, []);
 
     return (
-        <div id="Panel">
+        <div className='weather-card' id={'weather-card-' + props.name}>
             {metar === undefined ?
                 <p>Loading ...</p>
                 :
@@ -156,7 +164,6 @@ const WeatherWidget = (props: any) => {
             }
         </div>
     );
-
 };
 
 export default WeatherWidget;

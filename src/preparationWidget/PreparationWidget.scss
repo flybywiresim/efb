@@ -2,75 +2,211 @@
 @import './weather-icons.scss';
 
 .PreparationWidgets {
-    margin: 8em 30px 30px;
     display: grid;
     font-family: "Nunito Sans", sans-serif;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 3em auto;
+    grid-gap: 1em;
     justify-items: stretch;
     align-items: flex-start;
+    overflow: hidden;
     grid-template-areas:
-    "CFlightWidget WeatherWidget LoadsheetWidget LoadsheetWidget"
-    "PrevWidget WeatherWidget LoadsheetWidget LoadsheetWidget";
+        "TodaysFlightTitle WeatherTitle LoadsheetTitle LoadsheetTitle"
+        "TodaysFlightCard  OriginWxCard PayloadCard    FuelCard"
+        "PreviousLegsCard  DestWxCard   PayloadCard    FuelCard";
 
-    .FlightWidgetDiv {
-        min-width: 250px;
-        margin: var(--widgetMargin);
-        display: flex;
-        font-size: 1.7rem;
-        flex-direction: column;
-        justify-content: flex-start;
+    span.WidgetTitle#title-todays-flight {
+        grid-area: TodaysFlightTitle;
+    }
+
+    span.WidgetTitle#title-wx {
+        grid-area: WeatherTitle;
+    }
+
+    span.WidgetTitle#title-loadsheet {
+        grid-area: LoadsheetTitle;
+    }
+
+    // TODO move this to its own stylesheet
+
+    .flight-card {
         height: 100%;
-
-        #Current {
-            grid-area: CFWidget;
-        }
-
-        #Previous {
-            grid-area: PrevWidget;
-        }
-
-        #Panel {
-            min-height: 350px;
-            display: grid;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-            margin: 3px;
-            grid-template-columns: auto auto;
-            grid-template-rows: auto auto auto;
-            color: var(--cardText);
-            background: var(--cardBackground);
-            padding: 0 5%;
-            font-size: 2.25rem;
-            grid-template-areas:
+        display: grid;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
+        color: var(--cardText);
+        background: var(--cardBackground);
+        padding: 0 5%;
+        font-size: 2.25rem;
+        grid-template-areas:
             "DepArr DepArr"
             "Time Distance"
             "ETA .";
 
-            #DepArr {
-                font-size: 2.25rem;
-                font-weight: 700;
-                grid-area: DepArr;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+        .Title {
+            font-size:1.1rem;
+            font-weight: 700;
+            color: var(--mainTextSecondary);
+            grid-area: DepArr;
+        }
 
-                input {
-                    font-size: 2.25rem;
-                    font-weight: 700;
-                    width: 110px;
-                    margin: 5px;
-                    border-top-style: hidden;
-                    border-right-style: hidden;
-                    border-left-style: hidden;
-                    border-bottom-style: groove;
-                    outline: none;
-                    background-color: var(--cardBackground);
-                    color: var(--cardText)
-                }
+        .origin-destination {
+            font-size: 2.25rem;
+            font-weight: 700;
+            grid-area: DepArr;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    // TODO move this to its own stylesheet
+
+    .weather-card {
+        height: 100%;
+        display: grid;
+        padding-bottom: 0;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        color: var(--cardText);
+        background: var(--cardBackground);
+        font-size: 1.5rem;
+        justify-content: space-between;
+        width: 100%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "OneByTwo"
+            "TwoByTwo"
+            "IcaoIdent";
+
+        #OneByTwo {
+            margin: 10px 0 0 20px;
+            align-content: center;
+            padding-top: 15px;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            font-size: 1.5rem;
+            grid-template-areas:
+                "icao WeatherIcon";
+            width: 100%;
+        }
+
+        #TwoByTwo {
+            display: grid;
+            margin: 0 0 10px 30px;
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr 1fr;
+            font-size: 1.5rem;
+            justify-content: start;
+        }
+
+        #IcaoIdent {
+            display: flex;
+
+            .icaoUpdate {
+                padding-left: 15px;
+                justify-content: space-evenly;
+                font-size: 1rem;
+                padding-bottom: 10px;
+            }
+        }
+
+        #WeatherIcon {
+            font-size: 3.5rem;
+            margin-left: 1em;
+            grid-area: WeatherIcon;
+        }
+
+        #icao {
+            font-size: 2.25rem;
+            grid-area: icao;
+
+            ::placeholder {
+                color: var(--cardText) !important;
             }
 
-            #Title {
-                font-size:1.1rem;
+            input {
+                font-size: 2rem;
+                font-weight: 700;
+                width: 95px;
+                margin: 5px;
+                border-top-style: hidden;
+                border-right-style: hidden;
+                border-left-style: hidden;
+                border-bottom-style: dotted;
+                outline: none;
+                background-color: var(--cardBackground);
+                color: var(--cardText);
+            }
+        }
+
+        #Pressure {
+            font-size: 1.25em;
+            grid-area: Pressure;
+        }
+
+        #Wind {
+            font-size: 1.25em;
+            grid-area: Wind;
+        }
+
+        #Temp {
+            font-size: 1.25em;
+            grid-area: Temp;
+        }
+
+        #Dew {
+            font-size: 1.25em;
+            grid-area: Dew;
+        }
+
+        .col {
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .big {
+            font-size: 3rem;
+        }
+
+        .label, .unit {
+            font-size: 1.1rem;
+            color: var(--cardText);
+        }
+    }
+
+    // TODO move this to its own stylesheet
+
+    .loadsheet-card {
+        height: 100%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        background: var(--cardBackground);
+        display: grid;
+        grid-template-rows: 90% 10%;
+        grid-template-areas:
+            "Body"
+            "Footer";
+
+        .loadsheet-card-body {
+            grid-area: Body;
+        }
+
+        .loadsheet-card-footer {
+            grid-area: Footer;
+            background-color: var(--loadsheetFooterBackground);
+
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 15px;
+
+            .footer-title {
+                font-size:0.9rem;
                 font-weight: 700;
                 color: var(--mainTextSecondary);
                 grid-area: DepArr;
@@ -78,214 +214,35 @@
         }
     }
 
+    #flight-todays {
+        grid-area: TodaysFlightCard;
+    }
+
+    #flight-previous {
+        grid-area: PreviousLegsCard;
+    }
+
+    #weather-card-origin {
+        grid-area: OriginWxCard;
+    }
+
+    #weather-card-dest {
+        grid-area: DestWxCard;
+    }
+
     textarea:focus, input:focus{
         outline: none;
     }
 
-    .WeatherWidgetDiv {
-        grid-area: WeatherWidget;
-        min-width: 250px;
-        margin: var(--widgetMargin);
-        display: flex;
-        font-size: 1.25rem;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 100%;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        grid-template-areas:
-        "WidgetTitle"
-        "departing-weather"
-        "arriving-weather";
+    #loadsheet-payload-card {
+        grid-area: PayloadCard;
 
-        #Panel {
-            height: 365px;
-            display: grid;
-            margin-top: 4px;
-            margin-bottom: 20px;
-            padding-bottom: 0;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-            color: var(--cardText);
-            background: var(--cardBackground);
-            font-size: 1.5rem;
-            justify-content: space-between;
-            width: 100%;
-            grid-template-columns: auto;
-            grid-template-rows: auto auto auto;
-            grid-template-areas:
-            "OneByTwo"
-            "TwoByTwo"
-            "IcaoIdent";
-
-            #OneByTwo {
-                margin: 10px 0 0 20px;
-                align-content: center;
-                padding-top: 15px;
-                display: grid;
-                grid-template-columns: 50% 50%;
-                font-size: 1.5rem;
-                grid-template-areas:
-                "icao WeatherIcon";
-                width: 100%;
-            }
-
-            #TwoByTwo {
-                display: grid;
-                margin: 0 0 10px 30px;
-                grid-template-rows: auto auto;
-                grid-template-columns: 1fr 1fr;
-                font-size: 1.5rem;
-                justify-content: start;
-            }
-
-            #IcaoIdent {
-                display: flex;
-                
-                .icaoUpdate {
-                    padding-left: 15px;
-                    justify-content: space-evenly;
-                    font-size: 1rem;
-                    padding-bottom: 10px;
-                }
-            }
-
-            #WeatherIcon {
-                font-size: 3.5rem;
-                margin-left: 1em;
-                grid-area: WeatherIcon;
-            }
-
-            #icao {
-                font-size: 2.25rem;
-                grid-area: icao;
-
-                ::placeholder {
-                    color: var(--cardText) !important;
-                }
-
-                input {
-                    font-size: 2rem;
-                    font-weight: 700;
-                    width: 95px;
-                    margin: 5px;
-                    border-top-style: hidden;
-                    border-right-style: hidden;
-                    border-left-style: hidden;
-                    border-bottom-style: dotted;
-                    outline: none;
-                    background-color: var(--cardBackground);
-                    color: var(--cardText);
-                }
-            }
-
-            #Pressure {
-                font-size: 1.25em;
-                grid-area: Pressure;
-            }
-
-            #Wind {
-                font-size: 1.25em;
-                grid-area: Wind;
-            }
-
-            #Temp {
-                font-size: 1.25em;
-                grid-area: Temp;
-            }
-
-            #Dew {
-                font-size: 1.25em;
-                grid-area: Dew;
-            }
-
-            .col {
-                width: 100%;
-                margin-bottom: 20px;
-                font-size: 1.5rem;
-            }
-
-            .big {
-                font-size: 3rem;
-            }
-        }
+        --loadsheetFooterBackground: #567FD2;
     }
 
-    .WeatherWidgetDiv #Panel .label, .WeatherWidgetDiv #Panel .unit {
-        font-size: 1.1rem;
-        color: var(--mainTextSecondary);
-    }
+    #loadsheet-fuel-card {
+        grid-area: FuelCard;
 
-    .LoadsheetWidgetDiv {
-        grid-area: LoadsheetWidget;
-        min-width: 250px;
-        margin: var(--widgetMargin);
-        display: flex;
-        font-size: 1.25rem;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 100%;
-
-        #Area {
-            min-height: 450px;
-            display: grid;
-            margin: 3px;
-            grid-template-rows: 100%;
-            grid-template-columns: 50% 50%;
-
-            #BottomPanel {
-                color: white;
-                font-weight: 700;
-                font-size: 1.5rem;
-
-                #Title {
-                    font-size:0.9rem;
-                    font-weight: 700;
-                    color: var(--mainTextSecondary);
-                    grid-area: DepArr;
-                }
-            }
-
-            #Panel1 {
-                min-height: 750px;
-                box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-                margin: 0 7px 0 0;
-                background: var(--cardBackground);
-                display: grid;
-                grid-template-rows: 90% 10%;
-                grid-template-areas:
-                "Main"
-                "BottomPanel1";
-
-                #BottomPanel {
-                    grid-area: BottomPanel1;
-                    background: #567FD2;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding-left: 15px;
-                }
-            }
-
-            #Panel2 {
-                min-height: 450px;
-                box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-                margin: 0 0 0 7px;
-                background: var(--cardBackground);
-                display: grid;
-                grid-template-rows: 90% 10%;
-                grid-template-areas:
-                "Main"
-                "BottomPanel2";
-
-                #BottomPanel {
-                    grid-area: BottomPanel2;
-                    background: #FE5353;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding-left: 15px;
-                }
-            }
-        }
+        --loadsheetFooterBackground: #FE5353;
     }
 }

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
-body {
+:root {
   --mainText: rgba(0, 0, 0, 0.6);
   --mainTextSecondary: rgba(0, 0, 0, 0.5);
   --profileText: rgba(0, 0, 0, 1);
@@ -11,7 +11,17 @@ body {
   --cardBackground: rgb(223, 224, 226);
   --globalBackground: #E5E5E5;
   --widgetMargin: 10px;
+}
+
+body {
   background: var(--globalBackground);
+
+  // Center the UI for browser prototype
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 .darkMode {
@@ -28,16 +38,20 @@ body {
 }
 
 #root {
+  width: 1430px;
+  height: 1000px;
   background: var(--globalBackground);
   cursor: default;
+}
+
+#main-container {
+  padding: 8em 1.15em 1.15em;
+  overflow-y: scroll;
 }
 
 * {
   margin: 0;
   padding: 0;
-}
-
-.App {
 }
 
 .FBW-Logo {

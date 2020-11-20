@@ -6,16 +6,14 @@
 
   background: var(--cardBackground);
 
-  width: 100vw;
+  width: 1430px;
 
-  position: fixed;
-  top: 0;
   padding: $padding $padding $padding $spacing-padding;
-  margin-right: 5em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  position: fixed;
 
   #Tabs {
     display: flex;
