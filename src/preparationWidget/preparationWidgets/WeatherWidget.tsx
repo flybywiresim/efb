@@ -66,20 +66,33 @@ const MetarParserTypeState: MetarParserType = {
     flight_category: "",
 };
 
+const MetarParserTypeProp: MetarParserType = {
+    raw_text: "",
+    raw_parts: [""],
+    icao: "",
+    observed: new Date,
+    wind: MetarParserTypeWindState,
+    visibility: Visibility,
+    conditions: [ConditionCode],
+    clouds: [Cloud],
+    ceiling: Ceiling,
+    temperature: Temperature,
+    dewpoint: Dewpoint,
+    humidity_percent: 0,
+    barometer: Barometer,
+    flight_category: "",
+};
+
 type WeatherWidgetProps = { name: string, editIcao: string, icao: string };
 
-const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: WeatherWidgetProps) => {
+const WeatherWidget = (props: WeatherWidgetProps) => {
 
-    const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
+    const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeProp);
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
 
     const handleIcao = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        console.log(props.icao);
-        console.log(event.target.value);
-        if (props.icao === 'N/A') {
-            setMetar(MetarParserTypeState);
-        } else if (event.target.value.length === 4) {
+        if (event.target.value.length === 4) {
             getMetar(event.target.value, source);
         } else if (event.target.value.length === 0) {
             getMetar(props.icao, source);
@@ -87,25 +100,26 @@ const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: WeatherWidg
     };
 
     function getMetar(icao:any, source: any) {
+        if (icao.length !== 4) {
+            return new Promise(() => {
+                setMetar(MetarParserTypeProp);
+            });
+        }
         return Metar.get(icao, source)
             .then(result => {
                 const metarParse = metarParser(result.metar);
                 setMetar(metarParse);
             })
             .catch(() => {
-                setMetar(MetarParserTypeState);
+                setMetar(MetarParserTypeProp);
             });
     }
 
     useEffect(() => {
-        if (props.icao === 'N/A') {
-            setMetar(MetarParserTypeState);
-        } else {
-            getMetar(props.icao, source)
-                .then(() => {
-                    localStorage.setItem('origIcao', props.icao);
-                });
-        }
+        getMetar(props.icao, source)
+            .then(() => {
+                localStorage.setItem('origIcao', props.icao);
+            });
     }, []);
 
     return (
@@ -126,7 +140,7 @@ const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: WeatherWidg
                             metar.icao
                         }
                     </div>
-                    <div id="WeatherIcon"><i className="wi wi-day-lightning" /></div>
+                    <div className="WeatherIcon"><i className="wi wi-day-lightning" /></div>
                 </div>
                 <div id="TwoByTwo">
                     <div className="col">
