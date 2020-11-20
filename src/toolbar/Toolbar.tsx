@@ -49,7 +49,7 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 
                     <div id="LoadSimbrief" className="Tab">
                         <p onClick={() => this.props.fetchSimbrief()}>
-                            Load SimBrief
+                            Load Flightdata
                         </p>
                     </div>
                 </div>
