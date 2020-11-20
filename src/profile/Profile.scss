@@ -1,7 +1,7 @@
 @import '../App.scss';
 
 .ProfileWidgets {
-    margin: 7em 30px 30px 30px;
+    margin: 20px 30px 30px 30px;
     display: grid;
     font-family: "Nunito Sans", sans-serif;
     grid-template-columns: 20% 80%;
@@ -9,7 +9,7 @@
     align-items: flex-start;
     grid-template-areas:
       "SidebarWidget Widget";
-  
+
     .SidebarWidget {
       min-width: 250px;
       max-width: 250px;
@@ -20,7 +20,7 @@
       justify-content: flex-start;
       height: 100%;
     }
-  
+
     .SidebarWidget #Panel {
       min-height: 350px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -30,11 +30,11 @@
       padding: 5% 5%;
       font-size: 1.75rem;
     }
-  
+
     .SidebarWidget #Panel #UserIcon {
       margin-top: 3px;
     }
-  
+
     .SidebarWidget #Panel #UserIcon img {
       display: block;
       float: none;
@@ -46,15 +46,15 @@
       border-radius: 50%;
       border-color: var(--imageBorder);
     }
-  
+
     .SidebarWidget #Panel #Username {
       font-size: 1.3rem;
     }
-  
+
     .ProfileIcon {
       padding: 10px;
     }
-  
+
     .ProfileUser {
       color: var(--cardText);
     }

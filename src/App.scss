@@ -21,6 +21,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .darkMode {
@@ -44,7 +45,8 @@ body {
 }
 
 #main-container {
-  padding: 1.15em;
+  padding: 8em 1.15em 1.15em;
+  overflow-y: scroll;
 }
 
 * {
