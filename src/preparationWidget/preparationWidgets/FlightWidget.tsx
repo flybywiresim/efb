@@ -1,4 +1,5 @@
 import React from 'react';
+import flight from "material-design-icons/maps/svg/production/ic_flight_48px.svg";
 
 type FlightWidgetProps = {
     name: string,
@@ -47,7 +48,7 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                     <p>
                         {this.props.dep}
                         <i> </i>
-                        <i className="material-icons">send</i>
+                        <img height="40" id="flight-icon" src={flight} alt="to" />
                         <i> </i>
                         {this.props.arr}
                     </p>

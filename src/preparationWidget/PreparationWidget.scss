@@ -221,6 +221,10 @@
         }
     }
 
+    #flight-icon {
+        transform: rotate(90deg);
+    }
+
     #flight-todays {
         grid-area: TodaysFlightCard;
     }
