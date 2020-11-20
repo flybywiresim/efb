@@ -4,7 +4,9 @@ import {
 } from 'react-router-dom';
 import logo from '../fbw.svg';
 
-type ToolbarProps = {};
+type ToolbarProps = {
+    fetchSimbrief: Function;
+};
 
 type ToolbarState = {
     activeIndex: number;
@@ -44,6 +46,12 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
                             </div>
                         )
                     }
+
+                    <div id="LoadSimbrief" className="Tab">
+                        <p onClick={() => this.props.fetchSimbrief()}>
+                            Load SimBrief
+                        </p>
+                    </div>
                 </div>
 
                 <div id="ProfileToolbar">

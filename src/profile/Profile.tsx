@@ -1,29 +1,20 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 
 type ProfileProps = {
-    displayname: string
+    changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
-type ProfileState = {
-
-}
+type ProfileState = {}
 
 type SidebarWidgetProps = {
-    displayname: string
+    changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
 class Profile extends React.Component<ProfileProps, ProfileState> {
-    constructor(props: ProfileProps) {
-        super(props);
-        this.state = {
-
-        };
-    }
-
     render() {
         return (
             <div className="ProfileWidgets">
-                <SidebarWidget displayname={this.props.displayname} />
+                <SidebarWidget changeSimbriefUsername={this.props.changeSimbriefUsername} />
             </div>
         );
     }
@@ -38,7 +29,7 @@ const SidebarWidget = (props: SidebarWidgetProps) => {
                     <img src="logo192.png" alt="" />
                 </div>
                 <div className="ProfileUser">
-                    <p id="Displayname">{props.displayname}</p>
+                    <input type="text" placeholder="Insert Username" onChange={props.changeSimbriefUsername} id="DisplayName" />
                 </div>
             </div>
         </div>
