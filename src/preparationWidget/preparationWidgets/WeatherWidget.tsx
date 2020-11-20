@@ -72,19 +72,33 @@ const WeatherWidget = (props: any) => {
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
 
-    useEffect(() => {
-        Metar.get(props.icao, source)
+    const handleIcao = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        console.log(event.target.value);
+        if (event.target.value.length == 4) {
+            getMetar(event.target.value, source);
+        } else
+        if (event.target.value.length == 0) {
+            getMetar(props.icao, source);
+        }
+    };
+
+    function getMetar(icao:any, source: any) {
+        return Metar.get(icao, source)
             .then(result => {
-                console.log(result);
                 const metarParse = metarParser(result.metar);
                 setMetar(metarParse);
-                console.log(metar);
+            })
+            .catch(() => {
+                setMetar(MetarParserTypeState);
             });
-    }, []);
+    }
 
     useEffect(() => {
-        console.log(metar);
-    }, [metar]);
+        getMetar(props.icao, source)
+            .then(() => {
+                localStorage.setItem('origIcao', props.icao);
+            });
+    }, []);
 
     return (
         <div id="Panel">
@@ -92,33 +106,50 @@ const WeatherWidget = (props: any) => {
                 <p>Loading ...</p>
                 :
                 <><div id="OneByTwo">
-                    <div id="icao">{metar.icao} </div>
+                    <div id="icao">
+                        {props.editIcao == "yes" ?
+                            <>
+                                <input id="icaoInput"
+                                    type="text"
+                                    placeholder={props.icao}
+                                    onChange={handleIcao} />
+                            </>
+                            :
+                            metar.icao
+                        }
+                    </div>
                     <div id="WeatherIcon"><i className="wi wi-day-lightning" /></div>
                 </div>
                 <div id="TwoByTwo">
                     <div className="col">
                         <span className="big">
                             <i className="wi wi-barometer" />
-                        </span><br/>{metar.barometer.mb}
+                        </span><br/>{metar.barometer.mb.toFixed(0)}
                         <span className="unit"> mb</span>
                     </div>
                     <div className="col">
                         <span className="big">
                             <i className="wi wi-strong-wind" />
-                        </span><br/>{metar.wind.degrees}&deg; / {metar.wind.speed_kts}
+                        </span><br/>{metar.wind.degrees.toFixed(0)}&deg; / {metar.wind.speed_kts.toFixed(0)}
                         <span className="unit"> kts</span>
                     </div>
-                    <div className="col">
+                    <div>
                         <span className="big">
                             <i className="wi wi-thermometer" />
-                        </span><br/>{metar.temperature.celsius}&deg;
+                        </span><br/>{metar.temperature.celsius.toFixed(0)}&deg;
                         <span className="unit">C</span>
                     </div>
-                    <div className="col">
+                    <div>
                         <span className="big">
                             <i className="wi wi-raindrop" />
-                        </span><br/>{metar.dewpoint.celsius}&deg;
+                        </span><br/>{metar.dewpoint.celsius.toFixed(0)}&deg;
                         <span className="unit">C</span>
+                    </div>
+                </div>
+                <div id="IcaoIdent">
+                    <div>
+                        <span className="icaoUpdate">Updated at {metar.observed.getUTCHours().toString().padStart(2, '0')}:{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
+                        <span className="icaoUpdate">{metar.icao}</span>
                     </div>
                 </div>
                 </>
