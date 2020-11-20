@@ -76,10 +76,10 @@ const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: any) => {
 
     const handleIcao = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         console.log(event.target.value);
-        if (event.target.value.length == 4) {
+        if (event.target.value.length === 4) {
             getMetar(event.target.value, source);
         } else
-        if (event.target.value.length == 0) {
+        if (event.target.value.length === 0) {
             getMetar(props.icao, source);
         }
     };
@@ -158,7 +158,6 @@ const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: any) => {
             }
         </div>
     );
-
 };
 
 export default WeatherWidget;

@@ -7,11 +7,26 @@ type PreparationWidgetsProps = {
     departingAirport: string,
     arrivingAirport: string,
     flightDistance: string,
+    flightETAInSeconds: string,
 }
 
 type PreparationWidgetsState = {}
 
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
+    calculateFlightTime(flightETAInSeconds: string): string {
+        const timeInMinutes: number = parseInt(flightETAInSeconds) * 0.0166;
+        if (timeInMinutes.toString() === "NaN") {
+            return "00:00";
+        }
+
+        const hours = (timeInMinutes / 60);
+        const roundedHours = Math.floor(hours);
+        const minutes = (hours - roundedHours) * 60;
+        const roundedMinutes = Math.round(minutes);
+
+        return roundedHours + ":" + roundedMinutes;
+    }
+
     render() {
         return (
             <div className="PreparationWidgets">
@@ -19,7 +34,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                 <span id='title-wx' className="WidgetTitle">Weather</span>
                 <span id='title-loadsheet' className="WidgetTitle">Loadsheet</span>
 
-                <FlightWidget name="todays" dep={this.props.departingAirport} arr={this.props.arrivingAirport} elapsedTime="00:49" distance={this.props.flightDistance} eta="19:48"/>
+                <FlightWidget name="todays" dep={this.props.departingAirport} arr={this.props.arrivingAirport} elapsedTime="00:49" distance={this.props.flightDistance} eta={this.calculateFlightTime(this.props.flightETAInSeconds)}/>
                 <FlightWidget name="previous" dep="EGLL" arr="LFPG" elapsedTime="01:25" distance="274nm" eta="" />
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />
