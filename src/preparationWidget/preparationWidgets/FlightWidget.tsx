@@ -10,13 +10,35 @@ type FlightWidgetProps = {
 }
 
 type FlightWidgetState = {
-    elapsedFlightTime: Date
+    startingTime: Date,
+    elapsedFlightTime: string,
 }
 
 export default class FlightWidget extends React.Component<FlightWidgetProps, FlightWidgetState> {
     state: FlightWidgetState = {
-        elapsedFlightTime: new Date()
+        startingTime: new Date(),
+        elapsedFlightTime: "00:00",
     };
+    interval: any;
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.setState({ elapsedFlightTime: this.timeSinceStart()}), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    timeSinceStart() {
+        const now = new Date();
+
+        const diff = now.getTime() - this.state.startingTime.getTime();
+        const minutes = Math.floor(diff / 1000 / 60);
+        const diffMinusMinutes = diff - (minutes * 1000 * 60);
+        const seconds = Math.floor(diffMinusMinutes / 1000);
+
+        return (minutes <= 9 ? "0" : "") + minutes + ":" + (seconds <= 9 ? "0" : "") + seconds;
+    }
 
     render() {
         return (
@@ -32,7 +54,7 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                 </div>
                 <div id="Time">
                     <p className="Title">TIME</p>
-                    <p>{this.props.elapsedTime}</p>
+                    <p>{this.timeSinceStart()}</p>
                 </div>
                 <div id="Distance">
                     <p className="Title">DISTANCE</p>
