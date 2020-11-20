@@ -68,18 +68,20 @@ const MetarParserTypeState: MetarParserType = {
 
 type WeatherWidgetProps = { name: string, editIcao: string, icao: string };
 
-const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: any) => {
+const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: WeatherWidgetProps) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
 
     const handleIcao = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        console.log(props.icao);
         console.log(event.target.value);
-        if (event.target.value.length === 4) {
+        if (props.icao === 'N/A') {
+            setMetar(MetarParserTypeState);
+        } else if (event.target.value.length === 4) {
             getMetar(event.target.value, source);
-        } else
-        if (event.target.value.length === 0) {
+        } else if (event.target.value.length === 0) {
             getMetar(props.icao, source);
         }
     };
@@ -96,10 +98,14 @@ const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: any) => {
     }
 
     useEffect(() => {
-        getMetar(props.icao, source)
-            .then(() => {
-                localStorage.setItem('origIcao', props.icao);
-            });
+        if (props.icao === 'N/A') {
+            setMetar(MetarParserTypeState);
+        } else {
+            getMetar(props.icao, source)
+                .then(() => {
+                    localStorage.setItem('origIcao', props.icao);
+                });
+        }
     }, []);
 
     return (
