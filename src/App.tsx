@@ -33,39 +33,39 @@ class App extends React.Component<AppProps, AppState> {
     render() {
         return (
             <Router>
-                <div className="App">
-                    <Toolbar />
+                <Toolbar/>
+                <div id="main-container">
+                    <Switch>
+                        <Route path="/preparation">
+                            <PreparationWidgets
+                                departingAirport={this.state.departingAirport}
+                                arrivingAirport={this.state.arrivingAirport}
+                            />
+                        </Route>
+                        <Route path="/flight-navigation">
+                            <div>
+                            </div>
+                        </Route>
+                        <Route path="/multiplayer">
+                            <div>
+                            </div>
+                        </Route>
+                        <Route path="/settings">
+                            <div>
+                                <Settings />
+                            </div>
+                        </Route>
+                        <Route path="/profile">
+                            <Profile displayname="" />
+                        </Route>
+                        <Route path="/">
+                            <PreparationWidgets
+                                departingAirport={this.state.departingAirport}
+                                arrivingAirport={this.state.arrivingAirport}
+                            />
+                        </Route>
+                    </Switch>
                 </div>
-                <Switch>
-                    <Route path="/preparation">
-                        <PreparationWidgets
-                            departingAirport={this.state.departingAirport}
-                            arrivingAirport={this.state.arrivingAirport}
-                        />
-                    </Route>
-                    <Route path="/flight-navigation">
-                        <div>
-                        </div>
-                    </Route>
-                    <Route path="/multiplayer">
-                        <div>
-                        </div>
-                    </Route>
-                    <Route path="/settings">
-                        <div>
-                            <Settings />
-                        </div>
-                    </Route>
-                    <Route path="/profile">
-                        <Profile displayname="" />
-                    </Route>
-                    <Route path="/">
-                        <PreparationWidgets
-                            departingAirport={this.state.departingAirport}
-                            arrivingAirport={this.state.arrivingAirport}
-                        />
-                    </Route>
-                </Switch>
             </Router>
         );
     }
