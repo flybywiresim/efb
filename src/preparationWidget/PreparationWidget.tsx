@@ -11,9 +11,6 @@ type PreparationWidgetsProps = {
 type PreparationWidgetsState = {}
 
 class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
-    state: PreparationWidgetsState = {
-    };
-
     render() {
         return (
             <div className="PreparationWidgets">

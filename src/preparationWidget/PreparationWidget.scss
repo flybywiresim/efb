@@ -193,12 +193,12 @@
             .big {
                 font-size: 3rem;
             }
-        }
-    }
 
-    .WeatherWidgetDiv #Panel .label, .WeatherWidgetDiv #Panel .unit {
-        font-size: 1.1rem;
-        color: var(--cardText);
+            .label, .unit {
+                font-size: 1.1rem;
+                color: var(--cardText);
+            }
+        }
     }
 
     .LoadsheetWidgetDiv {
@@ -222,6 +222,10 @@
                 color: white;
                 font-weight: 700;
                 font-size: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 15px;
 
                 #Title {
                     font-size:0.9rem;
@@ -245,10 +249,6 @@
                 #BottomPanel {
                     grid-area: BottomPanel1;
                     background: #567FD2;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding-left: 15px;
                 }
             }
 
@@ -266,10 +266,6 @@
                 #BottomPanel {
                     grid-area: BottomPanel2;
                     background: #FE5353;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding-left: 15px;
                 }
             }
         }
