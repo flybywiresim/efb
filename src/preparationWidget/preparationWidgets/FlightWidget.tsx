@@ -54,14 +54,14 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                 </div>
                 <div id="Time">
                     <p className="Title">TIME</p>
-                    <p>{this.timeSinceStart()}</p>
+                    <p>{this.props.name === "todays" ? this.timeSinceStart() : "01:43"}</p>
                 </div>
                 <div id="Distance">
                     <p className="Title">DISTANCE</p>
                     <p>{this.props.distance}</p>
                 </div>
                 <div id="ETA">
-                    <p className="Title">{this.props.name === "Previous" ? "" : "ETA (UTC)"}</p>
+                    <p className="Title">{this.props.name === "todays" ? "ETA (UTC)" : ""}</p>
                     <p>{this.props.eta}</p>
                 </div>
             </div>
