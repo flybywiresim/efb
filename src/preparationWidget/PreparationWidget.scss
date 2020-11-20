@@ -53,20 +53,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                input {
-                    font-size: 2.25rem;
-                    font-weight: 700;
-                    width: 110px;
-                    margin: 5px;
-                    border-top-style: hidden;
-                    border-right-style: hidden;
-                    border-left-style: hidden;
-                    border-bottom-style: groove;
-                    outline: none;
-                    background-color: var(--cardBackground);
-                    color: var(--cardText)
-                }
             }
 
             #Title {
@@ -140,7 +126,7 @@
 
             #IcaoIdent {
                 display: flex;
-                
+
                 .icaoUpdate {
                     padding-left: 15px;
                     justify-content: space-evenly;
@@ -212,7 +198,7 @@
 
     .WeatherWidgetDiv #Panel .label, .WeatherWidgetDiv #Panel .unit {
         font-size: 1.1rem;
-        color: var(--mainTextSecondary);
+        color: var(--cardText);
     }
 
     .LoadsheetWidgetDiv {
