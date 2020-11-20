@@ -24,7 +24,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
         const minutes = (hours - roundedHours) * 60;
         const roundedMinutes = Math.round(minutes);
 
-        return roundedHours + ":" + roundedMinutes;
+        return (roundedHours <= 9 ? "0" : "") + roundedHours + ":" + (roundedMinutes <= 9 ? "0" : "") + roundedMinutes;
     }
 
     render() {
