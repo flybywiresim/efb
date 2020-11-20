@@ -88,6 +88,8 @@ type WeatherWidgetProps = { name: string, editIcao: string, icao: string };
 const WeatherWidget = (props: WeatherWidgetProps) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeProp);
+    const [modalStatus, setModalStatus] = useState(false);
+
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
 
@@ -109,6 +111,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
             .then(result => {
                 const metarParse = metarParser(result.metar);
                 setMetar(metarParse);
+                console.log(metarParse);
             })
             .catch(() => {
                 setMetar(MetarParserTypeProp);
@@ -121,6 +124,11 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                 localStorage.setItem('origIcao', props.icao);
             });
     }, []);
+
+    function showModal() {
+        setModalStatus(!modalStatus);
+        console.log(modalStatus);
+    }
 
     return (
         <div className='weather-card' id={'weather-card-' + props.name}>
@@ -140,38 +148,43 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                             metar.icao
                         }
                     </div>
-                    <div className="WeatherIcon"><i className="wi wi-day-lightning" /></div>
+                    <div className="WeatherIcon" onClick={showModal}><i className="wi wi-day-lightning" /></div>
                 </div>
-                <div id="TwoByTwo">
-                    <div className="col">
-                        <span className="big">
-                            <i className="wi wi-barometer" />
-                        </span><br/>{metar.barometer.mb.toFixed(0)}
-                        <span className="unit"> mb</span>
+                {modalStatus ?
+                    <div id="MetarModal">
+                        <p>{metar.raw_text}</p>
                     </div>
-                    <div className="col">
-                        <span className="big">
-                            <i className="wi wi-strong-wind" />
-                        </span><br/>{metar.wind.degrees.toFixed(0)}&deg; / {metar.wind.speed_kts.toFixed(0)}
-                        <span className="unit"> kts</span>
+                    :
+                    <div id="TwoByTwo">
+                        <div className="col">
+                            <span className="big">
+                                <i className="wi wi-barometer" />
+                            </span><br />{metar.barometer.mb.toFixed(0)}
+                            <span className="unit"> mb</span>
+                        </div>
+                        <div className="col">
+                            <span className="big">
+                                <i className="wi wi-strong-wind" />
+                            </span><br />{metar.wind.degrees.toFixed(0)}&deg; / {metar.wind.speed_kts.toFixed(0)}
+                            <span className="unit"> kts</span>
+                        </div>
+                        <div>
+                            <span className="big">
+                                <i className="wi wi-thermometer" />
+                            </span><br />{metar.temperature.celsius.toFixed(0)}&deg;
+                            <span className="unit">C</span>
+                        </div>
+                        <div>
+                            <span className="big">
+                                <i className="wi wi-raindrop" />
+                            </span><br />{metar.dewpoint.celsius.toFixed(0)}&deg;
+                            <span className="unit">C</span>
+                        </div>
                     </div>
-                    <div>
-                        <span className="big">
-                            <i className="wi wi-thermometer" />
-                        </span><br/>{metar.temperature.celsius.toFixed(0)}&deg;
-                        <span className="unit">C</span>
-                    </div>
-                    <div>
-                        <span className="big">
-                            <i className="wi wi-raindrop" />
-                        </span><br/>{metar.dewpoint.celsius.toFixed(0)}&deg;
-                        <span className="unit">C</span>
-                    </div>
-                </div>
+                }
                 <div id="IcaoIdent">
                     <div>
                         <span className="icaoUpdate">Updated at {metar.observed.getUTCHours().toString().padStart(2, '0')}:{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
-                        <span className="icaoUpdate">{metar.icao}</span>
                     </div>
                 </div>
                 </>
