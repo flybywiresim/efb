@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import metarParser from 'aewx-metar-parser';
 import { Metar } from '@flybywiresim/api-client';
 
@@ -66,7 +66,9 @@ const MetarParserTypeState: MetarParserType = {
     flight_category: "",
 };
 
-const WeatherWidget = (props: any) => {
+type WeatherWidgetProps = { name: string, editIcao: string, icao: string };
+
+const WeatherWidget: FunctionComponent<WeatherWidgetProps> = (props: any) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeState);
     // This could be modified using the Settings tab perhaps?
@@ -101,7 +103,7 @@ const WeatherWidget = (props: any) => {
     }, []);
 
     return (
-        <div id="Panel">
+        <div className='weather-card' id={'weather-card-' + props.name}>
             {metar === undefined ?
                 <p>Loading ...</p>
                 :

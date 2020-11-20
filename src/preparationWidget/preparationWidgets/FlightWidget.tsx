@@ -1,7 +1,6 @@
 import React from 'react';
 
 type FlightWidgetProps = {
-    id: string,
     name: string,
     dep: string,
     arr: string,
@@ -21,30 +20,27 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
 
     render() {
         return (
-            <div className="FlightWidgetDiv">
-                <p className="WidgetTitle">{this.props.name}</p>
-                <div id="Panel">
-                    <div id="DepArr">
-                        <p>
-                            {this.props.dep}
-                            <i> </i>
-                            <i className="material-icons">send</i>
-                            <i> </i>
-                            {this.props.arr}
-                        </p>
-                    </div>
-                    <div id="Time">
-                        <p id="Title">TIME</p>
-                        <p>{this.props.elapsedTime}</p>
-                    </div>
-                    <div id="Distance">
-                        <p id="Title">DISTANCE</p>
-                        <p>{this.props.distance}</p>
-                    </div>
-                    <div id="ETA">
-                        <p id="Title">{this.props.id === "Previous" ? "" : "ETA (UTC)"}</p>
-                        <p>{this.props.eta}</p>
-                    </div>
+            <div id={'flight-' + this.props.name} className="flight-card">
+                <div className='origin-destination'>
+                    <p>
+                        {this.props.dep}
+                        <i> </i>
+                        <i className="material-icons">send</i>
+                        <i> </i>
+                        {this.props.arr}
+                    </p>
+                </div>
+                <div id="Time">
+                    <p className="Title">TIME</p>
+                    <p>{this.props.elapsedTime}</p>
+                </div>
+                <div id="Distance">
+                    <p className="Title">DISTANCE</p>
+                    <p>{this.props.distance}</p>
+                </div>
+                <div id="ETA">
+                    <p className="Title">{this.props.name === "Previous" ? "" : "ETA (UTC)"}</p>
+                    <p>{this.props.eta}</p>
                 </div>
             </div>
         );
