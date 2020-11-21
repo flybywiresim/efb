@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import metarParser from 'aewx-metar-parser';
 import { Metar } from '@flybywiresim/api-client';
+import { weatherIconArray } from './WeatherWidgetIcons';
 
 const MetarParserTypeWindState: Wind = {
     degrees:   0,
@@ -89,6 +90,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
 
     const [metar, setMetar] = useState<MetarParserType>(MetarParserTypeProp);
     const [modalStatus, setModalStatus] = useState(false);
+    const [icon, setIcon] = useState("wi wi-cloud");
 
     // This could be modified using the Settings tab perhaps?
     const source = "vatsim";
@@ -111,7 +113,6 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
             .then(result => {
                 const metarParse = metarParser(result.metar);
                 setMetar(metarParse);
-                console.log(metarParse);
             })
             .catch(() => {
                 setMetar(MetarParserTypeProp);
@@ -119,15 +120,54 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
     }
 
     useEffect(() => {
-        getMetar(props.icao, source)
-            .then(() => {
-                localStorage.setItem('origIcao', props.icao);
-            });
-    }, []);
+        getMetar(props.icao, source);
+    }, [props.icao]);
+
+    useEffect(() => {
+        selectWeatherIcon();
+    }, [metar]);
 
     function showModal() {
         setModalStatus(!modalStatus);
-        console.log(modalStatus);
+        selectWeatherIcon();
+    }
+
+    function selectWeatherIcon() {
+        const rawtext = metar.raw_text;
+        const date = new Date();
+        const day = date.getHours() > 5 && date.getHours() < 19 ? 1 : 0;
+        const precip = new RegExp("RA|SN|DZ|SG|PE|GR|GS").test(rawtext);
+        const wind = metar.wind.speed_kts;
+        var icon = "wi wi-cloud";
+        var findIcon = [];
+        findIcon = weatherIconArray.filter(item => {
+            return (item.day === day || item.day == 2)
+                && item.descriptor.every(desc => rawtext.includes(desc))
+                && rawtext.search(item.precip) != -1
+                && item.cloud.some(cld => rawtext.includes(cld))
+                && (wind > item.wind[0] && wind < item.wind[1])
+                && item.visibility.some(vis => rawtext.includes(vis));
+        });
+
+        if (findIcon.length === 1) {
+            icon = findIcon[0].iconName;
+        } else
+        if (findIcon.length > 1) {
+            var findIcon2 = [];
+            if (precip) {
+                findIcon2 = findIcon.filter(item => {
+                    return (new RegExp("RA|SN|DZ|SG|PE|GR|GS").test(item.precip));
+                });
+            } else {
+                findIcon2 = findIcon.filter(item => {
+                    return (item.day == day);
+                });
+            }
+            if (findIcon2.length > 0) {
+                icon = findIcon2[0].iconName;
+            }
+        }
+        setIcon(icon);
     }
 
     return (
@@ -148,7 +188,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                             metar.icao
                         }
                     </div>
-                    <div className="WeatherIcon" onClick={showModal}><i className="wi wi-day-lightning" /></div>
+                    <div className="WeatherIcon" onClick={showModal}><i className={icon} /></div>
                 </div>
                 {modalStatus ?
                     <div id="MetarModal">
@@ -184,7 +224,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                 }
                 <div id="IcaoIdent">
                     <div>
-                        <span className="icaoUpdate">Updated at {metar.observed.getUTCHours().toString().padStart(2, '0')}:{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
+                        <span className="icaoUpdate">Updated: {metar.observed.getUTCDate().toString().padStart(2, '0')}{metar.observed.getUTCHours().toString().padStart(2, '0')}{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
                     </div>
                 </div>
                 </>
