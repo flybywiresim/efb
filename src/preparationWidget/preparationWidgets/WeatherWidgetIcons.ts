@@ -100,6 +100,26 @@ export const weatherIconArray = [
         wind:       [0, 21]
     },
     {
+        iconName:   "wi wi-windy",
+        day:        1,
+        descriptor: [],
+        precip:     "",
+        visibility: ["CAVOK", "NCD"],
+        other:      [""],
+        cloud:      [""],
+        wind:       [22, 33]
+    },
+    {
+        iconName:   "wi wi-strong-wind",
+        day:        1,
+        descriptor: [],
+        precip:     "",
+        visibility: ["CAVOK", "NCD"],
+        other:      [""],
+        cloud:      [""],
+        wind:       [34, 63]
+    },
+    {
         iconName:   "wi wi-night-clear",
         day:        0,
         descriptor: [],
@@ -128,5 +148,65 @@ export const weatherIconArray = [
         other:      [""],
         cloud:      ["FEW", "SCT"],
         wind:       [0, 21]
+    },
+    {
+        iconName:   "wi wi-day-cloudy-gusts",
+        day:        0,
+        descriptor: [],
+        precip:     "",
+        visibility: [""],
+        other:      [""],
+        cloud:      ["SCT", "BKN", "OVC"],
+        wind:       [22, 63]
+    },
+    {
+        iconName:   "wi wi-night-alt-cloudy-gusts",
+        day:        1,
+        descriptor: [],
+        precip:     "",
+        visibility: [""],
+        other:      [""],
+        cloud:      ["SCT", "BKN", "OVC"],
+        wind:       [22, 63]
+    },
+    {
+        iconName:   "wi wi-day-cloudy-windy",
+        day:        1,
+        descriptor: [],
+        precip:     "",
+        visibility: [""],
+        other:      [""],
+        cloud:      ["FEW", "SCT"],
+        wind:       [22, 63]
+    },
+    {
+        iconName:   "wi wi-night-alt-cloudy-windy",
+        day:        2,
+        descriptor: [],
+        precip:     "",
+        visibility: [""],
+        other:      [""],
+        cloud:      ["FEW", "SCT"],
+        wind:       [22, 63]
+    },
+    {
+        iconName:   "wi wi-snow",
+        day:        2,
+        descriptor: [],
+        precip:     "SN",
+        visibility: [""],
+        other:      [""],
+        cloud:      [""],
+        wind:       [0, 21]
+    },
+    {
+        iconName:   "wi wi-snow-wind",
+        day:        2,
+        descriptor: [],
+        precip:     "SN",
+        visibility: [""],
+        other:      [""],
+        cloud:      [""],
+        wind:       [22, 63]
     },
 ];

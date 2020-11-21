@@ -113,7 +113,6 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
             .then(result => {
                 const metarParse = metarParser(result.metar);
                 setMetar(metarParse);
-                console.log(metarParse);
             })
             .catch(() => {
                 setMetar(MetarParserTypeProp);
@@ -121,9 +120,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
     }
 
     useEffect(() => {
-        console.log("Props has changed");
         getMetar(props.icao, source);
-        console.log(weatherIconArray);
     }, [props.icao]);
 
     useEffect(() => {
@@ -136,23 +133,17 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
     }
 
     function selectWeatherIcon() {
-        // Check local time
-        // Check wind
-        // Check clouds
-        // Check for rain and snow
         const rawtext = metar.raw_text;
         const date = new Date();
-        console.log("Get hours is " + date.getHours());
         const day = date.getHours() > 5 && date.getHours() < 19 ? 1 : 0;
-        console.log("Daytime is " + day);
+        const precip = new RegExp("RA|SN|DZ|SG|PE|GR|GS").test(rawtext);
         const wind = metar.wind.speed_kts;
         var icon = "wi wi-cloud";
         var findIcon = [];
         findIcon = weatherIconArray.filter(item => {
-            console.log((item.day === day || item.day == 2));
             return (item.day === day || item.day == 2)
                 && item.descriptor.every(desc => rawtext.includes(desc))
-                && rawtext.includes(item.precip)
+                && rawtext.search(item.precip) != -1
                 && item.cloud.some(cld => rawtext.includes(cld))
                 && (wind > item.wind[0] && wind < item.wind[1])
                 && item.visibility.some(vis => rawtext.includes(vis));
@@ -162,9 +153,20 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
             icon = findIcon[0].iconName;
         } else
         if (findIcon.length > 1) {
-            console.log(findIcon);
+            var findIcon2 = [];
+            if (precip) {
+                findIcon2 = findIcon.filter(item => {
+                    return (new RegExp("RA|SN|DZ|SG|PE|GR|GS").test(item.precip));
+                });
+            } else {
+                findIcon2 = findIcon.filter(item => {
+                    return (item.day == day);
+                });
+            }
+            if (findIcon2.length > 0) {
+                icon = findIcon2[0].iconName;
+            }
         }
-        console.log("Icon will be " + icon);
         setIcon(icon);
     }
 
@@ -222,7 +224,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                 }
                 <div id="IcaoIdent">
                     <div>
-                        <span className="icaoUpdate">Updated at {metar.observed.getUTCHours().toString().padStart(2, '0')}:{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
+                        <span className="icaoUpdate">Updated: {metar.observed.getUTCDate().toString().padStart(2, '0')}{metar.observed.getUTCHours().toString().padStart(2, '0')}{metar.observed.getUTCMinutes().toString().padStart(2, '0')}z</span>
                     </div>
                 </div>
                 </>
