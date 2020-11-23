@@ -7,16 +7,39 @@ type SettingsState = {
 
 class Settings extends React.Component<SettingsProps, SettingsState> {
     state: SettingsState = {
-        // @ts-ignore
-        darkMode: document.getElementById("root").classList.contains("darkMode")
+        darkMode: this.darkModeInit(),
     };
 
-    handleDark() {
-        return () => {
-            const element = document.body;
-            element.classList.toggle("darkMode");
-            this.setState({ darkMode: !this.state.darkMode });
-        };
+    darkModeInit() {
+        const darkMode = window.localStorage.getItem("darkMode");
+        if (darkMode === null) {
+            // @ts-ignore
+            return document.getElementById("root").classList.contains("darkMode");
+        } else if (darkMode === "true") {
+            this.handleDark(true);
+            return true;
+        } else {
+            this.handleDark(false);
+            return false;
+        }
+    }
+
+    handleDark(darkMode: boolean) {
+        const element = document.body;
+        if (darkMode) {
+            element.classList.add("darkMode");
+        } else {
+            element.classList.remove("darkMode");
+        }
+        this.setState({ darkMode: darkMode });
+    }
+
+    handleDarkToggle() {
+        const darkMode = !this.state.darkMode;
+        const element = document.body;
+        element.classList.toggle("darkMode");
+        this.setState({ darkMode: darkMode });
+        window.localStorage.setItem("darkMode", String(darkMode));
     }
 
     render() {
@@ -24,43 +47,7 @@ class Settings extends React.Component<SettingsProps, SettingsState> {
             <div className="Settings">
                 <div id="SettingsItem1" className="SettingsItem">
                     <p>Dark Mode</p>
-                    <p className="Switch" onClick={this.handleDark()}>{this.state.darkMode ? "Off" : "On"}</p>
-                </div>
-                <div id="SettingsItem2" className="SettingsItem">
-                    <p>Placeholder Data 2</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem3" className="SettingsItem">
-                    <p>Placeholder Data 3</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem4" className="SettingsItem">
-                    <p>Placeholder Data 4</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem5" className="SettingsItem">
-                    <p>Placeholder Data 5</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem6" className="SettingsItem">
-                    <p>Placeholder Data 6</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem7" className="SettingsItem">
-                    <p>Placeholder Data 7</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem8" className="SettingsItem">
-                    <p>Placeholder Data 8</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem9" className="SettingsItem">
-                    <p>Placeholder Data 9</p>
-                    <p className="Switch">Switch</p>
-                </div>
-                <div id="SettingsItem10" className="SettingsItem">
-                    <p>Placeholder Data 10</p>
-                    <p className="Switch">Switch</p>
+                    <p className="Switch" onClick={() => this.handleDarkToggle()}>{this.state.darkMode ? "On" : "Off"}</p>
                 </div>
             </div>
         );

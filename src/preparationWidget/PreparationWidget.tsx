@@ -8,6 +8,7 @@ type PreparationWidgetsProps = {
     arrivingAirport: string,
     flightDistance: string,
     flightETAInSeconds: string,
+    timeSinceStart: string,
 }
 
 type PreparationWidgetsState = {}
@@ -34,8 +35,22 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                 <span id='title-wx' className="WidgetTitle">Weather</span>
                 <span id='title-loadsheet' className="WidgetTitle">Loadsheet</span>
 
-                <FlightWidget name="todays" dep={this.props.departingAirport} arr={this.props.arrivingAirport} elapsedTime="00:49" distance={this.props.flightDistance} eta={this.calculateFlightTime(this.props.flightETAInSeconds)}/>
-                <FlightWidget name="previous" dep="EGLL" arr="LFPG" elapsedTime="01:25" distance="274nm" eta="" />
+                <FlightWidget
+                    name="todays"
+                    dep={this.props.departingAirport}
+                    arr={this.props.arrivingAirport}
+                    elapsedTime="00:49"
+                    distance={this.props.flightDistance}
+                    eta={this.calculateFlightTime(this.props.flightETAInSeconds)}
+                    timeSinceStart={this.props.timeSinceStart} />
+                <FlightWidget
+                    name="previous"
+                    dep="EGLL"
+                    arr="LFPG"
+                    elapsedTime="01:25"
+                    distance="274nm"
+                    eta=""
+                    timeSinceStart="" />
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />
                 <WeatherWidget name='dest' editIcao="yes" icao={this.props.arrivingAirport} />

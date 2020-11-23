@@ -15,16 +15,34 @@ type ToolbarState = {
 class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     constructor(props: ToolbarProps) {
         super(props);
-        this.state = { activeIndex: 1 };
         this.handleClick = this.handleClick.bind(this);
     }
 
+    state: ToolbarState = {
+        activeIndex: this.indexInit(),
+    };
+
     tabs = [
-        { id: 1, name: 'Preparation', link: 'preparation '},
+        { id: 1, name: 'Preparation', link: 'preparation'},
         { id: 2, name: 'Flight & Navigation', link: 'flight-navigation' },
         { id: 3, name: 'Multiplayer', link: 'multiplayer' },
         { id: 4, name: 'Settings', link: 'settings' }
     ];
+
+    indexInit() {
+        const url = window.location.pathname;
+        if (url === "/" || url === "/preparation") {
+            return 1;
+        } else if (url === "/flight-navigation") {
+            return 2;
+        } else if (url === "/multiplayer") {
+            return 3;
+        } else if (url === "/settings") {
+            return 4;
+        } else {
+            return 1;
+        }
+    }
 
     handleClick(index: number) {
         console.log("Active index is " + this.state.activeIndex);
@@ -49,7 +67,7 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 
                     <div id="LoadSimbrief" className="Tab">
                         <p onClick={() => this.props.fetchSimbrief()}>
-                            Load SimBrief
+                            Load Flightdata
                         </p>
                     </div>
                 </div>
