@@ -21,7 +21,7 @@ import './preparationWidget/PreparationWidget.scss';
 type AppProps = {};
 
 type AppState = {
-    simbriefUsername: string | undefined;
+    simbriefUsername: string;
     departingAirport: string;
     arrivingAirport: string;
     flightDistance: string;
@@ -37,9 +37,18 @@ class App extends React.Component<AppProps, AppState> {
     state: AppState = {
         departingAirport: 'N/A',
         arrivingAirport: 'N/A',
-        simbriefUsername: '',
+        simbriefUsername: this.fetchSimbriefUsername(),
         flightDistance: 'N/A',
         flightETAInSeconds: 'N/A'
+    }
+
+    fetchSimbriefUsername() {
+        const username = window.localStorage.getItem("SimbriefUsername");
+        if (username === null) {
+            return '';
+        } else {
+            return username;
+        }
     }
 
     async fetchSimbriefData() {
@@ -60,6 +69,7 @@ class App extends React.Component<AppProps, AppState> {
 
     changeSimbriefUsername = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         this.setState({ simbriefUsername: event.target.value.toString() });
+        window.localStorage.setItem("SimbriefUsername", event.target.value.toString());
     }
 
     render() {
@@ -89,7 +99,7 @@ class App extends React.Component<AppProps, AppState> {
                             </div>
                         </Route>
                         <Route path="/profile">
-                            <Profile changeSimbriefUsername={this.changeSimbriefUsername}/>
+                            <Profile simbriefUsername={this.state.simbriefUsername} changeSimbriefUsername={this.changeSimbriefUsername}/>
                         </Route>
                         <Route path="/">
                             <PreparationWidgets
