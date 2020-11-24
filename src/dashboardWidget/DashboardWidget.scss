@@ -43,7 +43,7 @@
         grid-template-areas:
             "DepArr DepArr"
             "Time Distance"
-            "ETA .";
+            "ETA ETA";
 
         .Title {
             font-size:1.1rem;
@@ -59,6 +59,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        #ETA {
+            grid-area: ETA;
         }
     }
 

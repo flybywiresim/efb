@@ -42,7 +42,7 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                     <p>{this.props.distance}</p>
                 </div>
                 <div id="ETA">
-                    <p className="Title">{this.props.name === "todays" ? "ETA (UTC)" : ""}</p>
+                    <p className="Title">{this.props.name === "todays" ? "ETA (UTC)" : "Arrival Time (UTC)"}</p>
                     <p>{this.props.eta}</p>
                 </div>
             </div>

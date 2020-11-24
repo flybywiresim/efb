@@ -50,7 +50,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                     arr="LFPG"
                     elapsedTime="01:25"
                     distance="274nm"
-                    eta=""
+                    eta="15:43"
                     timeSinceStart="" />
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />

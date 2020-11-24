@@ -73,7 +73,6 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 
                 <div id="ProfileToolbar">
                     <Link to="/profile">
-                        <p>Profile</p>
                         <i className="material-icons" id="Icon">account_circle</i>
                     </Link>
                 </div>
