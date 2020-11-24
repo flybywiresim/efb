@@ -110,7 +110,7 @@ class App extends React.Component<AppProps, AppState> {
                         <Route path="/loadsheet">
                             <LoadsheetWidget />
                         </Route>
-                        <Route path="/flight-navigation">
+                        <Route path="/flight">
                             <div>
                             </div>
                         </Route>
