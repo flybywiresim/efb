@@ -18,30 +18,29 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    tabs = [
+        { id: 1, name: 'Dashboard', link: 'dashboard'},
+        { id: 2, name: 'Loadsheet', link: 'loadsheet'},
+        { id: 3, name: 'Flight & Navigation', link: 'flight-navigation' },
+        { id: 4, name: 'Multiplayer', link: 'multiplayer' },
+        { id: 5, name: 'Settings', link: 'settings' }
+    ];
+
     state: ToolbarState = {
         activeIndex: this.indexInit(),
     };
 
-    tabs = [
-        { id: 1, name: 'Preparation', link: 'preparation'},
-        { id: 2, name: 'Flight & Navigation', link: 'flight-navigation' },
-        { id: 3, name: 'Multiplayer', link: 'multiplayer' },
-        { id: 4, name: 'Settings', link: 'settings' }
-    ];
-
-    indexInit() {
+    indexInit(): number {
         const url = window.location.pathname;
-        if (url === "/" || url === "/preparation") {
-            return 1;
-        } else if (url === "/flight-navigation") {
-            return 2;
-        } else if (url === "/multiplayer") {
-            return 3;
-        } else if (url === "/settings") {
-            return 4;
-        } else {
-            return 1;
-        }
+        let index = 1;
+        this.tabs.map((tab) => {
+            if (("/" + tab.link) === url) {
+                index = tab.id;
+            } else if (url === "/") {
+                index = 1;
+            }
+        });
+        return index;
     }
 
     handleClick(index: number) {

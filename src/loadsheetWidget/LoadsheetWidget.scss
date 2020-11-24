@@ -1,0 +1,61 @@
+.loadsheet-div {
+  display: grid;
+  grid-template-rows: 5% 95%;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "LoadsheetTitle LoadsheetTitle"
+    "PayloadCard    FuelCard";
+  height: 830px;
+
+  span.WidgetTitle#title-map {
+    grid-area: LoadsheetTitle;
+  }
+
+  #loadsheet-payload-card {
+    grid-area: PayloadCard;
+
+    --loadsheetFooterBackground: #567FD2;
+  }
+
+  #loadsheet-fuel-card {
+    grid-area: FuelCard;
+
+    --loadsheetFooterBackground: #FE5353;
+  }
+
+  .loadsheet-card {
+    height: 100%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    background: var(--cardBackground);
+    display: grid;
+    margin: 0.5em;
+    grid-template-rows: 90% 10%;
+    grid-template-areas:
+            "Body"
+            "Footer";
+
+    .loadsheet-card-body {
+      grid-area: Body;
+    }
+
+    .loadsheet-card-footer {
+      grid-area: Footer;
+      background-color: var(--loadsheetFooterBackground);
+
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 15px;
+
+      .footer-title {
+        font-size:0.9rem;
+        font-weight: 700;
+        color: var(--mainTextSecondary);
+        grid-area: DepArr;
+      }
+    }
+  }
+}

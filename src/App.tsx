@@ -9,16 +9,18 @@ import { getSimbriefData } from './simbriefApi';
 import './aewx-metar-parser.d';
 import Time from "./time/Time";
 import Toolbar from "./toolbar/Toolbar";
-import PreparationWidgets from "./preparationWidget/PreparationWidget";
+import DashboardWidgets from "./dashboardWidget/DashboardWidget";
+import LoadsheetWidget from "./loadsheetWidget/LoadsheetWidget";
 import Settings from "./settings/Settings";
 import Profile from "./profile/Profile";
 
 import './App.scss';
 import './time/Time.scss';
 import './toolbar/Toolbar.scss';
+import './dashboardWidget/DashboardWidget.scss';
+import './loadsheetWidget/LoadsheetWidget.scss';
 import './settings/Settings.scss';
 import './profile/Profile.scss';
-import './preparationWidget/PreparationWidget.scss';
 
 type AppProps = {};
 
@@ -97,13 +99,16 @@ class App extends React.Component<AppProps, AppState> {
                 <Toolbar fetchSimbrief={this.fetchSimbriefData}/>
                 <div id="main-container">
                     <Switch>
-                        <Route path="/preparation">
-                            <PreparationWidgets
+                        <Route path="/dashboard">
+                            <DashboardWidgets
                                 departingAirport={this.state.departingAirport}
                                 arrivingAirport={this.state.arrivingAirport}
                                 flightDistance={this.state.flightDistance}
                                 flightETAInSeconds={this.state.flightETAInSeconds}
                                 timeSinceStart={this.state.timeSinceStart} />
+                        </Route>
+                        <Route path="/loadsheet">
+                            <LoadsheetWidget />
                         </Route>
                         <Route path="/flight-navigation">
                             <div>
@@ -124,7 +129,7 @@ class App extends React.Component<AppProps, AppState> {
                                 changeSimbriefUsername={this.changeSimbriefUsername} />
                         </Route>
                         <Route path="/">
-                            <PreparationWidgets
+                            <DashboardWidgets
                                 departingAirport={this.state.departingAirport}
                                 arrivingAirport={this.state.arrivingAirport}
                                 flightDistance={this.state.flightDistance}

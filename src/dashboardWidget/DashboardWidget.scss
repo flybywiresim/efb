@@ -11,9 +11,9 @@
     align-items: flex-start;
     overflow: hidden;
     grid-template-areas:
-        "TodaysFlightTitle WeatherTitle LoadsheetTitle LoadsheetTitle"
-        "TodaysFlightCard  OriginWxCard PayloadCard    FuelCard"
-        "PreviousLegsCard  DestWxCard   PayloadCard    FuelCard";
+        "TodaysFlightTitle WeatherTitle MapTitle MapTitle"
+        "TodaysFlightCard  OriginWxCard Map      Map"
+        "PreviousLegsCard  DestWxCard   Map      Map";
 
     span.WidgetTitle#title-todays-flight {
         grid-area: TodaysFlightTitle;
@@ -23,8 +23,8 @@
         grid-area: WeatherTitle;
     }
 
-    span.WidgetTitle#title-loadsheet {
-        grid-area: LoadsheetTitle;
+    span.WidgetTitle#title-map {
+        grid-area: MapTitle;
     }
 
     // TODO move this to its own stylesheet
@@ -184,43 +184,6 @@
         }
     }
 
-    // TODO move this to its own stylesheet
-
-    .loadsheet-card {
-        height: 100%;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-        background: var(--cardBackground);
-        display: grid;
-        grid-template-rows: 90% 10%;
-        grid-template-areas:
-            "Body"
-            "Footer";
-
-        .loadsheet-card-body {
-            grid-area: Body;
-        }
-
-        .loadsheet-card-footer {
-            grid-area: Footer;
-            background-color: var(--loadsheetFooterBackground);
-
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 15px;
-
-            .footer-title {
-                font-size:0.9rem;
-                font-weight: 700;
-                color: var(--mainTextSecondary);
-                grid-area: DepArr;
-            }
-        }
-    }
-
     #flight-todays {
         grid-area: TodaysFlightCard;
     }
@@ -239,17 +202,5 @@
 
     textarea:focus, input:focus{
         outline: none;
-    }
-
-    #loadsheet-payload-card {
-        grid-area: PayloadCard;
-
-        --loadsheetFooterBackground: #567FD2;
-    }
-
-    #loadsheet-fuel-card {
-        grid-area: FuelCard;
-
-        --loadsheetFooterBackground: #FE5353;
     }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
-import FlightWidget from "./preparationWidgets/FlightWidget";
-import WeatherWidget from "./preparationWidgets/WeatherWidget";
-import LoadsheetWidget from "./preparationWidgets/LoadsheetWidget";
+import FlightWidget from "./dashboardWidgets/FlightWidget";
+import WeatherWidget from "./dashboardWidgets/WeatherWidget";
 
 type PreparationWidgetsProps = {
     departingAirport: string,
@@ -33,7 +32,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
             <div className="PreparationWidgets">
                 <span id='title-todays-flight' className="WidgetTitle">Today's flight</span>
                 <span id='title-wx' className="WidgetTitle">Weather</span>
-                <span id='title-loadsheet' className="WidgetTitle">Loadsheet</span>
+                <span id='title-map' className="WidgetTitle">Map</span>
 
                 <FlightWidget
                     name="todays"
@@ -54,8 +53,6 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />
                 <WeatherWidget name='dest' editIcao="yes" icao={this.props.arrivingAirport} />
-
-                <LoadsheetWidget/>
             </div>
         );
     }
