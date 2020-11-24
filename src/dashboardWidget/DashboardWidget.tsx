@@ -1,6 +1,8 @@
 import React from 'react';
 import FlightWidget from "./dashboardWidgets/FlightWidget";
 import WeatherWidget from "./dashboardWidgets/WeatherWidget";
+// @ts-ignore
+import Map from "fbw-map";
 
 type PreparationWidgetsProps = {
     departingAirport: string,
@@ -53,6 +55,9 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />
                 <WeatherWidget name='dest' editIcao="yes" icao={this.props.arrivingAirport} />
+                <div className="map-widget">
+                    <Map />
+                </div>
             </div>
         );
     }

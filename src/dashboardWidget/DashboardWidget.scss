@@ -25,6 +25,7 @@
 
     span.WidgetTitle#title-map {
         grid-area: MapTitle;
+        visibility: hidden;
     }
 
     // TODO move this to its own stylesheet
@@ -182,6 +183,17 @@
             font-size: 1.1rem;
             color: var(--cardText);
         }
+    }
+
+    .map-widget {
+        grid-area: Map;
+        height: 490px;
+        width: 950px;
+    }
+
+    #mapid {
+        width: 660px !important;
+        height: 740px !important;
     }
 
     #flight-todays {
