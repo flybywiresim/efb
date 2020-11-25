@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
 import FlightWidget from "./dashboardWidgets/FlightWidget";
 import WeatherWidget from "./dashboardWidgets/WeatherWidget";
 // @ts-ignore
@@ -36,22 +41,42 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                 <span id='title-wx' className="WidgetTitle">Weather</span>
                 <span id='title-map' className="WidgetTitle">Map</span>
 
-                <FlightWidget
-                    name="todays"
-                    dep={this.props.departingAirport}
-                    arr={this.props.arrivingAirport}
-                    elapsedTime="00:49"
-                    distance={this.props.flightDistance}
-                    eta={this.calculateFlightTime(this.props.flightETAInSeconds)}
-                    timeSinceStart={this.props.timeSinceStart} />
-                <FlightWidget
-                    name="previous"
-                    dep="EGLL"
-                    arr="LFPG"
-                    elapsedTime="01:25"
-                    distance="274nm"
-                    eta="15:43"
-                    timeSinceStart="" />
+                <Route>
+                    <div className="flight-widget">
+                        <Switch>
+                            <Route path="/dashboard/primary">
+                                <FlightWidget
+                                    name="todays"
+                                    dep={this.props.departingAirport}
+                                    arr={this.props.arrivingAirport}
+                                    elapsedTime="00:49"
+                                    distance={this.props.flightDistance}
+                                    eta={this.calculateFlightTime(this.props.flightETAInSeconds)}
+                                    timeSinceStart={this.props.timeSinceStart} />
+                            </Route>
+                            <Route path="/dashboard/secondary">
+                                <FlightWidget
+                                    name="secondary"
+                                    dep="EGLL"
+                                    arr="LFPG"
+                                    elapsedTime="01:25"
+                                    distance="274nm"
+                                    eta="15:43"
+                                    timeSinceStart="" />
+                            </Route>
+                            <Route path="/dashboard">
+                                <FlightWidget
+                                    name="todays"
+                                    dep={this.props.departingAirport}
+                                    arr={this.props.arrivingAirport}
+                                    elapsedTime="00:49"
+                                    distance={this.props.flightDistance}
+                                    eta={this.calculateFlightTime(this.props.flightETAInSeconds)}
+                                    timeSinceStart={this.props.timeSinceStart} />
+                            </Route>
+                        </Switch>
+                    </div>
+                </Route>
 
                 <WeatherWidget name='origin' editIcao="yes" icao={this.props.departingAirport} />
                 <WeatherWidget name='dest' editIcao="yes" icao={this.props.arrivingAirport} />

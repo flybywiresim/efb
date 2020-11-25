@@ -12,8 +12,8 @@
     overflow: hidden;
     grid-template-areas:
         "TodaysFlightTitle WeatherTitle MapTitle MapTitle"
-        "TodaysFlightCard  OriginWxCard Map      Map"
-        "PreviousLegsCard  DestWxCard   Map      Map";
+        "FlightCard        OriginWxCard Map      Map"
+        "FlightCard        DestWxCard   Map      Map";
 
     span.WidgetTitle#title-todays-flight {
         grid-area: TodaysFlightTitle;
@@ -30,39 +30,63 @@
 
     // TODO move this to its own stylesheet
 
-    .flight-card {
+    .flight-widget {
+        grid-area: FlightCard;
         height: 100%;
-        display: grid;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto auto;
-        color: var(--cardText);
-        background: var(--cardBackground);
-        padding: 0 5%;
-        font-size: 2.25rem;
-        grid-template-areas:
-            "DepArr DepArr"
-            "Time Distance"
-            "ETA ETA";
 
-        .Title {
-            font-size:1.1rem;
-            font-weight: 700;
-            color: var(--mainTextSecondary);
-            grid-area: DepArr;
-        }
-
-        .origin-destination {
+        .flight-card {
+            height: 100%;
+            display: grid;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+            grid-template-columns: auto auto;
+            grid-template-rows: 4rem auto auto auto 45%;
+            color: var(--cardText);
+            background: var(--cardBackground);
+            padding: 0 5%;
             font-size: 2.25rem;
-            font-weight: 700;
-            grid-area: DepArr;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            grid-template-areas:
+            "Toolbar Toolbar"
+            "DepArr  DepArr"
+            "Time    Distance"
+            "ETA     ETA";
 
-        #ETA {
-            grid-area: ETA;
+            .flight-widget-toolbar {
+                margin-top: 1rem;
+                grid-area: Toolbar;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                font-size: 1.5rem;
+
+                a {
+                    color: inherit;
+                    text-decoration: inherit;
+                }
+
+                #secondary-button {
+                    margin-left: 3rem;
+                }
+            }
+
+            .Title {
+                font-size:1.1rem;
+                font-weight: 700;
+                color: var(--mainTextSecondary);
+                grid-area: DepArr;
+            }
+
+            .origin-destination {
+                font-size: 2.25rem;
+                font-weight: 700;
+                grid-area: DepArr;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #ETA {
+                grid-area: ETA;
+            }
         }
     }
 
@@ -191,8 +215,8 @@
 
     .map-widget {
         grid-area: Map;
-        height: 490px;
-        width: 950px;
+        height: 100%;
+        width: 100%;
     }
 
     #mapid {
