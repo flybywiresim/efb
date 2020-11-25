@@ -64,6 +64,16 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
                                     eta="15:43"
                                     timeSinceStart="" />
                             </Route>
+                            <Route path="/">
+                                <FlightWidget
+                                    name="todays"
+                                    dep={this.props.departingAirport}
+                                    arr={this.props.arrivingAirport}
+                                    elapsedTime="00:49"
+                                    distance={this.props.flightDistance}
+                                    eta={this.calculateFlightTime(this.props.flightETAInSeconds)}
+                                    timeSinceStart={this.props.timeSinceStart} />
+                            </Route>
                             <Route path="/dashboard">
                                 <FlightWidget
                                     name="todays"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import metarParser from 'aewx-metar-parser';
-import { formatTime } from "../../time/Time";
+import { formatTime, dateFormat} from "../../time/Time";
 import { Metar } from '@flybywiresim/api-client';
 import { weatherIconArray } from './WeatherWidgetIcons';
 
@@ -225,7 +225,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                 }
                 <div id="IcaoIdent">
                     <div>
-                        <span className="icaoUpdate">Updated: {metar.observed.getUTCDate().toString().padStart(2, '0') + " " + formatTime(([metar.observed.getUTCHours(), metar.observed.getUTCMinutes()]))}z</span>
+                        <span className="icaoUpdate">Last updated on the {dateFormat(metar.observed.getUTCDate()) + " at " + formatTime(([metar.observed.getUTCHours(), metar.observed.getUTCMinutes()]))}z</span>
                     </div>
                 </div>
                 </>
