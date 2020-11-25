@@ -62,3 +62,21 @@ export function formatTime(numbers: number[]) {
         return "N/A";
     }
 }
+
+export function dateFormat(date: number): string {
+    let numberWithSuffix = "0";
+    const dateRemOf10 = date % 10;
+    const dateRemOf100 = date % 100;
+
+    if ((dateRemOf10 === 1) && (dateRemOf100 !== 11)) {
+        numberWithSuffix = date + "st";
+    } else if ((dateRemOf10 === 2) && (dateRemOf100 !== 12)) {
+        numberWithSuffix = date + "nd";
+    } else if ((dateRemOf10 === 3) && (dateRemOf100 !== 13)) {
+        numberWithSuffix = date + "rd";
+    } else {
+        numberWithSuffix = date + "th";
+    }
+
+    return numberWithSuffix;
+}

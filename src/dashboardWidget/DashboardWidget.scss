@@ -11,9 +11,9 @@
     align-items: flex-start;
     overflow: hidden;
     grid-template-areas:
-        "TodaysFlightTitle WeatherTitle LoadsheetTitle LoadsheetTitle"
-        "TodaysFlightCard  OriginWxCard PayloadCard    FuelCard"
-        "PreviousLegsCard  DestWxCard   PayloadCard    FuelCard";
+        "TodaysFlightTitle WeatherTitle MapTitle MapTitle"
+        "FlightCard        OriginWxCard Map      Map"
+        "FlightCard        DestWxCard   Map      Map";
 
     span.WidgetTitle#title-todays-flight {
         grid-area: TodaysFlightTitle;
@@ -23,41 +23,70 @@
         grid-area: WeatherTitle;
     }
 
-    span.WidgetTitle#title-loadsheet {
-        grid-area: LoadsheetTitle;
+    span.WidgetTitle#title-map {
+        grid-area: MapTitle;
+        visibility: hidden;
     }
 
     // TODO move this to its own stylesheet
 
-    .flight-card {
+    .flight-widget {
+        grid-area: FlightCard;
         height: 100%;
-        display: grid;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto auto;
-        color: var(--cardText);
-        background: var(--cardBackground);
-        padding: 0 5%;
-        font-size: 2.25rem;
-        grid-template-areas:
-            "DepArr DepArr"
-            "Time Distance"
-            "ETA .";
 
-        .Title {
-            font-size:1.1rem;
-            font-weight: 700;
-            color: var(--mainTextSecondary);
-            grid-area: DepArr;
-        }
-
-        .origin-destination {
+        .flight-card {
+            height: 100%;
+            display: grid;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+            grid-template-columns: auto auto;
+            grid-template-rows: 4rem auto auto auto 45%;
+            color: var(--cardText);
+            background: var(--cardBackground);
+            padding: 0 5%;
             font-size: 2.25rem;
-            font-weight: 700;
-            grid-area: DepArr;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            grid-template-areas:
+            "Toolbar Toolbar"
+            "DepArr  DepArr"
+            "Time    Distance"
+            "ETA     ETA";
+
+            .flight-widget-toolbar {
+                margin-top: 1rem;
+                grid-area: Toolbar;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                font-size: 1.5rem;
+
+                a {
+                    color: inherit;
+                    text-decoration: inherit;
+                }
+
+                #secondary-button {
+                    margin-left: 3rem;
+                }
+            }
+
+            .Title {
+                font-size:1.1rem;
+                font-weight: 700;
+                color: var(--mainTextSecondary);
+                grid-area: DepArr;
+            }
+
+            .origin-destination {
+                font-size: 2.25rem;
+                font-weight: 700;
+                grid-area: DepArr;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #ETA {
+                grid-area: ETA;
+            }
         }
     }
 
@@ -184,41 +213,15 @@
         }
     }
 
-    // TODO move this to its own stylesheet
-
-    .loadsheet-card {
+    .map-widget {
+        grid-area: Map;
         height: 100%;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-        background: var(--cardBackground);
-        display: grid;
-        grid-template-rows: 90% 10%;
-        grid-template-areas:
-            "Body"
-            "Footer";
+        width: 100%;
+    }
 
-        .loadsheet-card-body {
-            grid-area: Body;
-        }
-
-        .loadsheet-card-footer {
-            grid-area: Footer;
-            background-color: var(--loadsheetFooterBackground);
-
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 15px;
-
-            .footer-title {
-                font-size:0.9rem;
-                font-weight: 700;
-                color: var(--mainTextSecondary);
-                grid-area: DepArr;
-            }
-        }
+    #mapid {
+        width: 660px !important;
+        height: 740px !important;
     }
 
     #flight-todays {
@@ -239,17 +242,5 @@
 
     textarea:focus, input:focus{
         outline: none;
-    }
-
-    #loadsheet-payload-card {
-        grid-area: PayloadCard;
-
-        --loadsheetFooterBackground: #567FD2;
-    }
-
-    #loadsheet-fuel-card {
-        grid-area: FuelCard;
-
-        --loadsheetFooterBackground: #FE5353;
     }
 }

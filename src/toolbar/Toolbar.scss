@@ -8,7 +8,7 @@
 
   width: 1430px;
 
-  padding: $padding $padding $padding $spacing-padding;
+  padding: 2em $padding $padding $spacing-padding;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -24,7 +24,7 @@
     margin-left: $spacing-padding;
 
     & > div:hover {
-      border-bottom: solid var(--mainTextSecondary) .1em;
+      border-bottom: solid var(--toolbarUnderlineColor) .1em;
     }
 
     img.FBW-Logo {
@@ -45,11 +45,11 @@
       cursor: pointer;
 
       &.Active {
-        border-bottom: solid var(--mainTextSecondary) .1em;
+        border-bottom: solid var(--toolbarUnderlineColor) .1em;
       }
 
       &.Active:hover {
-        border-bottom: solid var(--mainTextSecondary) .1em;
+        border-bottom: solid var(--toolbarUnderlineColor) .1em;
       }
 
       a {
@@ -61,6 +61,7 @@
 
   #ProfileToolbar {
     margin-left: auto;
+    margin-top: 5px;
     margin-right: 3em;
     display: flex;
     align-items: flex-start;

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 type FlightWidgetProps = {
     name: string,
@@ -24,6 +25,10 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
     render() {
         return (
             <div id={'flight-' + this.props.name} className="flight-card">
+                <div className='flight-widget-toolbar'>
+                    <Link id="primary-button" to="/dashboard/primary">Primary</Link>
+                    <Link id="secondary-button" to="/dashboard/secondary">Secondary</Link>
+                </div>
                 <div className='origin-destination'>
                     <p>
                         {this.props.dep}
@@ -42,7 +47,7 @@ export default class FlightWidget extends React.Component<FlightWidgetProps, Fli
                     <p>{this.props.distance}</p>
                 </div>
                 <div id="ETA">
-                    <p className="Title">{this.props.name === "todays" ? "ETA (UTC)" : ""}</p>
+                    <p className="Title">{this.props.name === "todays" ? "ETA (UTC)" : "ETA (UTC)"}</p>
                     <p>{this.props.eta}</p>
                 </div>
             </div>
