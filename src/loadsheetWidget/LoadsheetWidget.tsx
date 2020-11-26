@@ -23,7 +23,18 @@ type LoadsheetWidgetProps = {
     planTakeOff: number,
     reserve: number,
     taxi: number,
-    units: string
+    units: string,
+    arrivingAirport: string,
+    arrivingIata: string,
+    departingAirport: string,
+    departingIata: string,
+    altBurn: number,
+    altIcao: string,
+    altIata: string,
+    tripTime: number,
+    contFuelTime: number,
+    resFuelTime: number,
+    taxiOutTime: number
 };
 type LoadsheetWidgetState = {
     unitConversion: number;
@@ -34,7 +45,7 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
     const [unitConversion, setunitConversion] = useState(1000);
 
     useEffect(() => {
-        const unitConv = (props.units === "kg") ? 1000 : 2240;
+        const unitConv = (props.units === "kgs") ? 1000 : 2240;
         console.log("Units changed to " + unitConv);
         setunitConversion(unitConv);
     }, [props.units]);
@@ -109,7 +120,76 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                 </div>
             </div>
             <div className='loadsheet-card' id="loadsheet-fuel-card">
-                <div className='loadsheet-card-body'/>
+                <div className='loadsheet-card-body'>
+                    <div className="loadsheet-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col" className="dashed ls-col col-fuel-desc col-left">FUEL</th>
+                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">ARPT</th>
+                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">FUEL</th>
+                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">TIME</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">TRIP</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.arrivingIata}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.enrouteBurn}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{(props.tripTime / 60).toFixed(0).padStart(4, "0")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">CONT</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.contingency}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{(props.contFuelTime / 60).toFixed(0).padStart(4, "0")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">ALTN</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.altIata}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.altBurn}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">????</td>
+                                </tr>
+                                <tr>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">FINRES</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="ls-col-fuel ls-col-fuel col-value col-right">{props.reserve}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">????</td>
+                                </tr>
+                                <tr>
+                                    <td className="dashed ls-col-fuel col-fuel-desc col-left">MIN T/OFF FUEL</td>
+                                    <td className="dashed ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="dashed ls-col-fuel col-fuel-value col-right">{props.minTakeOff}</td>
+                                    <td className="dashed ls-col-fuel col-fuel-value col-right">????</td>
+                                </tr>
+                                <tr>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">EXTRA</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.extra}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">????</td>
+                                </tr>
+                                <tr>
+                                    <td className="dashed-upper ls-col-fuel col-fuel-desc col-left">T/OFF FUEL</td>
+                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">{props.planTakeOff}</td>
+                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">????</td>
+                                </tr>
+                                <tr>
+                                    <td className="dashed-lower ls-col-fuel col-fuel-desc col-left">TAXI</td>
+                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
+                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.taxi}</td>
+                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{(props.taxiOutTime / 60).toFixed(0).padStart(4, "0")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="ls-col-fuel ls-col col-fuel-desc col-left">BLOCK FUEL</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.planRamp}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div className='loadsheet-card-footer'>
                     <p className="footer-title">LOADSHEET</p>
                     <p>Fuel Loading</p>

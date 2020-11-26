@@ -73,12 +73,33 @@
             vertical-align: top;
           }
 
+          th.dashed, td.dashed {
+            border-bottom:2px dashed var(--mainText);
+            border-top:2px dashed var(--mainText);
+          }
+
+          td.dashed-lower {
+            border-bottom:2px dashed var(--mainText);
+          }
+
+          td.dashed-upper {
+            border-top:2px dashed var(--mainText);
+          }
+
             .ls-col {
               padding: 10px;
+            }
+
+            .ls-col-fuel {
+              padding: 5px 10px;
             }
   
             .col-desc {
               width: 30%;
+            }
+
+            .col-fuel-desc {
+              width: 40%
             }
   
             .col-notes {
@@ -88,6 +109,10 @@
   
             .col-value {
               width: 10%;
+            }
+
+            .col-fuel-value {
+              width: 20%;
             }
 
             .col-left {

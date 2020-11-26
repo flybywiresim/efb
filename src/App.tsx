@@ -27,7 +27,9 @@ type AppProps = {};
 type AppState = {
     simbriefUsername: string;
     departingAirport: string;
+    departingIata: string;
     arrivingAirport: string;
+    arrivingIata: string;
     flightDistance: string;
     flightETAInSeconds: string;
     currentTime: Date,
@@ -55,7 +57,14 @@ type AppState = {
     planTakeOff: number,
     reserve: number,
     taxi: number,
-    units: string
+    units: string,
+    altIcao: string,
+    altIata: string,
+    altBurn: number,
+    tripTime: number,
+    contFuelTime: number,
+    resFuelTime: number,
+    taxiOutTime: number,
 };
 
 class App extends React.Component<AppProps, AppState> {
@@ -68,7 +77,9 @@ class App extends React.Component<AppProps, AppState> {
 
     state: AppState = {
         departingAirport: 'N/A',
+        departingIata: 'N/A',
         arrivingAirport: 'N/A',
+        arrivingIata: 'N/A',
         simbriefUsername: this.fetchSimbriefUsername(),
         flightDistance: 'N/A',
         flightETAInSeconds: 'N/A',
@@ -97,7 +108,14 @@ class App extends React.Component<AppProps, AppState> {
         planTakeOff: 0,
         reserve: 0,
         taxi: 0,
-        units: "kg"
+        units: "kgs",
+        altIcao: "N/A",
+        altIata: "N/A",
+        altBurn: 0,
+        tripTime: 0,
+        contFuelTime: 0,
+        resFuelTime: 0,
+        taxiOutTime: 0
     }
 
     updateCurrentTime(currentTime: Date) {
@@ -127,7 +145,9 @@ class App extends React.Component<AppProps, AppState> {
         console.info(simbriefData);
         this.setState({
             departingAirport: simbriefData.origin.icao,
+            departingIata: simbriefData.origin.iata,
             arrivingAirport: simbriefData.destination.icao,
+            arrivingIata: simbriefData.destination.iata,
             flightDistance: simbriefData.distance,
             flightETAInSeconds: simbriefData.flightETAInSeconds,
             cargo: simbriefData.weights.cargo,
@@ -152,7 +172,14 @@ class App extends React.Component<AppProps, AppState> {
             planTakeOff:        simbriefData.fuel.planTakeOff,
             reserve:            simbriefData.fuel.reserve,
             taxi:               simbriefData.fuel.taxi,
-            units:              simbriefData.units
+            units:              simbriefData.units,
+            altIcao:            simbriefData.alternate.icao,
+            altIata:            simbriefData.alternate.iata,
+            altBurn:            simbriefData.alternate.burn,
+            tripTime:           simbriefData.times.est_time_enroute,
+            contFuelTime:       simbriefData.times.contfuel_time,
+            resFuelTime:        simbriefData.times.reserve_time,
+            taxiOutTime:        simbriefData.times.taxi_out
         });
     }
 
@@ -201,6 +228,17 @@ class App extends React.Component<AppProps, AppState> {
                                 reserve={this.state.reserve}
                                 taxi={this.state.taxi}
                                 units={this.state.units}
+                                arrivingAirport={this.state.arrivingAirport}
+                                arrivingIata={this.state.arrivingIata}
+                                departingAirport={this.state.departingAirport}
+                                departingIata={this.state.departingIata}
+                                altBurn={this.state.altBurn}
+                                altIcao={this.state.altIcao}
+                                altIata={this.state.altIata}
+                                tripTime={this.state.tripTime}
+                                contFuelTime={this.state.contFuelTime}
+                                resFuelTime={this.state.resFuelTime}
+                                taxiOutTime={this.state.taxiOutTime}
                             />
                         </Route>
                         <Route path="/flight">

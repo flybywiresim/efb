@@ -10,7 +10,9 @@ export interface ISimbriefData {
     flightETAInSeconds: string,
     weights: IWeights,
     fuel: IFuel,
-    units: string
+    units: string,
+    alternate: IAlternate,
+    times: ITimes
 }
 
 interface IAirportInfo {
@@ -44,4 +46,34 @@ interface IFuel {
     planTakeOff: number,
     reserve: number,
     taxi: number
+}
+
+interface IAlternate {
+    burn: number,
+    icao: string,
+    iata: string
+}
+
+interface ITimes {
+    contfuel_time: number,
+    dest_timezone: number,
+    endurance: number,
+    est_block: number,
+    est_in: number,
+    est_off: number,
+    est_on: number,
+    est_out: number,
+    est_time_enroute: number,
+    etopsfuel_time: number,
+    extrafuel_time: number,
+    orig_timezone: number,
+    reserve_time: number,
+    sched_block: number,
+    sched_in: number,
+    sched_off: number,
+    sched_on: number,
+    sched_out: number,
+    sched_time_enroute: number,
+    taxi_in: number,
+    taxi_out: number,
 }
