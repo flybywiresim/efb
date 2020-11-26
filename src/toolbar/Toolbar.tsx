@@ -44,7 +44,6 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     }
 
     handleClick(index: number) {
-        console.log("Active index is " + this.state.activeIndex);
         return (() => {
             this.setState({activeIndex: index });
         });

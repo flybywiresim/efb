@@ -113,6 +113,7 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
         return Metar.get(icao, source)
             .then(result => {
                 const metarParse = metarParser(result.metar);
+                console.info(metarParse);
                 setMetar(metarParse);
             })
             .catch(() => {
@@ -225,7 +226,9 @@ const WeatherWidget = (props: WeatherWidgetProps) => {
                 }
                 <div id="IcaoIdent">
                     <div>
-                        <span className="icaoUpdate">Last updated on the {dateFormat(metar.observed.getUTCDate()) + " at " + formatTime(([metar.observed.getUTCHours(), metar.observed.getUTCMinutes()]))}z</span>
+                        { (metar.raw_text !== "") &&
+                            <span className="icaoUpdate">Last updated on the {dateFormat(metar.observed.getUTCDate()) + " at " + formatTime(([metar.observed.getUTCHours(), metar.observed.getUTCMinutes()]))}z</span>
+                        }
                     </div>
                 </div>
                 </>

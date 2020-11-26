@@ -9,7 +9,7 @@ import WeatherWidget from "./dashboardWidgets/WeatherWidget";
 // @ts-ignore
 import Map from "fbw-map";
 
-type PreparationWidgetsProps = {
+type DashboardWidgetProps = {
     departingAirport: string,
     arrivingAirport: string,
     flightDistance: string,
@@ -17,9 +17,9 @@ type PreparationWidgetsProps = {
     timeSinceStart: string,
 }
 
-type PreparationWidgetsState = {}
+type DashboardWidgetState = {}
 
-class PreparationWidgets extends React.Component<PreparationWidgetsProps, PreparationWidgetsState> {
+class DashboardWidget extends React.Component<DashboardWidgetProps, DashboardWidgetState> {
     calculateFlightTime(flightETAInSeconds: string): string {
         const timeInMinutes: number = parseInt(flightETAInSeconds) * 0.0166;
         if (timeInMinutes.toString() === "NaN") {
@@ -36,7 +36,7 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
 
     render() {
         return (
-            <div className="PreparationWidgets">
+            <div className="DashboardWidget">
                 <span id='title-todays-flight' className="WidgetTitle">Today's flight</span>
                 <span id='title-wx' className="WidgetTitle">Weather</span>
                 <span id='title-map' className="WidgetTitle">Map</span>
@@ -98,4 +98,4 @@ class PreparationWidgets extends React.Component<PreparationWidgetsProps, Prepar
     }
 }
 
-export default PreparationWidgets;
+export default DashboardWidget;

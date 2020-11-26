@@ -9,7 +9,7 @@ import { getSimbriefData } from './simbriefApi';
 import './aewx-metar-parser.d';
 import Time from "./time/Time";
 import Toolbar from "./toolbar/Toolbar";
-import DashboardWidgets from "./dashboardWidget/DashboardWidget";
+import DashboardWidget from "./dashboardWidget/DashboardWidget";
 import LoadsheetWidget from "./loadsheetWidget/LoadsheetWidget";
 import Settings from "./settings/Settings";
 import Profile from "./profile/Profile";
@@ -100,7 +100,7 @@ class App extends React.Component<AppProps, AppState> {
                 <div id="main-container">
                     <Switch>
                         <Route path="/dashboard">
-                            <DashboardWidgets
+                            <DashboardWidget
                                 departingAirport={this.state.departingAirport}
                                 arrivingAirport={this.state.arrivingAirport}
                                 flightDistance={this.state.flightDistance}
@@ -129,7 +129,7 @@ class App extends React.Component<AppProps, AppState> {
                                 changeSimbriefUsername={this.changeSimbriefUsername} />
                         </Route>
                         <Route path="/">
-                            <DashboardWidgets
+                            <DashboardWidget
                                 departingAirport={this.state.departingAirport}
                                 arrivingAirport={this.state.arrivingAirport}
                                 flightDistance={this.state.flightDistance}
