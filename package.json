@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@flybywiresim/api-client": "^0.1.2",
+    "@flybywiresim/map": "0.0.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
@@ -11,7 +12,6 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "aewx-metar-parser": "^0.10.1",
-    "fbw-map": "^0.1.2",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

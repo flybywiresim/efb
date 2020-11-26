@@ -7,7 +7,7 @@ import {
 import FlightWidget from "./dashboardWidgets/FlightWidget";
 import WeatherWidget from "./dashboardWidgets/WeatherWidget";
 // @ts-ignore
-import Map from "fbw-map";
+import Map from "@flybywiresim/map";
 
 type DashboardWidgetProps = {
     departingAirport: string,
