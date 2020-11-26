@@ -38,6 +38,7 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
     const times = simbriefJson.times;
     const weights = simbriefJson.weights;
     const fuel = simbriefJson.fuel;
+    const params = simbriefJson.params;
     return {
         airline: general.icao_airline,
         flightNumber: general.flight_number,
@@ -79,6 +80,7 @@ function simbriefDataParser(simbriefJson: any): ISimbriefData {
             planTakeOff: fuel.plan_takeoff,
             reserve: fuel.reserve,
             taxi: fuel.taxi
-        }
+        },
+        units: params.units
     };
 };

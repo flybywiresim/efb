@@ -9,7 +9,8 @@ export interface ISimbriefData {
     distance: string,
     flightETAInSeconds: string,
     weights: IWeights,
-    fuel: IFuel
+    fuel: IFuel,
+    units: string
 }
 
 interface IAirportInfo {
