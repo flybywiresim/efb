@@ -95,7 +95,7 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                                 <tr>
                                     <td className="ls-col col-desc col-left">FUEL</td>
                                     <td className="ls-col col-value col-right">{(props.planRamp / unitConversion).toFixed(1)}</td>
-                                    <td className="ls-col col-value col-right">{(props.extra / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">????</td>
                                     <td className="ls-col col-notes col-left"></td>
                                 </tr>
                                 <tr>
@@ -116,7 +116,7 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                 </div>
                 <div className="loadsheet-card-footer">
                     <p className="footer-title">LOADSHEET</p>
-                    <p>Weights</p>
+                    <p>Payload</p>
                 </div>
             </div>
             <div className='loadsheet-card' id="loadsheet-fuel-card">
