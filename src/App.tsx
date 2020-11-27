@@ -5,7 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 
-import { getSimbriefData } from './simbriefApi';
+import {getSimbriefData, IFuel, IWeights} from './simbriefApi';
 import './aewx-metar-parser.d';
 import Time from "./time/Time";
 import Toolbar from "./toolbar/Toolbar";
@@ -35,28 +35,8 @@ type AppState = {
     currentTime: Date,
     initTime: Date,
     timeSinceStart: string,
-    cargo: number,
-    estLandingWeight: number,
-    estTakeOffWeight: number,
-    estZeroFuelWeight: number,
-    maxLandingWeight: number,
-    maxTakeOffWeight: number,
-    maxZeroFuelWeight: number,
-    passengerCount: number,
-    passengerWeight: number,
-    payload: number,
-    avgFuelFlow: number,
-    contingency: number,
-    enrouteBurn: number,
-    etops: number,
-    extra: number,
-    maxTanks: number,
-    minTakeOff: number,
-    planLanding: number,
-    planRamp: number,
-    planTakeOff: number,
-    reserve: number,
-    taxi: number,
+    weights: IWeights,
+    fuel: IFuel,
     units: string,
     altIcao: string,
     altIata: string,
@@ -86,28 +66,32 @@ class App extends React.Component<AppProps, AppState> {
         currentTime: new Date(),
         initTime: new Date(),
         timeSinceStart: "00:00",
-        cargo: 0,
-        estLandingWeight: 0,
-        estTakeOffWeight: 0,
-        estZeroFuelWeight: 0,
-        maxLandingWeight: 0,
-        maxTakeOffWeight: 0,
-        maxZeroFuelWeight: 0,
-        passengerCount: 0,
-        passengerWeight: 0,
-        payload: 0,
-        avgFuelFlow: 0,
-        contingency: 0,
-        enrouteBurn: 0,
-        etops: 0,
-        extra: 0,
-        maxTanks: 0,
-        minTakeOff: 0,
-        planLanding: 0,
-        planRamp: 0,
-        planTakeOff: 0,
-        reserve: 0,
-        taxi: 0,
+        weights: {
+            cargo: 0,
+            estLandingWeight: 0,
+            estTakeOffWeight: 0,
+            estZeroFuelWeight: 0,
+            maxLandingWeight: 0,
+            maxTakeOffWeight: 0,
+            maxZeroFuelWeight: 0,
+            passengerCount: 0,
+            passengerWeight: 0,
+            payload: 0,
+        },
+        fuel: {
+            avgFuelFlow: 0,
+            contingency: 0,
+            enrouteBurn: 0,
+            etops: 0,
+            extra: 0,
+            maxTanks: 0,
+            minTakeOff: 0,
+            planLanding: 0,
+            planRamp: 0,
+            planTakeOff: 0,
+            reserve: 0,
+            taxi: 0,
+        },
         units: "kgs",
         altIcao: "N/A",
         altIata: "N/A",
@@ -144,34 +128,38 @@ class App extends React.Component<AppProps, AppState> {
         const simbriefData = await getSimbriefData(this.state.simbriefUsername);
         console.info(simbriefData);
         this.setState({
-            departingAirport: simbriefData.origin.icao,
-            departingIata: simbriefData.origin.iata,
-            arrivingAirport: simbriefData.destination.icao,
-            arrivingIata: simbriefData.destination.iata,
-            flightDistance: simbriefData.distance,
-            flightETAInSeconds: simbriefData.flightETAInSeconds,
-            cargo: simbriefData.weights.cargo,
-            estLandingWeight: simbriefData.weights.estLandingWeight,
-            estTakeOffWeight:   simbriefData.weights.estTakeOffWeight,
-            estZeroFuelWeight:  simbriefData.weights.estZeroFuelWeight,
-            maxLandingWeight:   simbriefData.weights.maxLandingWeight,
-            maxTakeOffWeight:   simbriefData.weights.maxTakeOffWeight,
-            maxZeroFuelWeight:  simbriefData.weights.maxZeroFuelWeight,
-            passengerCount:     simbriefData.weights.passengerCount,
-            passengerWeight:    simbriefData.weights.passengerWeight,
-            payload:            simbriefData.weights.payload,
-            avgFuelFlow:        simbriefData.fuel.avgFuelFlow,
-            contingency:        simbriefData.fuel.contingency,
-            enrouteBurn:        simbriefData.fuel.enrouteBurn,
-            etops:              simbriefData.fuel.etops,
-            extra:              simbriefData.fuel.extra,
-            maxTanks:           simbriefData.fuel.maxTanks,
-            minTakeOff:         simbriefData.fuel.minTakeOff,
-            planLanding:        simbriefData.fuel.planLanding,
-            planRamp:           simbriefData.fuel.planRamp,
-            planTakeOff:        simbriefData.fuel.planTakeOff,
-            reserve:            simbriefData.fuel.reserve,
-            taxi:               simbriefData.fuel.taxi,
+            departingAirport:    simbriefData.origin.icao,
+            departingIata:       simbriefData.origin.iata,
+            arrivingAirport:     simbriefData.destination.icao,
+            arrivingIata:        simbriefData.destination.iata,
+            flightDistance:      simbriefData.distance,
+            flightETAInSeconds:  simbriefData.flightETAInSeconds,
+            weights: {
+                cargo:              simbriefData.weights.cargo,
+                estLandingWeight:   simbriefData.weights.estLandingWeight,
+                estTakeOffWeight:   simbriefData.weights.estTakeOffWeight,
+                estZeroFuelWeight:  simbriefData.weights.estZeroFuelWeight,
+                maxLandingWeight:   simbriefData.weights.maxLandingWeight,
+                maxTakeOffWeight:   simbriefData.weights.maxTakeOffWeight,
+                maxZeroFuelWeight:  simbriefData.weights.maxZeroFuelWeight,
+                passengerCount:     simbriefData.weights.passengerCount,
+                passengerWeight:    simbriefData.weights.passengerWeight,
+                payload:            simbriefData.weights.payload,
+            },
+            fuel: {
+                avgFuelFlow:     simbriefData.fuel.avgFuelFlow,
+                contingency:     simbriefData.fuel.contingency,
+                enrouteBurn:     simbriefData.fuel.enrouteBurn,
+                etops:           simbriefData.fuel.etops,
+                extra:           simbriefData.fuel.extra,
+                maxTanks:        simbriefData.fuel.maxTanks,
+                minTakeOff:      simbriefData.fuel.minTakeOff,
+                planLanding:     simbriefData.fuel.planLanding,
+                planRamp:        simbriefData.fuel.planRamp,
+                planTakeOff:     simbriefData.fuel.planTakeOff,
+                reserve:         simbriefData.fuel.reserve,
+                taxi:            simbriefData.fuel.taxi,
+            },
             units:              simbriefData.units,
             altIcao:            simbriefData.alternate.icao,
             altIata:            simbriefData.alternate.iata,
@@ -205,28 +193,28 @@ class App extends React.Component<AppProps, AppState> {
                         </Route>
                         <Route path="/loadsheet">
                             <LoadsheetWidget
-                                cargo={this.state.cargo}
-                                estLandingWeight={this.state.estLandingWeight}
-                                estTakeOffWeight={this.state.estTakeOffWeight}
-                                estZeroFuelWeight={this.state.estZeroFuelWeight}
-                                maxLandingWeight={this.state.maxLandingWeight}
-                                maxTakeOffWeight={this.state.maxTakeOffWeight}
-                                maxZeroFuelWeight={this.state.maxZeroFuelWeight}
-                                passengerCount={this.state.passengerCount}
-                                passengerWeight={this.state.passengerWeight}
-                                payload={this.state.payload}
-                                avgFuelFlow={this.state.avgFuelFlow}
-                                contingency={this.state.contingency}
-                                enrouteBurn={this.state.enrouteBurn}
-                                etops={this.state.etops}
-                                extra={this.state.extra}
-                                maxTanks={this.state.maxTanks}
-                                minTakeOff={this.state.minTakeOff}
-                                planLanding={this.state.planLanding}
-                                planRamp={this.state.planRamp}
-                                planTakeOff={this.state.planTakeOff}
-                                reserve={this.state.reserve}
-                                taxi={this.state.taxi}
+                                cargo={this.state.weights.cargo}
+                                estLandingWeight={this.state.weights.estLandingWeight}
+                                estTakeOffWeight={this.state.weights.estTakeOffWeight}
+                                estZeroFuelWeight={this.state.weights.estZeroFuelWeight}
+                                maxLandingWeight={this.state.weights.maxLandingWeight}
+                                maxTakeOffWeight={this.state.weights.maxTakeOffWeight}
+                                maxZeroFuelWeight={this.state.weights.maxZeroFuelWeight}
+                                passengerCount={this.state.weights.passengerCount}
+                                passengerWeight={this.state.weights.passengerWeight}
+                                payload={this.state.weights.payload}
+                                avgFuelFlow={this.state.fuel.avgFuelFlow}
+                                contingency={this.state.fuel.contingency}
+                                enrouteBurn={this.state.fuel.enrouteBurn}
+                                etops={this.state.fuel.etops}
+                                extra={this.state.fuel.extra}
+                                maxTanks={this.state.fuel.maxTanks}
+                                minTakeOff={this.state.fuel.minTakeOff}
+                                planLanding={this.state.fuel.planLanding}
+                                planRamp={this.state.fuel.planRamp}
+                                planTakeOff={this.state.fuel.planTakeOff}
+                                reserve={this.state.fuel.reserve}
+                                taxi={this.state.fuel.taxi}
                                 units={this.state.units}
                                 arrivingAirport={this.state.arrivingAirport}
                                 arrivingIata={this.state.arrivingIata}

@@ -20,7 +20,7 @@ interface IAirportInfo {
     iata: string
 }
 
-interface IWeights {
+export interface IWeights {
     cargo: number,
     estLandingWeight: number,
     estTakeOffWeight: number,
@@ -33,7 +33,7 @@ interface IWeights {
     payload: number
 }
 
-interface IFuel {
+export interface IFuel {
     avgFuelFlow: number,
     contingency: number,
     enrouteBurn: number,
