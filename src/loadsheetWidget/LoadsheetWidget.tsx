@@ -1,28 +1,32 @@
 import React, {useState, useEffect} from 'react';
 
 type LoadsheetWidgetProps = {
-    cargo: number,
-    estLandingWeight: number,
-    estTakeOffWeight: number,
-    estZeroFuelWeight: number,
-    maxLandingWeight: number,
-    maxTakeOffWeight: number,
-    maxZeroFuelWeight: number,
-    passengerCount: number,
-    passengerWeight: number,
-    payload: number,
-    avgFuelFlow: number,
-    contingency: number,
-    enrouteBurn: number,
-    etops: number,
-    extra: number,
-    maxTanks: number,
-    minTakeOff: number,
-    planLanding: number,
-    planRamp: number,
-    planTakeOff: number,
-    reserve: number,
-    taxi: number,
+    weights: {
+        cargo: number,
+        estLandingWeight: number,
+        estTakeOffWeight: number,
+        estZeroFuelWeight: number,
+        maxLandingWeight: number,
+        maxTakeOffWeight: number,
+        maxZeroFuelWeight: number,
+        passengerCount: number,
+        passengerWeight: number,
+        payload: number,
+    },
+    fuels: {
+        avgFuelFlow: number,
+        contingency: number,
+        enrouteBurn: number,
+        etops: number,
+        extra: number,
+        maxTanks: number,
+        minTakeOff: number,
+        planLanding: number,
+        planRamp: number,
+        planTakeOff: number,
+        reserve: number,
+        taxi: number,
+    },
     units: string,
     arrivingAirport: string,
     arrivingIata: string,
@@ -70,44 +74,44 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                             <tbody>
                                 <tr>
                                     <td className="ls-col col-desc col-left">PAX</td>
-                                    <td className="col-right">{props.passengerCount}</td>
+                                    <td className="col-right">{props.weights.passengerCount}</td>
                                     <td>&nbsp;</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col col-desc col-left">CARGO</td>
-                                    <td className="col-right">{(props.cargo / unitConversion).toFixed(1)}</td>
+                                    <td className="col-right">{(props.weights.cargo / unitConversion).toFixed(1)}</td>
                                     <td>&nbsp;</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col col-desc col-left">PAYLOAD</td>
-                                    <td className="ls-col col-value col-right">{(props.payload / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.weights.payload / unitConversion).toFixed(1)}</td>
                                     <td>&nbsp;</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>ZFW</td>
-                                    <td className="ls-col col-value col-right">{(props.estZeroFuelWeight / unitConversion).toFixed(1)}</td>
-                                    <td className="ls-col col-value col-right">{(props.maxZeroFuelWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.weights.estZeroFuelWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.weights.maxZeroFuelWeight / unitConversion).toFixed(1)}</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col col-desc col-left">FUEL</td>
-                                    <td className="ls-col col-value col-right">{(props.planRamp / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.fuels.planRamp / unitConversion).toFixed(1)}</td>
                                     <td className="ls-col col-value col-right">????</td>
                                     <td className="ls-col col-notes col-left"></td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col col-desc col-left">TOW</td>
-                                    <td className="ls-col col-value col-right">{(props.estTakeOffWeight / unitConversion).toFixed(1)}</td>
-                                    <td className="ls-col col-value col-right">{(props.maxTakeOffWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.weights.estTakeOffWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="ls-col col-value col-right">{(props.weights.maxTakeOffWeight / unitConversion).toFixed(1)}</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col col-desc col-left">LAW</td>
-                                    <td className="col-right">{(props.estLandingWeight / unitConversion).toFixed(1)}</td>
-                                    <td className="col-right">{(props.maxLandingWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="col-right">{(props.weights.estLandingWeight / unitConversion).toFixed(1)}</td>
+                                    <td className="col-right">{(props.weights.maxLandingWeight / unitConversion).toFixed(1)}</td>
                                     <td className="ls-col col-notes col-left">&nbsp;</td>
                                 </tr>
                             </tbody>
@@ -135,13 +139,13 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">TRIP</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">{props.arrivingIata}</td>
-                                    <td className="ls-col-fuel col-fuel-value col-right">{props.enrouteBurn}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.enrouteBurn}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">{(props.tripTime / 60).toFixed(0).padStart(4, "0")}</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">CONT</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="ls-col-fuel col-fuel-value col-right">{props.contingency}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.contingency}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">{(props.contFuelTime / 60).toFixed(0).padStart(4, "0")}</td>
                                 </tr>
                                 <tr>
@@ -153,37 +157,37 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">FINRES</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="ls-col-fuel ls-col-fuel col-value col-right">{props.reserve}</td>
+                                    <td className="ls-col-fuel ls-col-fuel col-value col-right">{props.fuels.reserve}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
                                     <td className="dashed ls-col-fuel col-fuel-desc col-left">MIN T/OFF FUEL</td>
                                     <td className="dashed ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="dashed ls-col-fuel col-fuel-value col-right">{props.minTakeOff}</td>
+                                    <td className="dashed ls-col-fuel col-fuel-value col-right">{props.fuels.minTakeOff}</td>
                                     <td className="dashed ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">EXTRA</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="ls-col-fuel col-fuel-value col-right">{props.extra}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.extra}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
                                     <td className="dashed-upper ls-col-fuel col-fuel-desc col-left">T/OFF FUEL</td>
                                     <td className="dashed-upper ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">{props.planTakeOff}</td>
+                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">{props.fuels.planTakeOff}</td>
                                     <td className="dashed-upper ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
                                     <td className="dashed-lower ls-col-fuel col-fuel-desc col-left">TAXI</td>
                                     <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
-                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.taxi}</td>
+                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.fuels.taxi}</td>
                                     <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{(props.taxiOutTime / 60).toFixed(0).padStart(4, "0")}</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col-fuel ls-col col-fuel-desc col-left">BLOCK FUEL</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
-                                    <td className="ls-col-fuel col-fuel-value col-right">{props.planRamp}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.planRamp}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
                                 </tr>
                             </tbody>

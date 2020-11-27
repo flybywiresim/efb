@@ -36,7 +36,7 @@ type AppState = {
     initTime: Date,
     timeSinceStart: string,
     weights: IWeights,
-    fuel: IFuel,
+    fuels: IFuel,
     units: string,
     altIcao: string,
     altIata: string,
@@ -78,7 +78,7 @@ class App extends React.Component<AppProps, AppState> {
             passengerWeight: 0,
             payload: 0,
         },
-        fuel: {
+        fuels: {
             avgFuelFlow: 0,
             contingency: 0,
             enrouteBurn: 0,
@@ -146,7 +146,7 @@ class App extends React.Component<AppProps, AppState> {
                 passengerWeight:    simbriefData.weights.passengerWeight,
                 payload:            simbriefData.weights.payload,
             },
-            fuel: {
+            fuels: {
                 avgFuelFlow:     simbriefData.fuel.avgFuelFlow,
                 contingency:     simbriefData.fuel.contingency,
                 enrouteBurn:     simbriefData.fuel.enrouteBurn,
@@ -193,28 +193,8 @@ class App extends React.Component<AppProps, AppState> {
                         </Route>
                         <Route path="/loadsheet">
                             <LoadsheetWidget
-                                cargo={this.state.weights.cargo}
-                                estLandingWeight={this.state.weights.estLandingWeight}
-                                estTakeOffWeight={this.state.weights.estTakeOffWeight}
-                                estZeroFuelWeight={this.state.weights.estZeroFuelWeight}
-                                maxLandingWeight={this.state.weights.maxLandingWeight}
-                                maxTakeOffWeight={this.state.weights.maxTakeOffWeight}
-                                maxZeroFuelWeight={this.state.weights.maxZeroFuelWeight}
-                                passengerCount={this.state.weights.passengerCount}
-                                passengerWeight={this.state.weights.passengerWeight}
-                                payload={this.state.weights.payload}
-                                avgFuelFlow={this.state.fuel.avgFuelFlow}
-                                contingency={this.state.fuel.contingency}
-                                enrouteBurn={this.state.fuel.enrouteBurn}
-                                etops={this.state.fuel.etops}
-                                extra={this.state.fuel.extra}
-                                maxTanks={this.state.fuel.maxTanks}
-                                minTakeOff={this.state.fuel.minTakeOff}
-                                planLanding={this.state.fuel.planLanding}
-                                planRamp={this.state.fuel.planRamp}
-                                planTakeOff={this.state.fuel.planTakeOff}
-                                reserve={this.state.fuel.reserve}
-                                taxi={this.state.fuel.taxi}
+                                weights={this.state.weights}
+                                fuels={this.state.fuels}
                                 units={this.state.units}
                                 arrivingAirport={this.state.arrivingAirport}
                                 arrivingIata={this.state.arrivingIata}
