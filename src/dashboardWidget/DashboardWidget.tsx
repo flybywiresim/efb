@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import FlightWidget from "./dashboardWidgets/FlightWidget";
 import WeatherWidget from "./dashboardWidgets/WeatherWidget";
-// @ts-ignore
 import Map from "@flybywiresim/map";
 
 type DashboardWidgetProps = {

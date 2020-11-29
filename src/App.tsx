@@ -213,6 +213,10 @@ class App extends React.Component<AppProps, AppState> {
                             <div>
                             </div>
                         </Route>
+                        <Route path="/ground">
+                            <div>
+                            </div>
+                        </Route>
                         <Route path="/multiplayer">
                             <div>
                             </div>
