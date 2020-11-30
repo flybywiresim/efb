@@ -1,13 +1,13 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 
 type ProfileProps = {
     simbriefUsername: string,
-    changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
+    changeSimbriefUsername: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 type SidebarWidgetProps = {
     simbriefUsername: string,
-    changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
+    changeSimbriefUsername: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 class Profile extends React.Component<ProfileProps, any> {
