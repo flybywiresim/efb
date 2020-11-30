@@ -1,4 +1,5 @@
-# EFB
+![FlyByWireLogo](https://raw.githubusercontent.com/flybywiresim/fbw-branding/master/svg/FBW-Logo.svg)
+# FlyByWire Simulations EFB
 
 This repo contains the EFB prototype for FlyByWire Simulations' projects.
 
