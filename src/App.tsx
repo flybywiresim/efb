@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -171,7 +171,7 @@ class App extends React.Component<AppProps, AppState> {
         });
     }
 
-    changeSimbriefUsername = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    changeSimbriefUsername = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({ simbriefUsername: event.target.value.toString() });
         window.localStorage.setItem("SimbriefUsername", event.target.value.toString());
     }

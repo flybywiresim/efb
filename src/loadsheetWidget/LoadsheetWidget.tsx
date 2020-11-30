@@ -129,10 +129,10 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th scope="col" className="dashed ls-col col-fuel-desc col-left">FUEL</th>
-                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">ARPT</th>
-                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">FUEL</th>
-                                    <th scope="col" className="dashed ls-col col-fuel-value col-right">TIME</th>
+                                    <th scope="col" className="ls-col col-fuel-desc col-left">FUEL</th>
+                                    <th scope="col" className="ls-col col-fuel-value col-right">ARPT</th>
+                                    <th scope="col" className="ls-col col-fuel-value col-right">FUEL</th>
+                                    <th scope="col" className="ls-col col-fuel-value col-right">TIME</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -157,14 +157,14 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">FINRES</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="ls-col-fuel ls-col-fuel col-value col-right">{props.fuels.reserve}</td>
+                                    <td className="ls-col-fuel col-value col-right">{props.fuels.reserve}</td>
                                     <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
-                                    <td className="dashed ls-col-fuel col-fuel-desc col-left">MIN T/OFF FUEL</td>
-                                    <td className="dashed ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="dashed ls-col-fuel col-fuel-value col-right">{props.fuels.minTakeOff}</td>
-                                    <td className="dashed ls-col-fuel col-fuel-value col-right">????</td>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">MIN T/OFF FUEL</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.minTakeOff}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col-fuel col-fuel-desc col-left">EXTRA</td>
@@ -173,16 +173,16 @@ const LoadsheetWidget = (props: LoadsheetWidgetProps) => {
                                     <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
-                                    <td className="dashed-upper ls-col-fuel col-fuel-desc col-left">T/OFF FUEL</td>
-                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">&nbsp;</td>
-                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">{props.fuels.planTakeOff}</td>
-                                    <td className="dashed-upper ls-col-fuel col-fuel-value col-right">????</td>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">T/OFF FUEL</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">&nbsp;</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.planTakeOff}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">????</td>
                                 </tr>
                                 <tr>
-                                    <td className="dashed-lower ls-col-fuel col-fuel-desc col-left">TAXI</td>
-                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
-                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{props.fuels.taxi}</td>
-                                    <td className="dashed-lower ls-col-fuel col-fuel-value col-right">{(props.taxiOutTime / 60).toFixed(0).padStart(4, "0")}</td>
+                                    <td className="ls-col-fuel col-fuel-desc col-left">TAXI</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.departingIata}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{props.fuels.taxi}</td>
+                                    <td className="ls-col-fuel col-fuel-value col-right">{(props.taxiOutTime / 60).toFixed(0).padStart(4, "0")}</td>
                                 </tr>
                                 <tr>
                                     <td className="ls-col-fuel ls-col col-fuel-desc col-left">BLOCK FUEL</td>

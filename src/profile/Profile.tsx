@@ -5,14 +5,12 @@ type ProfileProps = {
     changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
-type ProfileState = {}
-
 type SidebarWidgetProps = {
     simbriefUsername: string,
     changeSimbriefUsername: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
-class Profile extends React.Component<ProfileProps, ProfileState> {
+class Profile extends React.Component<ProfileProps, any> {
     render() {
         return (
             <div className="ProfileWidgets">
