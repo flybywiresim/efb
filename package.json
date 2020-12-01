@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@flybywiresim/api-client": "^0.2.0",
-    "@flybywiresim/map": "0.0.7",
+    "@flybywiresim/map": "0.0.9",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
