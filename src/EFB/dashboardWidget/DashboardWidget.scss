@@ -1,4 +1,4 @@
-@import '../App.scss';
+@import '../Efb.scss';
 @import './weather-icons.scss';
 
 .DashboardWidget {
@@ -70,7 +70,7 @@
                 &.Active {
                     border-bottom: solid var(--toolbarUnderlineColor) .1em;
                   }
-            
+
                 &.Active:hover {
                 border-bottom: solid var(--toolbarUnderlineColor) .1em;
                 }
