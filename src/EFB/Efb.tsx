@@ -22,7 +22,9 @@ import './loadsheetWidget/LoadsheetWidget.scss';
 import './settings/Settings.scss';
 import './profile/Profile.scss';
 
-type EfbProps = {};
+type EfbProps = {
+    logo: string,
+};
 
 type EfbState = {
     simbriefUsername: string;
@@ -180,7 +182,7 @@ class Efb extends React.Component<EfbProps, EfbState> {
         return (
             <Router>
                 <Time initTime={this.state.initTime} updateCurrentTime={this.updateCurrentTime} updateTimeSinceStart={this.updateTimeSinceStart}/>
-                <Toolbar fetchSimbrief={this.fetchSimbriefData}/>
+                <Toolbar logo={this.props.logo} fetchSimbrief={this.fetchSimbriefData}/>
                 <div id="main-container">
                     <Switch>
                         <Route path="/dashboard">

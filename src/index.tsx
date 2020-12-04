@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import logo from "./fbw.svg";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

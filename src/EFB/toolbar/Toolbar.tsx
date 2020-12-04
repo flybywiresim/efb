@@ -2,10 +2,10 @@ import React from 'react';
 import {
     Link
 } from 'react-router-dom';
-import logo from '../fbw.svg';
 
 type ToolbarProps = {
     fetchSimbrief: Function;
+    logo: string,
 };
 
 type ToolbarState = {
@@ -53,7 +53,7 @@ class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
     render() {
         return (
             <div className="Toolbar">
-                <img src={logo} className="FBW-Logo" alt="logo" />
+                <img src={this.props.logo} className="FBW-Logo" alt="logo" />
 
                 <div id="Tabs">
                     {
