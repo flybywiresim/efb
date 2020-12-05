@@ -1,6 +1,6 @@
 {
   "name": "@flybywiresim/efb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "babel src/EFB --out-dir dist --extensions .tsx --copy-files && tsc --emitDeclarationOnly --declaration true --jsx react --esModuleInterop true --outDir ./dist ./src/EFB/Efb.tsx"
+    "prepare": "babel src/EFB --out-dir dist --extensions .tsx --copy-files"
   },
   "eslintConfig": {
     "extends": [

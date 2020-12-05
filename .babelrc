@@ -1,4 +1,13 @@
 {
-  "presets": ["@babel/preset-react", "@babel/preset-typescript"],
+  "presets": [
+    [
+      "@babel/preset-typescript",
+      {
+        "onlyRemoveTypeImports": true,
+        "isTSX": true,
+        "allExtensions": true
+      }
+    ]
+  ],
   "plugins": ["@babel/plugin-proposal-class-properties"]
 }

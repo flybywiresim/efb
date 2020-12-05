@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 
 import {getSimbriefData, IFuel, IWeights} from './simbriefApi';
-import './aewx-metar-parser.d';
 import Time from "./time/Time";
 import Toolbar from "./toolbar/Toolbar";
 import DashboardWidget from "./dashboardWidget/DashboardWidget";

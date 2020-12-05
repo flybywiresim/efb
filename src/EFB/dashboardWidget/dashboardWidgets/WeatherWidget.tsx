@@ -4,7 +4,71 @@ import { formatTime, dateFormat} from "../../time/Time";
 import { Metar } from '@flybywiresim/api-client';
 import { weatherIconArray } from './WeatherWidgetIcons';
 
-const MetarParserTypeWindState: Wind = {
+type MetarParserType = {
+    raw_text: string,
+    raw_parts: [string],
+    icao: string,
+    observed: Date,
+    wind: WindType,
+    visibility: VisibilityType,
+    conditions: [ConditionCodeType],
+    clouds: [CloudType],
+    ceiling: CeilingType,
+    temperature: TemperatureType,
+    dewpoint: DewpointType,
+    humidity_percent: number,
+    barometer: BarometerType,
+    flight_category: string,
+}
+
+type WindType = {
+    degrees: number,
+    speed_kts: number,
+    speed_mps: number,
+    gust_kts: number,
+    gust_mps: number,
+};
+
+type VisibilityType = {
+    miles: string,
+    miles_float: number,
+    meters: string,
+    meters_float: number,
+};
+
+type ConditionCodeType = {
+    code: string,
+};
+
+type CloudType = {
+    code: string,
+    base_feet_agl: number,
+    base_meters_agl: number,
+};
+
+type CeilingType = {
+    code: string,
+    feet_agl: number,
+    meters_agl: number,
+};
+
+type TemperatureType = {
+    celsius: number,
+    fahrenheit: number,
+};
+
+type DewpointType = {
+    celsius: number,
+    fahrenheit: number,
+};
+
+type BarometerType = {
+    hg: number,
+    kpa: number,
+    mb: number,
+};
+
+const MetarParserTypeWindState: WindType = {
     degrees:   0,
     speed_kts: 0,
     speed_mps: 0,
