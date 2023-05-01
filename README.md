@@ -1,17 +1,7 @@
 ![FlyByWireLogo](https://raw.githubusercontent.com/flybywiresim/fbw-branding/master/svg/FBW-Logo.svg)
 # FlyByWire Simulations EFB
 
-This repo contains the EFB prototype for FlyByWire Simulations' projects.
+This repo is obsolete and will be archived.
 
-## How to open
-
-First install the dependencies
-```shell script
-npm install
-```
-
-Then run the development server using
-```shell script
-npm start
-```
+Find the EFB code in the a32nx repo under: flybywiresim/a32nx/fbw-a32nx/src/systems/instruments/src/EFB
 
